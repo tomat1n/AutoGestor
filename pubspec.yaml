@@ -1,0 +1,68 @@
+name: autogestor
+description: Sistema de gestão automotiva offline-first
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  flutter_riverpod: ^2.4.9
+  provider: ^6.1.1
+  
+  # Navigation
+  go_router: ^12.1.3
+  
+  # Database
+  drift: ^2.14.1
+  path_provider: ^2.1.1
+  path: ^1.8.3
+  sqlite3_web: ^0.1.2
+  
+  # Dependency Injection
+  get_it: ^7.6.4
+  
+  # Internationalization
+  intl: ^0.18.1
+  
+  # PDF Generation
+  pdf: ^3.10.7
+  printing: ^5.11.1
+  
+  # UI
+  cupertino_icons: ^1.0.6
+  
+  # Utils
+  url_launcher: ^6.2.1
+  shared_preferences: ^2.2.2
+  share_plus: ^7.2.1
+  cross_file: ^0.3.3
+  
+  # HTTP Client
+  http: ^1.1.0
+  
+  # Camera & Scanner
+  mobile_scanner: ^3.5.6
+  image_picker: ^1.0.4
+  barcode_scan2: ^4.3.3
+  
+  # File handling
+  permission_handler: ^11.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  drift_dev: ^2.14.1
+  build_runner: ^2.4.7
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
