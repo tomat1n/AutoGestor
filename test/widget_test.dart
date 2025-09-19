@@ -10,7 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/provider.dart' as provider;
 
-import 'package:autogestor/main.dart';
+// import 'package:autogestor/main.dart';
 
 void main() {
   testWidgets('App smoke test', (WidgetTester tester) async {

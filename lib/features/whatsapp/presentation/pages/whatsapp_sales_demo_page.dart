@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:get_it/get_it.dart';
-import '../../../vendas/domain/entities/venda.dart';
-import '../../../vendas/domain/entities/item_venda.dart';
-import '../../domain/services/whatsapp_sales_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/whatsapp_sales_provider.dart';
+import '../../orcamentos/domain/entities/orcamento.dart';
+import '../../ordens_servico/domain/entities/ordem_servico.dart';
 
 /// Página de demonstração para testar as funcionalidades de WhatsApp Sales
 class WhatsAppSalesDemoPage extends StatefulWidget {
@@ -73,7 +71,7 @@ class _WhatsAppSalesDemoPageState extends State<WhatsAppSalesDemoPage> {
         child: Column(
           children: [
             Icon(
-              Icons.whatsapp,
+              Icons.chat,
               size: 48,
               color: Colors.green[700],
             ),
@@ -235,7 +233,7 @@ class _WhatsAppSalesDemoPageState extends State<WhatsAppSalesDemoPage> {
                 ),
               ),
             ),
-            if (provider.isLoading) ..[
+            if (provider.isLoading) ...[
               const SizedBox(height: 16),
               const Center(
                 child: CircularProgressIndicator(),
@@ -331,19 +329,19 @@ class _WhatsAppSalesDemoPageState extends State<WhatsAppSalesDemoPage> {
       observacoes: _observacoesController.text.isEmpty ? null : _observacoesController.text,
       dataVenda: DateTime.now(),
       itens: [
-        ItemVenda(
+        const ItemVenda(
           id: 1,
           descricao: 'Óleo Motor 5W30',
           quantidade: 4,
           valorUnitario: 25.00,
         ),
-        ItemVenda(
+        const ItemVenda(
           id: 2,
           descricao: 'Filtro de Óleo',
           quantidade: 1,
           valorUnitario: 35.00,
         ),
-        ItemVenda(
+        const ItemVenda(
           id: 3,
           descricao: 'Mão de obra - Troca de óleo',
           quantidade: 1,

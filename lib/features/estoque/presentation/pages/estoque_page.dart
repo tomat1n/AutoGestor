@@ -1,9 +1,10 @@
-import 'dart:io';
+import '../../../../core/utils/platform_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'dart:io';
 import '../../../../core/database/database.dart';
 import '../../domain/entities/produto.dart';
 
@@ -519,8 +520,8 @@ class _EstoquePageState extends ConsumerState<EstoquePage> with TickerProviderSt
               if (produto.codigoBarras != null)
                 _buildDetalheItem('Código de Barras', produto.codigoBarras!),
               _buildDetalheItem('Status', produto.ativo ? 'Ativo' : 'Inativo'),
-              _buildDetalheItem('Criado em', _formatarData(produto.createdAt!)),
-              _buildDetalheItem('Atualizado em', _formatarData(produto.updatedAt!)),
+              _buildDetalheItem('Criado em', _formatarData(produto.createdAt)),
+              _buildDetalheItem('Atualizado em', _formatarData(produto.updatedAt)),
             ],
           ),
         ),
@@ -891,24 +892,19 @@ class ProdutoCard extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: showWarning || isEstoqueBaixo ? Colors.orange : Colors.blue,
-          child: produto.imagemPath != null
-              ? ClipOval(
-                  child: Image.file(
-                    File(produto.imagemPath!),
-                    width: 40,
-                    height: 40,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Icon(
-                        Icons.inventory_2,
-                        color: Colors.white,
-                      );
-                    },
+          child: produto.imagemPath != null && !kIsWeb
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: const Icon(
+                    Icons.image,
+                    size: 40,
+                    color: Colors.grey,
                   ),
                 )
               : const Icon(
                   Icons.inventory_2,
-                  color: Colors.white,
+                  size: 40,
+                  color: Colors.grey,
                 ),
         ),
         title: Text(

@@ -117,6 +117,8 @@ class _WhatsAppDemoPageState extends ConsumerState<WhatsAppDemoPage> {
       final whatsappProvider = getIt<WhatsAppSalesProvider>();
       
       await whatsappProvider.confirmarOrcamento(
+        numeroOrcamento: 'ORC-${DateTime.now().millisecondsSinceEpoch}',
+        telefone: _telefoneController.text,
         orcamentoId: 'ORC-${DateTime.now().millisecondsSinceEpoch}',
         nomeCliente: _nomeClienteController.text,
         telefoneCliente: _telefoneController.text,

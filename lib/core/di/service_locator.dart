@@ -115,7 +115,7 @@ void setupServiceLocator() {
   
   // Services
   getIt.registerLazySingleton<PdfService>(
-    () => PdfService(getIt<EmpresaConfigRepository>()),
+    () => PdfService(),
   );
   
   getIt.registerLazySingleton<CsvService>(

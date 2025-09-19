@@ -21,6 +21,8 @@ class WhatsAppSalesProvider extends ChangeNotifier {
     List<Map<String, dynamic>>? servicos,
     String? nomeEmpresa,
     String? observacoes,
+    String? descricao,
+    double? valorUnitario,
   }) async {
     return false;
   }
@@ -40,6 +42,9 @@ class WhatsAppSalesProvider extends ChangeNotifier {
     required String telefoneCliente,
     required String nomeEmpresa,
     String? observacoes,
+    required String numeroOrcamento,
+    required String telefone,
+    String? dataAgendamento,
   }) async {
     return false;
   }
@@ -126,6 +131,35 @@ class WhatsAppSalesProvider extends ChangeNotifier {
       _error = 'Erro ao enviar confirmação de orçamento: $e';
       notifyListeners();
       return false;
+    }
+  }
+
+  // Método para limpar mensagens
+  void clearMessages() {
+    _error = null;
+    notifyListeners();
+  }
+
+  // Método para criar orçamento exemplo
+  Future<Map<String, dynamic>> criarOrcamentoExemplo() async {
+    try {
+      // Implementação temporária
+      await Future.delayed(const Duration(milliseconds: 500));
+      return {
+        'id': '1',
+        'numero': 'ORC-001',
+        'cliente': 'Cliente Exemplo',
+        'telefone': '11999999999',
+        'servicos': [
+          {'descricao': 'Serviço 1', 'valorUnitario': 100.0},
+          {'descricao': 'Serviço 2', 'valorUnitario': 200.0},
+        ],
+        'valorTotal': 300.0,
+      };
+    } catch (e) {
+      _error = 'Erro ao criar orçamento exemplo: $e';
+      notifyListeners();
+      return {};
     }
   }
 }

@@ -1,6 +1,7 @@
-import 'dart:io';
+import '../../../../core/utils/platform_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:io';
 import '../providers/auth_provider.dart';
 
 class CompanyBrandingWidget extends StatelessWidget {
@@ -13,7 +14,7 @@ class CompanyBrandingWidget extends StatelessWidget {
   final CrossAxisAlignment crossAxisAlignment;
 
   const CompanyBrandingWidget({
-    Key? key,
+    super.key,
     this.logoSize = 60,
     this.showCompanyName = true,
     this.showCnpj = false,
@@ -21,7 +22,7 @@ class CompanyBrandingWidget extends StatelessWidget {
     this.cnpjStyle,
     this.alignment = MainAxisAlignment.center,
     this.crossAxisAlignment = CrossAxisAlignment.center,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class CompanyBrandingWidget extends StatelessWidget {
             // Logo da empresa
             _buildLogo(context, authProvider),
             
-            if (showCompanyName && (usuario.nomeFantasia?.isNotEmpty == true || usuario.empresa?.isNotEmpty == true)) ...
+            if (showCompanyName && (usuario.nomeFantasia?.isNotEmpty == true || usuario.empresa.isNotEmpty == true)) ...
               [
                 const SizedBox(height: 8),
                 Text(
@@ -209,13 +210,13 @@ class CompanyThemedContainer extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
 
   const CompanyThemedContainer({
-    Key? key,
+    super.key,
     required this.child,
     this.applyGradient = false,
     this.borderRadius,
     this.padding,
     this.margin,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -296,14 +297,14 @@ class CompanyThemedButton extends StatelessWidget {
   final double? height;
 
   const CompanyThemedButton({
-    Key? key,
+    super.key,
     required this.text,
     this.onPressed,
     this.isOutlined = false,
     this.icon,
     this.width,
     this.height,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

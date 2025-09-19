@@ -1,14 +1,13 @@
-import 'dart:io';
+import '../../../../core/utils/platform_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 import '../providers/auth_provider.dart';
 import '../widgets/company_branding_widget.dart';
-import '../../domain/entities/usuario_entity.dart';
-import '../../domain/entities/assinatura_entity.dart';
 
 class ConfiguracoesPage extends StatefulWidget {
-  const ConfiguracoesPage({Key? key}) : super(key: key);
+  const ConfiguracoesPage({super.key});
 
   @override
   State<ConfiguracoesPage> createState() => _ConfiguracoesPageState();

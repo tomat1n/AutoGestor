@@ -1,14 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:go_router/go_router.dart';
+import '../../../../core/utils/platform_utils.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:get_it/get_it.dart';
-import 'dart:io';
+import 'dart:typed_data';
+import 'dart:convert';
 import '../../domain/entities/orcamento.dart';
 import '../../domain/repositories/orcamentos_repository.dart';
-import '../providers/orcamentos_provider.dart';
 import '../../../servicos/domain/entities/servico.dart';
-import '../../../servicos/presentation/providers/servicos_provider.dart';
 import '../../../../core/widgets/loading_widget.dart';
 import 'selecionar_servicos_page.dart';
 import 'selecionar_produtos_page.dart';
@@ -37,8 +37,8 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
   Orcamento? _orcamentoExistente;
   List<Servico> _servicosSelecionados = [];
   List<Map<String, dynamic>> _produtosSelecionados = [];
-  List<File> _fotosDefeito = [];
-  List<File> _fotosReposicao = [];
+  final List<Uint8List> _fotosDefeitoBytes = [];
+  final List<Uint8List> _fotosReposicaoBytes = [];
   final ImagePicker _picker = ImagePicker();
   
   @override
@@ -339,7 +339,7 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
               ],
             ),
             const SizedBox(height: 16),
-            if (_fotosDefeito.isEmpty)
+            if (_fotosDefeitoBytes.isEmpty)
               Container(
                 height: 100,
                 decoration: BoxDecoration(
@@ -359,7 +359,7 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
                 height: 120,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: _fotosDefeito.length,
+                  itemCount: _fotosDefeitoBytes.length,
                   itemBuilder: (context, index) {
                     return Container(
                       margin: const EdgeInsets.only(right: 8),
@@ -367,12 +367,26 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child: Image.file(
-                              _fotosDefeito[index],
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
+                            child: kIsWeb
+                                ? Image.memory(
+                                    _fotosDefeitoBytes[index],
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Container(
+                                    width: 100,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: const Icon(
+                                      Icons.image,
+                                      color: Colors.grey,
+                                      size: 40,
+                                    ),
+                                  ),
                           ),
                           Positioned(
                             top: 4,
@@ -426,7 +440,7 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
               ],
             ),
             const SizedBox(height: 16),
-            if (_fotosReposicao.isEmpty)
+            if (_fotosReposicaoBytes.isEmpty)
               Container(
                 height: 100,
                 decoration: BoxDecoration(
@@ -446,7 +460,7 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
                 height: 120,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: _fotosReposicao.length,
+                  itemCount: _fotosReposicaoBytes.length,
                   itemBuilder: (context, index) {
                     return Container(
                       margin: const EdgeInsets.only(right: 8),
@@ -454,12 +468,26 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child: Image.file(
-                              _fotosReposicao[index],
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
+                            child: kIsWeb
+                                ? Image.memory(
+                                    _fotosReposicaoBytes[index],
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Container(
+                                    width: 100,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: const Icon(
+                                      Icons.image,
+                                      color: Colors.grey,
+                                      size: 40,
+                                    ),
+                                  ),
                           ),
                           Positioned(
                             top: 4,
@@ -594,7 +622,7 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
             ),
             const SizedBox(height: 16),
             DropdownButtonFormField<String>(
-              value: _localSalvamento,
+              initialValue: _localSalvamento,
               decoration: const InputDecoration(
                 labelText: 'Selecionar local',
                 border: OutlineInputBorder(),
@@ -701,8 +729,9 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
   Future<void> _adicionarFotoDefeito() async {
     final XFile? image = await _picker.pickImage(source: ImageSource.camera);
     if (image != null) {
+      final bytes = await image.readAsBytes();
       setState(() {
-        _fotosDefeito.add(File(image.path));
+        _fotosDefeitoBytes.add(bytes);
       });
     }
   }
@@ -710,21 +739,22 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
   Future<void> _adicionarFotoReposicao() async {
     final XFile? image = await _picker.pickImage(source: ImageSource.camera);
     if (image != null) {
+      final bytes = await image.readAsBytes();
       setState(() {
-        _fotosReposicao.add(File(image.path));
+        _fotosReposicaoBytes.add(bytes);
       });
     }
   }
   
   void _removerFotoDefeito(int index) {
     setState(() {
-      _fotosDefeito.removeAt(index);
+      _fotosDefeitoBytes.removeAt(index);
     });
   }
   
   void _removerFotoReposicao(int index) {
     setState(() {
-      _fotosReposicao.removeAt(index);
+      _fotosReposicaoBytes.removeAt(index);
     });
   }
   
@@ -747,8 +777,8 @@ class _OrcamentoFormPageState extends State<OrcamentoFormPage> {
     
     try {
       // Converter fotos para URLs (simulação - em produção seria upload para servidor)
-      final fotosDefeitoUrls = _fotosDefeito.map((foto) => foto.path).toList();
-      final fotosReposicaoUrls = _fotosReposicao.map((foto) => foto.path).toList();
+      final fotosDefeitoUrls = _fotosDefeitoBytes.map((bytes) => 'data:image/jpeg;base64,${base64Encode(bytes)}').toList();
+      final fotosReposicaoUrls = _fotosReposicaoBytes.map((bytes) => 'data:image/jpeg;base64,${base64Encode(bytes)}').toList();
       
       final orcamento = Orcamento(
         id: widget.orcamentoId,

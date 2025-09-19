@@ -1,9 +1,9 @@
-import 'dart:io';
+import '../../../../core/utils/platform_utils.dart';
 import 'dart:convert';
-import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
 import '../entities/venda.dart';
 import '../entities/item_venda.dart';
+import 'package:flutter/foundation.dart';
 
 /// Serviço para exportação de dados em formato CSV
 class CsvService {
@@ -17,25 +17,11 @@ class CsvService {
     required Map<int, List<ItemVenda>> itensVendas,
     String? nomeArquivo,
   }) async {
-    try {
-      // Gerar nome do arquivo se não fornecido
-      nomeArquivo ??= 'vendas_${_fileNameFormat.format(DateTime.now())}.csv';
-      
-      // Obter diretório de documentos
-      final directory = await getApplicationDocumentsDirectory();
-      final filePath = '${directory.path}/$nomeArquivo';
-      
-      // Criar conteúdo CSV
-      final csvContent = _gerarCsvVendas(vendas, itensVendas);
-      
-      // Escrever arquivo
-      final file = File(filePath);
-      await file.writeAsString(csvContent, encoding: utf8);
-      
-      return filePath;
-    } catch (e) {
-      throw Exception('Erro ao exportar vendas para CSV: $e');
+    if (kIsWeb) {
+      throw UnsupportedError('Exportação de CSV não suportada na web');
     }
+    
+    throw UnsupportedError('Funcionalidade de exportação CSV temporariamente desabilitada para compatibilidade web');
   }
 
   /// Exporta vendas detalhadas (com itens) para arquivo CSV
@@ -44,25 +30,11 @@ class CsvService {
     required Map<int, List<ItemVenda>> itensVendas,
     String? nomeArquivo,
   }) async {
-    try {
-      // Gerar nome do arquivo se não fornecido
-      nomeArquivo ??= 'vendas_detalhadas_${_fileNameFormat.format(DateTime.now())}.csv';
-      
-      // Obter diretório de documentos
-      final directory = await getApplicationDocumentsDirectory();
-      final filePath = '${directory.path}/$nomeArquivo';
-      
-      // Criar conteúdo CSV
-      final csvContent = _gerarCsvVendasDetalhadas(vendas, itensVendas);
-      
-      // Escrever arquivo
-      final file = File(filePath);
-      await file.writeAsString(csvContent, encoding: utf8);
-      
-      return filePath;
-    } catch (e) {
-      throw Exception('Erro ao exportar vendas detalhadas para CSV: $e');
+    if (kIsWeb) {
+      throw UnsupportedError('Exportação de CSV não suportada na web');
     }
+    
+    throw UnsupportedError('Funcionalidade de exportação CSV temporariamente desabilitada para compatibilidade web');
   }
 
   /// Gera conteúdo CSV para vendas (resumo)
@@ -192,26 +164,11 @@ class CsvService {
     required DateTime dataFim,
     String? nomeArquivo,
   }) async {
-    try {
-      // Gerar nome do arquivo se não fornecido
-      final periodoStr = '${DateFormat('ddMMyyyy').format(dataInicio)}_${DateFormat('ddMMyyyy').format(dataFim)}';
-      nomeArquivo ??= 'relatorio_vendas_${periodoStr}_${_fileNameFormat.format(DateTime.now())}.csv';
-      
-      // Obter diretório de documentos
-      final directory = await getApplicationDocumentsDirectory();
-      final filePath = '${directory.path}/$nomeArquivo';
-      
-      // Criar conteúdo CSV do relatório
-      final csvContent = _gerarCsvRelatorioVendas(vendas, itensVendas, dataInicio, dataFim);
-      
-      // Escrever arquivo
-      final file = File(filePath);
-      await file.writeAsString(csvContent, encoding: utf8);
-      
-      return filePath;
-    } catch (e) {
-      throw Exception('Erro ao exportar relatório de vendas para CSV: $e');
+    if (kIsWeb) {
+      throw UnsupportedError('Exportação de CSV não suportada na web');
     }
+    
+    throw UnsupportedError('Funcionalidade de exportação CSV temporariamente desabilitada para compatibilidade web');
   }
 
   /// Gera conteúdo CSV para relatório de vendas

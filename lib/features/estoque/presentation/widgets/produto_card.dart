@@ -1,6 +1,7 @@
-import 'dart:io';
+import '../../../../core/utils/platform_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
 import '../../../../core/database/database.dart';
 
 class ProdutoCard extends StatelessWidget {

@@ -1,12 +1,11 @@
-import 'dart:io';
+import 'dart:typed_data';
+import '../../../../core/utils/platform_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as path;
 import 'package:drift/drift.dart' as drift;
 import '../../../../core/database/database.dart';
 import '../providers/estoque_provider.dart';
@@ -35,7 +34,7 @@ class _ProdutoFormPageState extends ConsumerState<ProdutoFormPage> {
   final _codigoBarrasController = TextEditingController();
   final _qrCodeController = TextEditingController();
 
-  File? _imagemSelecionada;
+  Uint8List? _imagemBytes;
   String? _imagemPath;
   bool _ativo = true;
   bool _isLoading = false;
@@ -86,12 +85,27 @@ class _ProdutoFormPageState extends ConsumerState<ProdutoFormPage> {
   Future<void> _selecionarImagem() async {
     // Verificar se está rodando na web
     if (kIsWeb) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Upload de imagens não disponível na versão web'),
-          backgroundColor: Colors.orange,
-        ),
-      );
+      final ImagePicker picker = ImagePicker();
+      try {
+        final XFile? image = await picker.pickImage(
+          source: ImageSource.gallery,
+          maxWidth: 800,
+          maxHeight: 600,
+          imageQuality: 80,
+        );
+        if (image != null) {
+          await _processarImagem(image);
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Erro ao selecionar imagem: $e'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
       return;
     }
     
@@ -116,7 +130,7 @@ class _ProdutoFormPageState extends ConsumerState<ProdutoFormPage> {
                       imageQuality: 80,
                     );
                     if (image != null) {
-                      await _salvarImagem(image);
+                      await _processarImagem(image);
                     }
                   } catch (e) {
                     if (mounted) {
@@ -143,7 +157,7 @@ class _ProdutoFormPageState extends ConsumerState<ProdutoFormPage> {
                       imageQuality: 80,
                     );
                     if (image != null) {
-                      await _salvarImagem(image);
+                      await _processarImagem(image);
                     }
                   } catch (e) {
                     if (mounted) {
@@ -164,33 +178,23 @@ class _ProdutoFormPageState extends ConsumerState<ProdutoFormPage> {
     );
   }
 
-  Future<void> _salvarImagem(XFile image) async {
+  Future<void> _processarImagem(XFile image) async {
     try {
-      final Directory appDir = await getApplicationDocumentsDirectory();
-      final String fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
-      final String filePath = path.join(appDir.path, 'produtos', fileName);
-      
-      // Criar diretório se não existir
-      final Directory produtosDir = Directory(path.dirname(filePath));
-      if (!await produtosDir.exists()) {
-        await produtosDir.create(recursive: true);
-      }
-      
-      // Copiar arquivo
-      final File novaImagem = await File(image.path).copy(filePath);
-      
+      final bytes = await image.readAsBytes();
       setState(() {
-        _imagemSelecionada = novaImagem;
-        _imagemPath = filePath;
+        _imagemBytes = bytes;
+        _imagemPath = image.name; // Para web, usamos o nome do arquivo
       });
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erro ao salvar imagem: $e')),
+          SnackBar(content: Text('Erro ao processar imagem: $e')),
         );
       }
     }
   }
+
+
 
   void _abrirScanner(bool isQrCode) {
     // Verificar se está rodando na web
@@ -337,20 +341,21 @@ class _ProdutoFormPageState extends ConsumerState<ProdutoFormPage> {
                             border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          child: _imagemSelecionada != null
+                          child: _imagemBytes != null
                               ? ClipRRect(
                                   borderRadius: BorderRadius.circular(8),
-                                  child: Image.file(
-                                    _imagemSelecionada!,
+                                  child: Image.memory(
+                                    _imagemBytes!,
                                     fit: BoxFit.cover,
                                   ),
                                 )
-                              : _imagemPath != null
+                              : _imagemPath != null && !kIsWeb
                                   ? ClipRRect(
                                       borderRadius: BorderRadius.circular(8),
-                                      child: Image.file(
-                                        File(_imagemPath!),
-                                        fit: BoxFit.cover,
+                                      child: const Icon(
+                                        Icons.image,
+                                        size: 50,
+                                        color: Colors.grey,
                                       ),
                                     )
                                   : const Column(

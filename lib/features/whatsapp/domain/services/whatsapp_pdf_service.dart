@@ -1,4 +1,4 @@
-import 'dart:io';
+import '../../../../core/utils/platform_utils.dart';
 import '../entities/whatsapp_config.dart';
 import '../repositories/whatsapp_repository.dart';
 import 'whatsapp_manager_service.dart';
@@ -249,7 +249,7 @@ class WhatsAppPdfService {
               color: PdfColors.blue800,
             ),
           ),
-          if (empresaConfig?.endereco?.isNotEmpty == true) ..[
+          if (empresaConfig?.endereco.isNotEmpty == true) ..[
             pw.SizedBox(height: 8),
             pw.Text(
               empresaConfig!.endereco!,

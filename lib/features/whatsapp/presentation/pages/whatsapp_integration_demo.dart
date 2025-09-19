@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../orcamentos/domain/services/orcamentos_service.dart';
-import '../../orcamentos/domain/services/orcamentos_whatsapp_service.dart';
-import '../../ordens_servico/domain/services/ordens_servico_service.dart';
-import '../../ordens_servico/domain/services/ordens_servico_whatsapp_service.dart';
-import '../../orcamentos/domain/entities/orcamento.dart';
-import '../../ordens_servico/domain/entities/ordem_servico.dart';
+import '../../orcamentos/domain/services/orcamentos_service_provider.dart';
+import '../../ordens_servico/domain/services/ordens_servico_service_provider.dart';
 
 class WhatsAppIntegrationDemo extends ConsumerStatefulWidget {
-  const WhatsAppIntegrationDemo({Key? key}) : super(key: key);
+  const WhatsAppIntegrationDemo({super.key});
 
   @override
   ConsumerState<WhatsAppIntegrationDemo> createState() => _WhatsAppIntegrationDemoState();
@@ -46,7 +42,7 @@ class _WhatsAppIntegrationDemoState extends ConsumerState<WhatsAppIntegrationDem
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.info, color: Colors.blue),
+                        const Icon(Icons.info, color: Colors.blue),
                         const SizedBox(width: 8),
                         Text(
                           'Integração WhatsApp Implementada',
@@ -83,7 +79,7 @@ class _WhatsAppIntegrationDemoState extends ConsumerState<WhatsAppIntegrationDem
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.code, color: Colors.orange),
+                        const Icon(Icons.code, color: Colors.orange),
                         const SizedBox(width: 8),
                         Text(
                           'Como Usar',
@@ -123,7 +119,7 @@ class _WhatsAppIntegrationDemoState extends ConsumerState<WhatsAppIntegrationDem
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.settings, color: Colors.purple),
+                        const Icon(Icons.settings, color: Colors.purple),
                         const SizedBox(width: 8),
                         Text(
                           'Configurações Automáticas',
@@ -175,7 +171,7 @@ class _WhatsAppIntegrationDemoState extends ConsumerState<WhatsAppIntegrationDem
                   ),
                 ],
               ),
-            if (_resultado != null) ..[
+            if (_resultado != null) ...[
               const SizedBox(height: 16),
               Card(
                 color: _resultado!.contains('Erro') ? Colors.red.shade50 : Colors.green.shade50,

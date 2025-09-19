@@ -1,15 +1,15 @@
-import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:path_provider/path_provider.dart';
+import 'package:printing/printing.dart';
 import 'package:intl/intl.dart';
-// Importação condicional removida - será tratada dinamicamente
-import '../entities/venda.dart';
-import '../entities/item_venda.dart';
-import '../../../configuracoes/data/repositories/empresa_config_repository.dart';
-import '../../../../core/database/database.dart' show EmpresaConfigData;
+import '../../../estoque/domain/entities/produto.dart';
+import '../../../clientes/domain/entities/cliente.dart';
+import '../../domain/entities/venda.dart';
+import '../../domain/entities/item_venda.dart';
+import '../../../configuracoes/domain/entities/empresa_config.dart';
+import '../../../../core/utils/platform_utils.dart';
 
 class PdfService {
   final NumberFormat _currencyFormat = NumberFormat.currency(
@@ -17,14 +17,127 @@ class PdfService {
     symbol: 'R\$',
   );
   final DateFormat _dateFormat = DateFormat('dd/MM/yyyy HH:mm');
-  final EmpresaConfigRepository _empresaConfigRepository;
   
-  PdfService(this._empresaConfigRepository);
+  PdfService();
+
+  /// Gera um recibo em PDF com dados básicos
+  Future<Uint8List> gerarReciboPdf(Venda venda, List<ItemVenda> itens, EmpresaConfig? config) async {
+    if (!PlatformUtils.canUsePdfGeneration) {
+      throw UnsupportedError('Geração de PDF na web ainda não implementada');
+    }
+    
+    final pdf = pw.Document();
+    
+    pdf.addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.a4,
+        build: (pw.Context context) {
+          return pw.Column(
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
+            children: [
+              // Cabeçalho da empresa
+              if (config != null) ...[
+                pw.Text(
+                  config.nomeEmpresa,
+                  style: pw.TextStyle(fontSize: 20, fontWeight: pw.FontWeight.bold),
+                ),
+                if (config.documento.isNotEmpty)
+                  pw.Text('CNPJ: ${config.documento}'),
+                if (config.endereco.isNotEmpty)
+                  pw.Text('Endereço: ${config.endereco}'),
+                if (config.telefone?.isNotEmpty == true)
+                  pw.Text('Telefone: ${config.telefone}'),
+                pw.SizedBox(height: 20),
+              ],
+              
+              // Título
+              pw.Text(
+                'RECIBO DE VENDA',
+                style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold),
+              ),
+              pw.SizedBox(height: 10),
+              
+              // Informações da venda
+              pw.Text('Venda #${venda.id}'),
+              pw.Text('Data: ${_dateFormat.format(venda.dataVenda)}'),
+              pw.Text('Cliente: ${venda.nomeCliente ?? 'Cliente não informado'}'),
+              pw.SizedBox(height: 20),
+              
+              // Tabela de itens
+              pw.Table(
+                border: pw.TableBorder.all(),
+                children: [
+                  // Cabeçalho
+                  pw.TableRow(
+                    children: [
+                      pw.Padding(
+                        padding: const pw.EdgeInsets.all(8),
+                        child: pw.Text('Produto', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                      ),
+                      pw.Padding(
+                        padding: const pw.EdgeInsets.all(8),
+                        child: pw.Text('Qtd', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                      ),
+                      pw.Padding(
+                        padding: const pw.EdgeInsets.all(8),
+                        child: pw.Text('Preço Unit.', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                      ),
+                      pw.Padding(
+                        padding: const pw.EdgeInsets.all(8),
+                        child: pw.Text('Total', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                      ),
+                    ],
+                  ),
+                  // Itens
+                  ...itens.map((item) => pw.TableRow(
+                    children: [
+                      pw.Padding(
+                        padding: const pw.EdgeInsets.all(8),
+                        child: pw.Text(_buildDescricaoProduto(item)),
+                      ),
+                      pw.Padding(
+                        padding: const pw.EdgeInsets.all(8),
+                        child: pw.Text(item.quantidade.toString()),
+                      ),
+                      pw.Padding(
+                        padding: const pw.EdgeInsets.all(8),
+                        child: pw.Text(_currencyFormat.format(item.precoUnitario)),
+                      ),
+                      pw.Padding(
+                        padding: const pw.EdgeInsets.all(8),
+                        child: pw.Text(_currencyFormat.format(item.subtotal)),
+                      ),
+                    ],
+                  )),
+                ],
+              ),
+              
+              pw.SizedBox(height: 20),
+              
+              // Total
+              pw.Align(
+                alignment: pw.Alignment.centerRight,
+                child: pw.Text(
+                  'TOTAL: ${_currencyFormat.format(venda.total)}',
+                  style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+    
+    return pdf.save();
+  }
 
   /// Gera um recibo em formato A4
-  Future<File> gerarReciboA4(Venda venda, [List<ItemVenda>? itensVenda]) async {
+  Future<Uint8List> gerarReciboA4(Venda venda, [List<ItemVenda>? itensVenda]) async {
+    if (!PlatformUtils.canUsePdfGeneration) {
+      throw UnsupportedError('Geração de PDF na web ainda não implementada');
+    }
+    
     final itens = itensVenda ?? <ItemVenda>[];
-    final empresaConfig = await _empresaConfigRepository.buscarConfiguracoes();
     
     final pdf = pw.Document();
     
@@ -37,7 +150,7 @@ class PdfService {
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
               // Cabeçalho da empresa
-              _buildCabecalhoA4(empresaConfig),
+              _buildCabecalhoA4(null),
               pw.SizedBox(height: 30),
               
               // Informações da venda
@@ -59,20 +172,23 @@ class PdfService {
               pw.Spacer(),
               
               // Rodapé
-              _buildRodapeA4(empresaConfig),
+              _buildRodapeA4(null),
             ],
           );
         },
       ),
     );
     
-    return _salvarPdf(pdf, 'recibo_venda_${venda.id}_a4.pdf');
+    return pdf.save();
   }
 
   /// Gera um recibo em formato térmico 58mm
-  Future<File> gerarReciboTermico(Venda venda, [List<ItemVenda>? itensVenda]) async {
+  Future<Uint8List> gerarReciboTermico(Venda venda, [List<ItemVenda>? itensVenda]) async {
+    if (!PlatformUtils.canUsePdfGeneration) {
+      throw UnsupportedError('Geração de PDF na web ainda não implementada');
+    }
+    
     final itens = itensVenda ?? <ItemVenda>[];
-    final empresaConfig = await _empresaConfigRepository.buscarConfiguracoes();
     
     const double mmToPt = 72.0 / 25.4;
     const double width = 58 * mmToPt; // 58mm de largura
@@ -88,7 +204,7 @@ class PdfService {
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
               // Cabeçalho da empresa
-              _buildCabecalhoTermico(empresaConfig),
+              _buildCabecalhoTermico(null),
               pw.SizedBox(height: 10),
               
               // Linha separadora
@@ -128,18 +244,18 @@ class PdfService {
               pw.SizedBox(height: 8),
               
               // Rodapé
-              _buildRodapeTermico(empresaConfig),
+              _buildRodapeTermico(null),
             ],
           );
         },
       ),
     );
     
-    return _salvarPdf(pdf, 'recibo_venda_${venda.id}_termico.pdf');
+    return pdf.save();
   }
 
   // Métodos para formato A4
-  pw.Widget _buildCabecalhoA4(EmpresaConfigData? empresaConfig) {
+  pw.Widget _buildCabecalhoA4(EmpresaConfig? empresaConfig) {
     return pw.Column(
       crossAxisAlignment: pw.CrossAxisAlignment.center,
       children: [
@@ -341,7 +457,7 @@ class PdfService {
     );
   }
 
-  pw.Widget _buildRodapeA4(EmpresaConfigData? empresaConfig) {
+  pw.Widget _buildRodapeA4(EmpresaConfig? empresaConfig) {
     return pw.Column(
       children: [
         pw.Container(
@@ -373,7 +489,7 @@ class PdfService {
   }
 
   // Métodos para formato térmico
-  pw.Widget _buildCabecalhoTermico(EmpresaConfigData? empresaConfig) {
+  pw.Widget _buildCabecalhoTermico(EmpresaConfig? empresaConfig) {
     return pw.Column(
       crossAxisAlignment: pw.CrossAxisAlignment.center,
       children: [
@@ -545,7 +661,7 @@ class PdfService {
     );
   }
 
-  pw.Widget _buildRodapeTermico(EmpresaConfigData? empresaConfig) {
+  pw.Widget _buildRodapeTermico(EmpresaConfig? empresaConfig) {
     return pw.Column(
       children: [
         pw.Text(
@@ -588,29 +704,18 @@ class PdfService {
     return descricao;
   }
 
-  Future<File> _salvarPdf(pw.Document pdf, String nomeArquivo) async {
-    final bytes = await pdf.save();
-    
-    if (kIsWeb) {
-      // Para Flutter Web - funcionalidade será implementada posteriormente
-      throw UnsupportedError('Geração de PDF na web ainda não implementada');
-    } else {
-      // Para plataformas móveis/desktop
-      final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}/$nomeArquivo');
-      await file.writeAsBytes(bytes);
-      return file;
-    }
+  Future<Uint8List> _salvarPdf(pw.Document pdf, String nomeArquivo) async {
+    return pdf.save();
   }
 
   /// Abre o arquivo PDF gerado
-  Future<void> abrirPdf(File arquivo) async {
+  Future<void> abrirPdf(Uint8List pdfBytes) async {
     // TODO: Implementar abertura do PDF com o aplicativo padrão do sistema
     // Pode usar o package open_file ou url_launcher
   }
 
   /// Compartilha o arquivo PDF
-  Future<void> compartilharPdf(File arquivo) async {
+  Future<void> compartilharPdf(Uint8List pdfBytes) async {
     // TODO: Implementar compartilhamento do PDF
     // Pode usar o package share_plus
   }
