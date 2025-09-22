@@ -1,5 +1,4 @@
 import 'package:drift/drift.dart';
-import '../enums/user_role.dart';
 
 @DataClassName('Usuario')
 class UsuarioTable extends Table {

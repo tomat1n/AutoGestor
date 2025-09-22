@@ -1433,6 +1433,1023 @@ class FornecedorTableCompanion extends UpdateCompanion<FornecedorData> {
   }
 }
 
+class $PedidoCompraTableTable extends PedidoCompraTable
+    with TableInfo<$PedidoCompraTableTable, PedidoCompraData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PedidoCompraTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _fornecedorIdMeta =
+      const VerificationMeta('fornecedorId');
+  @override
+  late final GeneratedColumn<int> fornecedorId = GeneratedColumn<int>(
+      'fornecedor_id', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES fornecedor_table (id)'));
+  static const VerificationMeta _numeroMeta = const VerificationMeta('numero');
+  @override
+  late final GeneratedColumn<String> numero = GeneratedColumn<String>(
+      'numero', aliasedName, false,
+      additionalChecks:
+          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 50),
+      type: DriftSqlType.string,
+      requiredDuringInsert: true);
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+      'status', aliasedName, false,
+      additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 20),
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('pendente'));
+  static const VerificationMeta _valorTotalMeta =
+      const VerificationMeta('valorTotal');
+  @override
+  late final GeneratedColumn<double> valorTotal = GeneratedColumn<double>(
+      'valor_total', aliasedName, false,
+      type: DriftSqlType.double,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(0.0));
+  static const VerificationMeta _observacoesMeta =
+      const VerificationMeta('observacoes');
+  @override
+  late final GeneratedColumn<String> observacoes = GeneratedColumn<String>(
+      'observacoes', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _dataEmissaoMeta =
+      const VerificationMeta('dataEmissao');
+  @override
+  late final GeneratedColumn<DateTime> dataEmissao = GeneratedColumn<DateTime>(
+      'data_emissao', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  static const VerificationMeta _dataAprovacaoMeta =
+      const VerificationMeta('dataAprovacao');
+  @override
+  late final GeneratedColumn<DateTime> dataAprovacao =
+      GeneratedColumn<DateTime>('data_aprovacao', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _dataRecebimentoMeta =
+      const VerificationMeta('dataRecebimento');
+  @override
+  late final GeneratedColumn<DateTime> dataRecebimento =
+      GeneratedColumn<DateTime>('data_recebimento', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _criadoEmMeta =
+      const VerificationMeta('criadoEm');
+  @override
+  late final GeneratedColumn<DateTime> criadoEm = GeneratedColumn<DateTime>(
+      'criado_em', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  static const VerificationMeta _atualizadoEmMeta =
+      const VerificationMeta('atualizadoEm');
+  @override
+  late final GeneratedColumn<DateTime> atualizadoEm = GeneratedColumn<DateTime>(
+      'atualizado_em', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        fornecedorId,
+        numero,
+        status,
+        valorTotal,
+        observacoes,
+        dataEmissao,
+        dataAprovacao,
+        dataRecebimento,
+        criadoEm,
+        atualizadoEm
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'pedido_compra_table';
+  @override
+  VerificationContext validateIntegrity(Insertable<PedidoCompraData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('fornecedor_id')) {
+      context.handle(
+          _fornecedorIdMeta,
+          fornecedorId.isAcceptableOrUnknown(
+              data['fornecedor_id']!, _fornecedorIdMeta));
+    } else if (isInserting) {
+      context.missing(_fornecedorIdMeta);
+    }
+    if (data.containsKey('numero')) {
+      context.handle(_numeroMeta,
+          numero.isAcceptableOrUnknown(data['numero']!, _numeroMeta));
+    } else if (isInserting) {
+      context.missing(_numeroMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(_statusMeta,
+          status.isAcceptableOrUnknown(data['status']!, _statusMeta));
+    }
+    if (data.containsKey('valor_total')) {
+      context.handle(
+          _valorTotalMeta,
+          valorTotal.isAcceptableOrUnknown(
+              data['valor_total']!, _valorTotalMeta));
+    }
+    if (data.containsKey('observacoes')) {
+      context.handle(
+          _observacoesMeta,
+          observacoes.isAcceptableOrUnknown(
+              data['observacoes']!, _observacoesMeta));
+    }
+    if (data.containsKey('data_emissao')) {
+      context.handle(
+          _dataEmissaoMeta,
+          dataEmissao.isAcceptableOrUnknown(
+              data['data_emissao']!, _dataEmissaoMeta));
+    }
+    if (data.containsKey('data_aprovacao')) {
+      context.handle(
+          _dataAprovacaoMeta,
+          dataAprovacao.isAcceptableOrUnknown(
+              data['data_aprovacao']!, _dataAprovacaoMeta));
+    }
+    if (data.containsKey('data_recebimento')) {
+      context.handle(
+          _dataRecebimentoMeta,
+          dataRecebimento.isAcceptableOrUnknown(
+              data['data_recebimento']!, _dataRecebimentoMeta));
+    }
+    if (data.containsKey('criado_em')) {
+      context.handle(_criadoEmMeta,
+          criadoEm.isAcceptableOrUnknown(data['criado_em']!, _criadoEmMeta));
+    }
+    if (data.containsKey('atualizado_em')) {
+      context.handle(
+          _atualizadoEmMeta,
+          atualizadoEm.isAcceptableOrUnknown(
+              data['atualizado_em']!, _atualizadoEmMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  PedidoCompraData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PedidoCompraData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      fornecedorId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}fornecedor_id'])!,
+      numero: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}numero'])!,
+      status: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}status'])!,
+      valorTotal: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}valor_total'])!,
+      observacoes: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}observacoes']),
+      dataEmissao: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}data_emissao'])!,
+      dataAprovacao: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}data_aprovacao']),
+      dataRecebimento: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}data_recebimento']),
+      criadoEm: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}criado_em'])!,
+      atualizadoEm: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}atualizado_em'])!,
+    );
+  }
+
+  @override
+  $PedidoCompraTableTable createAlias(String alias) {
+    return $PedidoCompraTableTable(attachedDatabase, alias);
+  }
+}
+
+class PedidoCompraData extends DataClass
+    implements Insertable<PedidoCompraData> {
+  final int id;
+  final int fornecedorId;
+  final String numero;
+  final String status;
+  final double valorTotal;
+  final String? observacoes;
+  final DateTime dataEmissao;
+  final DateTime? dataAprovacao;
+  final DateTime? dataRecebimento;
+  final DateTime criadoEm;
+  final DateTime atualizadoEm;
+  const PedidoCompraData(
+      {required this.id,
+      required this.fornecedorId,
+      required this.numero,
+      required this.status,
+      required this.valorTotal,
+      this.observacoes,
+      required this.dataEmissao,
+      this.dataAprovacao,
+      this.dataRecebimento,
+      required this.criadoEm,
+      required this.atualizadoEm});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['fornecedor_id'] = Variable<int>(fornecedorId);
+    map['numero'] = Variable<String>(numero);
+    map['status'] = Variable<String>(status);
+    map['valor_total'] = Variable<double>(valorTotal);
+    if (!nullToAbsent || observacoes != null) {
+      map['observacoes'] = Variable<String>(observacoes);
+    }
+    map['data_emissao'] = Variable<DateTime>(dataEmissao);
+    if (!nullToAbsent || dataAprovacao != null) {
+      map['data_aprovacao'] = Variable<DateTime>(dataAprovacao);
+    }
+    if (!nullToAbsent || dataRecebimento != null) {
+      map['data_recebimento'] = Variable<DateTime>(dataRecebimento);
+    }
+    map['criado_em'] = Variable<DateTime>(criadoEm);
+    map['atualizado_em'] = Variable<DateTime>(atualizadoEm);
+    return map;
+  }
+
+  PedidoCompraTableCompanion toCompanion(bool nullToAbsent) {
+    return PedidoCompraTableCompanion(
+      id: Value(id),
+      fornecedorId: Value(fornecedorId),
+      numero: Value(numero),
+      status: Value(status),
+      valorTotal: Value(valorTotal),
+      observacoes: observacoes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(observacoes),
+      dataEmissao: Value(dataEmissao),
+      dataAprovacao: dataAprovacao == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dataAprovacao),
+      dataRecebimento: dataRecebimento == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dataRecebimento),
+      criadoEm: Value(criadoEm),
+      atualizadoEm: Value(atualizadoEm),
+    );
+  }
+
+  factory PedidoCompraData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PedidoCompraData(
+      id: serializer.fromJson<int>(json['id']),
+      fornecedorId: serializer.fromJson<int>(json['fornecedorId']),
+      numero: serializer.fromJson<String>(json['numero']),
+      status: serializer.fromJson<String>(json['status']),
+      valorTotal: serializer.fromJson<double>(json['valorTotal']),
+      observacoes: serializer.fromJson<String?>(json['observacoes']),
+      dataEmissao: serializer.fromJson<DateTime>(json['dataEmissao']),
+      dataAprovacao: serializer.fromJson<DateTime?>(json['dataAprovacao']),
+      dataRecebimento: serializer.fromJson<DateTime?>(json['dataRecebimento']),
+      criadoEm: serializer.fromJson<DateTime>(json['criadoEm']),
+      atualizadoEm: serializer.fromJson<DateTime>(json['atualizadoEm']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'fornecedorId': serializer.toJson<int>(fornecedorId),
+      'numero': serializer.toJson<String>(numero),
+      'status': serializer.toJson<String>(status),
+      'valorTotal': serializer.toJson<double>(valorTotal),
+      'observacoes': serializer.toJson<String?>(observacoes),
+      'dataEmissao': serializer.toJson<DateTime>(dataEmissao),
+      'dataAprovacao': serializer.toJson<DateTime?>(dataAprovacao),
+      'dataRecebimento': serializer.toJson<DateTime?>(dataRecebimento),
+      'criadoEm': serializer.toJson<DateTime>(criadoEm),
+      'atualizadoEm': serializer.toJson<DateTime>(atualizadoEm),
+    };
+  }
+
+  PedidoCompraData copyWith(
+          {int? id,
+          int? fornecedorId,
+          String? numero,
+          String? status,
+          double? valorTotal,
+          Value<String?> observacoes = const Value.absent(),
+          DateTime? dataEmissao,
+          Value<DateTime?> dataAprovacao = const Value.absent(),
+          Value<DateTime?> dataRecebimento = const Value.absent(),
+          DateTime? criadoEm,
+          DateTime? atualizadoEm}) =>
+      PedidoCompraData(
+        id: id ?? this.id,
+        fornecedorId: fornecedorId ?? this.fornecedorId,
+        numero: numero ?? this.numero,
+        status: status ?? this.status,
+        valorTotal: valorTotal ?? this.valorTotal,
+        observacoes: observacoes.present ? observacoes.value : this.observacoes,
+        dataEmissao: dataEmissao ?? this.dataEmissao,
+        dataAprovacao:
+            dataAprovacao.present ? dataAprovacao.value : this.dataAprovacao,
+        dataRecebimento: dataRecebimento.present
+            ? dataRecebimento.value
+            : this.dataRecebimento,
+        criadoEm: criadoEm ?? this.criadoEm,
+        atualizadoEm: atualizadoEm ?? this.atualizadoEm,
+      );
+  PedidoCompraData copyWithCompanion(PedidoCompraTableCompanion data) {
+    return PedidoCompraData(
+      id: data.id.present ? data.id.value : this.id,
+      fornecedorId: data.fornecedorId.present
+          ? data.fornecedorId.value
+          : this.fornecedorId,
+      numero: data.numero.present ? data.numero.value : this.numero,
+      status: data.status.present ? data.status.value : this.status,
+      valorTotal:
+          data.valorTotal.present ? data.valorTotal.value : this.valorTotal,
+      observacoes:
+          data.observacoes.present ? data.observacoes.value : this.observacoes,
+      dataEmissao:
+          data.dataEmissao.present ? data.dataEmissao.value : this.dataEmissao,
+      dataAprovacao: data.dataAprovacao.present
+          ? data.dataAprovacao.value
+          : this.dataAprovacao,
+      dataRecebimento: data.dataRecebimento.present
+          ? data.dataRecebimento.value
+          : this.dataRecebimento,
+      criadoEm: data.criadoEm.present ? data.criadoEm.value : this.criadoEm,
+      atualizadoEm: data.atualizadoEm.present
+          ? data.atualizadoEm.value
+          : this.atualizadoEm,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PedidoCompraData(')
+          ..write('id: $id, ')
+          ..write('fornecedorId: $fornecedorId, ')
+          ..write('numero: $numero, ')
+          ..write('status: $status, ')
+          ..write('valorTotal: $valorTotal, ')
+          ..write('observacoes: $observacoes, ')
+          ..write('dataEmissao: $dataEmissao, ')
+          ..write('dataAprovacao: $dataAprovacao, ')
+          ..write('dataRecebimento: $dataRecebimento, ')
+          ..write('criadoEm: $criadoEm, ')
+          ..write('atualizadoEm: $atualizadoEm')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      fornecedorId,
+      numero,
+      status,
+      valorTotal,
+      observacoes,
+      dataEmissao,
+      dataAprovacao,
+      dataRecebimento,
+      criadoEm,
+      atualizadoEm);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PedidoCompraData &&
+          other.id == this.id &&
+          other.fornecedorId == this.fornecedorId &&
+          other.numero == this.numero &&
+          other.status == this.status &&
+          other.valorTotal == this.valorTotal &&
+          other.observacoes == this.observacoes &&
+          other.dataEmissao == this.dataEmissao &&
+          other.dataAprovacao == this.dataAprovacao &&
+          other.dataRecebimento == this.dataRecebimento &&
+          other.criadoEm == this.criadoEm &&
+          other.atualizadoEm == this.atualizadoEm);
+}
+
+class PedidoCompraTableCompanion extends UpdateCompanion<PedidoCompraData> {
+  final Value<int> id;
+  final Value<int> fornecedorId;
+  final Value<String> numero;
+  final Value<String> status;
+  final Value<double> valorTotal;
+  final Value<String?> observacoes;
+  final Value<DateTime> dataEmissao;
+  final Value<DateTime?> dataAprovacao;
+  final Value<DateTime?> dataRecebimento;
+  final Value<DateTime> criadoEm;
+  final Value<DateTime> atualizadoEm;
+  const PedidoCompraTableCompanion({
+    this.id = const Value.absent(),
+    this.fornecedorId = const Value.absent(),
+    this.numero = const Value.absent(),
+    this.status = const Value.absent(),
+    this.valorTotal = const Value.absent(),
+    this.observacoes = const Value.absent(),
+    this.dataEmissao = const Value.absent(),
+    this.dataAprovacao = const Value.absent(),
+    this.dataRecebimento = const Value.absent(),
+    this.criadoEm = const Value.absent(),
+    this.atualizadoEm = const Value.absent(),
+  });
+  PedidoCompraTableCompanion.insert({
+    this.id = const Value.absent(),
+    required int fornecedorId,
+    required String numero,
+    this.status = const Value.absent(),
+    this.valorTotal = const Value.absent(),
+    this.observacoes = const Value.absent(),
+    this.dataEmissao = const Value.absent(),
+    this.dataAprovacao = const Value.absent(),
+    this.dataRecebimento = const Value.absent(),
+    this.criadoEm = const Value.absent(),
+    this.atualizadoEm = const Value.absent(),
+  })  : fornecedorId = Value(fornecedorId),
+        numero = Value(numero);
+  static Insertable<PedidoCompraData> custom({
+    Expression<int>? id,
+    Expression<int>? fornecedorId,
+    Expression<String>? numero,
+    Expression<String>? status,
+    Expression<double>? valorTotal,
+    Expression<String>? observacoes,
+    Expression<DateTime>? dataEmissao,
+    Expression<DateTime>? dataAprovacao,
+    Expression<DateTime>? dataRecebimento,
+    Expression<DateTime>? criadoEm,
+    Expression<DateTime>? atualizadoEm,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (fornecedorId != null) 'fornecedor_id': fornecedorId,
+      if (numero != null) 'numero': numero,
+      if (status != null) 'status': status,
+      if (valorTotal != null) 'valor_total': valorTotal,
+      if (observacoes != null) 'observacoes': observacoes,
+      if (dataEmissao != null) 'data_emissao': dataEmissao,
+      if (dataAprovacao != null) 'data_aprovacao': dataAprovacao,
+      if (dataRecebimento != null) 'data_recebimento': dataRecebimento,
+      if (criadoEm != null) 'criado_em': criadoEm,
+      if (atualizadoEm != null) 'atualizado_em': atualizadoEm,
+    });
+  }
+
+  PedidoCompraTableCompanion copyWith(
+      {Value<int>? id,
+      Value<int>? fornecedorId,
+      Value<String>? numero,
+      Value<String>? status,
+      Value<double>? valorTotal,
+      Value<String?>? observacoes,
+      Value<DateTime>? dataEmissao,
+      Value<DateTime?>? dataAprovacao,
+      Value<DateTime?>? dataRecebimento,
+      Value<DateTime>? criadoEm,
+      Value<DateTime>? atualizadoEm}) {
+    return PedidoCompraTableCompanion(
+      id: id ?? this.id,
+      fornecedorId: fornecedorId ?? this.fornecedorId,
+      numero: numero ?? this.numero,
+      status: status ?? this.status,
+      valorTotal: valorTotal ?? this.valorTotal,
+      observacoes: observacoes ?? this.observacoes,
+      dataEmissao: dataEmissao ?? this.dataEmissao,
+      dataAprovacao: dataAprovacao ?? this.dataAprovacao,
+      dataRecebimento: dataRecebimento ?? this.dataRecebimento,
+      criadoEm: criadoEm ?? this.criadoEm,
+      atualizadoEm: atualizadoEm ?? this.atualizadoEm,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (fornecedorId.present) {
+      map['fornecedor_id'] = Variable<int>(fornecedorId.value);
+    }
+    if (numero.present) {
+      map['numero'] = Variable<String>(numero.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (valorTotal.present) {
+      map['valor_total'] = Variable<double>(valorTotal.value);
+    }
+    if (observacoes.present) {
+      map['observacoes'] = Variable<String>(observacoes.value);
+    }
+    if (dataEmissao.present) {
+      map['data_emissao'] = Variable<DateTime>(dataEmissao.value);
+    }
+    if (dataAprovacao.present) {
+      map['data_aprovacao'] = Variable<DateTime>(dataAprovacao.value);
+    }
+    if (dataRecebimento.present) {
+      map['data_recebimento'] = Variable<DateTime>(dataRecebimento.value);
+    }
+    if (criadoEm.present) {
+      map['criado_em'] = Variable<DateTime>(criadoEm.value);
+    }
+    if (atualizadoEm.present) {
+      map['atualizado_em'] = Variable<DateTime>(atualizadoEm.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PedidoCompraTableCompanion(')
+          ..write('id: $id, ')
+          ..write('fornecedorId: $fornecedorId, ')
+          ..write('numero: $numero, ')
+          ..write('status: $status, ')
+          ..write('valorTotal: $valorTotal, ')
+          ..write('observacoes: $observacoes, ')
+          ..write('dataEmissao: $dataEmissao, ')
+          ..write('dataAprovacao: $dataAprovacao, ')
+          ..write('dataRecebimento: $dataRecebimento, ')
+          ..write('criadoEm: $criadoEm, ')
+          ..write('atualizadoEm: $atualizadoEm')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ItemCompraTableTable extends ItemCompraTable
+    with TableInfo<$ItemCompraTableTable, ItemCompraData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ItemCompraTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _pedidoCompraIdMeta =
+      const VerificationMeta('pedidoCompraId');
+  @override
+  late final GeneratedColumn<int> pedidoCompraId = GeneratedColumn<int>(
+      'pedido_compra_id', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES pedido_compra_table (id)'));
+  static const VerificationMeta _produtoIdMeta =
+      const VerificationMeta('produtoId');
+  @override
+  late final GeneratedColumn<int> produtoId = GeneratedColumn<int>(
+      'produto_id', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES produto_table (id)'));
+  static const VerificationMeta _quantidadeMeta =
+      const VerificationMeta('quantidade');
+  @override
+  late final GeneratedColumn<int> quantidade = GeneratedColumn<int>(
+      'quantidade', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _precoUnitarioMeta =
+      const VerificationMeta('precoUnitario');
+  @override
+  late final GeneratedColumn<double> precoUnitario = GeneratedColumn<double>(
+      'preco_unitario', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _precoTotalMeta =
+      const VerificationMeta('precoTotal');
+  @override
+  late final GeneratedColumn<double> precoTotal = GeneratedColumn<double>(
+      'preco_total', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _observacoesMeta =
+      const VerificationMeta('observacoes');
+  @override
+  late final GeneratedColumn<String> observacoes = GeneratedColumn<String>(
+      'observacoes', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _criadoEmMeta =
+      const VerificationMeta('criadoEm');
+  @override
+  late final GeneratedColumn<DateTime> criadoEm = GeneratedColumn<DateTime>(
+      'criado_em', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        pedidoCompraId,
+        produtoId,
+        quantidade,
+        precoUnitario,
+        precoTotal,
+        observacoes,
+        criadoEm
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'item_compra_table';
+  @override
+  VerificationContext validateIntegrity(Insertable<ItemCompraData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('pedido_compra_id')) {
+      context.handle(
+          _pedidoCompraIdMeta,
+          pedidoCompraId.isAcceptableOrUnknown(
+              data['pedido_compra_id']!, _pedidoCompraIdMeta));
+    } else if (isInserting) {
+      context.missing(_pedidoCompraIdMeta);
+    }
+    if (data.containsKey('produto_id')) {
+      context.handle(_produtoIdMeta,
+          produtoId.isAcceptableOrUnknown(data['produto_id']!, _produtoIdMeta));
+    } else if (isInserting) {
+      context.missing(_produtoIdMeta);
+    }
+    if (data.containsKey('quantidade')) {
+      context.handle(
+          _quantidadeMeta,
+          quantidade.isAcceptableOrUnknown(
+              data['quantidade']!, _quantidadeMeta));
+    } else if (isInserting) {
+      context.missing(_quantidadeMeta);
+    }
+    if (data.containsKey('preco_unitario')) {
+      context.handle(
+          _precoUnitarioMeta,
+          precoUnitario.isAcceptableOrUnknown(
+              data['preco_unitario']!, _precoUnitarioMeta));
+    } else if (isInserting) {
+      context.missing(_precoUnitarioMeta);
+    }
+    if (data.containsKey('preco_total')) {
+      context.handle(
+          _precoTotalMeta,
+          precoTotal.isAcceptableOrUnknown(
+              data['preco_total']!, _precoTotalMeta));
+    } else if (isInserting) {
+      context.missing(_precoTotalMeta);
+    }
+    if (data.containsKey('observacoes')) {
+      context.handle(
+          _observacoesMeta,
+          observacoes.isAcceptableOrUnknown(
+              data['observacoes']!, _observacoesMeta));
+    }
+    if (data.containsKey('criado_em')) {
+      context.handle(_criadoEmMeta,
+          criadoEm.isAcceptableOrUnknown(data['criado_em']!, _criadoEmMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ItemCompraData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ItemCompraData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      pedidoCompraId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}pedido_compra_id'])!,
+      produtoId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}produto_id'])!,
+      quantidade: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}quantidade'])!,
+      precoUnitario: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}preco_unitario'])!,
+      precoTotal: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}preco_total'])!,
+      observacoes: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}observacoes']),
+      criadoEm: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}criado_em'])!,
+    );
+  }
+
+  @override
+  $ItemCompraTableTable createAlias(String alias) {
+    return $ItemCompraTableTable(attachedDatabase, alias);
+  }
+}
+
+class ItemCompraData extends DataClass implements Insertable<ItemCompraData> {
+  final int id;
+  final int pedidoCompraId;
+  final int produtoId;
+  final int quantidade;
+  final double precoUnitario;
+  final double precoTotal;
+  final String? observacoes;
+  final DateTime criadoEm;
+  const ItemCompraData(
+      {required this.id,
+      required this.pedidoCompraId,
+      required this.produtoId,
+      required this.quantidade,
+      required this.precoUnitario,
+      required this.precoTotal,
+      this.observacoes,
+      required this.criadoEm});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['pedido_compra_id'] = Variable<int>(pedidoCompraId);
+    map['produto_id'] = Variable<int>(produtoId);
+    map['quantidade'] = Variable<int>(quantidade);
+    map['preco_unitario'] = Variable<double>(precoUnitario);
+    map['preco_total'] = Variable<double>(precoTotal);
+    if (!nullToAbsent || observacoes != null) {
+      map['observacoes'] = Variable<String>(observacoes);
+    }
+    map['criado_em'] = Variable<DateTime>(criadoEm);
+    return map;
+  }
+
+  ItemCompraTableCompanion toCompanion(bool nullToAbsent) {
+    return ItemCompraTableCompanion(
+      id: Value(id),
+      pedidoCompraId: Value(pedidoCompraId),
+      produtoId: Value(produtoId),
+      quantidade: Value(quantidade),
+      precoUnitario: Value(precoUnitario),
+      precoTotal: Value(precoTotal),
+      observacoes: observacoes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(observacoes),
+      criadoEm: Value(criadoEm),
+    );
+  }
+
+  factory ItemCompraData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ItemCompraData(
+      id: serializer.fromJson<int>(json['id']),
+      pedidoCompraId: serializer.fromJson<int>(json['pedidoCompraId']),
+      produtoId: serializer.fromJson<int>(json['produtoId']),
+      quantidade: serializer.fromJson<int>(json['quantidade']),
+      precoUnitario: serializer.fromJson<double>(json['precoUnitario']),
+      precoTotal: serializer.fromJson<double>(json['precoTotal']),
+      observacoes: serializer.fromJson<String?>(json['observacoes']),
+      criadoEm: serializer.fromJson<DateTime>(json['criadoEm']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'pedidoCompraId': serializer.toJson<int>(pedidoCompraId),
+      'produtoId': serializer.toJson<int>(produtoId),
+      'quantidade': serializer.toJson<int>(quantidade),
+      'precoUnitario': serializer.toJson<double>(precoUnitario),
+      'precoTotal': serializer.toJson<double>(precoTotal),
+      'observacoes': serializer.toJson<String?>(observacoes),
+      'criadoEm': serializer.toJson<DateTime>(criadoEm),
+    };
+  }
+
+  ItemCompraData copyWith(
+          {int? id,
+          int? pedidoCompraId,
+          int? produtoId,
+          int? quantidade,
+          double? precoUnitario,
+          double? precoTotal,
+          Value<String?> observacoes = const Value.absent(),
+          DateTime? criadoEm}) =>
+      ItemCompraData(
+        id: id ?? this.id,
+        pedidoCompraId: pedidoCompraId ?? this.pedidoCompraId,
+        produtoId: produtoId ?? this.produtoId,
+        quantidade: quantidade ?? this.quantidade,
+        precoUnitario: precoUnitario ?? this.precoUnitario,
+        precoTotal: precoTotal ?? this.precoTotal,
+        observacoes: observacoes.present ? observacoes.value : this.observacoes,
+        criadoEm: criadoEm ?? this.criadoEm,
+      );
+  ItemCompraData copyWithCompanion(ItemCompraTableCompanion data) {
+    return ItemCompraData(
+      id: data.id.present ? data.id.value : this.id,
+      pedidoCompraId: data.pedidoCompraId.present
+          ? data.pedidoCompraId.value
+          : this.pedidoCompraId,
+      produtoId: data.produtoId.present ? data.produtoId.value : this.produtoId,
+      quantidade:
+          data.quantidade.present ? data.quantidade.value : this.quantidade,
+      precoUnitario: data.precoUnitario.present
+          ? data.precoUnitario.value
+          : this.precoUnitario,
+      precoTotal:
+          data.precoTotal.present ? data.precoTotal.value : this.precoTotal,
+      observacoes:
+          data.observacoes.present ? data.observacoes.value : this.observacoes,
+      criadoEm: data.criadoEm.present ? data.criadoEm.value : this.criadoEm,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ItemCompraData(')
+          ..write('id: $id, ')
+          ..write('pedidoCompraId: $pedidoCompraId, ')
+          ..write('produtoId: $produtoId, ')
+          ..write('quantidade: $quantidade, ')
+          ..write('precoUnitario: $precoUnitario, ')
+          ..write('precoTotal: $precoTotal, ')
+          ..write('observacoes: $observacoes, ')
+          ..write('criadoEm: $criadoEm')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, pedidoCompraId, produtoId, quantidade,
+      precoUnitario, precoTotal, observacoes, criadoEm);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ItemCompraData &&
+          other.id == this.id &&
+          other.pedidoCompraId == this.pedidoCompraId &&
+          other.produtoId == this.produtoId &&
+          other.quantidade == this.quantidade &&
+          other.precoUnitario == this.precoUnitario &&
+          other.precoTotal == this.precoTotal &&
+          other.observacoes == this.observacoes &&
+          other.criadoEm == this.criadoEm);
+}
+
+class ItemCompraTableCompanion extends UpdateCompanion<ItemCompraData> {
+  final Value<int> id;
+  final Value<int> pedidoCompraId;
+  final Value<int> produtoId;
+  final Value<int> quantidade;
+  final Value<double> precoUnitario;
+  final Value<double> precoTotal;
+  final Value<String?> observacoes;
+  final Value<DateTime> criadoEm;
+  const ItemCompraTableCompanion({
+    this.id = const Value.absent(),
+    this.pedidoCompraId = const Value.absent(),
+    this.produtoId = const Value.absent(),
+    this.quantidade = const Value.absent(),
+    this.precoUnitario = const Value.absent(),
+    this.precoTotal = const Value.absent(),
+    this.observacoes = const Value.absent(),
+    this.criadoEm = const Value.absent(),
+  });
+  ItemCompraTableCompanion.insert({
+    this.id = const Value.absent(),
+    required int pedidoCompraId,
+    required int produtoId,
+    required int quantidade,
+    required double precoUnitario,
+    required double precoTotal,
+    this.observacoes = const Value.absent(),
+    this.criadoEm = const Value.absent(),
+  })  : pedidoCompraId = Value(pedidoCompraId),
+        produtoId = Value(produtoId),
+        quantidade = Value(quantidade),
+        precoUnitario = Value(precoUnitario),
+        precoTotal = Value(precoTotal);
+  static Insertable<ItemCompraData> custom({
+    Expression<int>? id,
+    Expression<int>? pedidoCompraId,
+    Expression<int>? produtoId,
+    Expression<int>? quantidade,
+    Expression<double>? precoUnitario,
+    Expression<double>? precoTotal,
+    Expression<String>? observacoes,
+    Expression<DateTime>? criadoEm,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (pedidoCompraId != null) 'pedido_compra_id': pedidoCompraId,
+      if (produtoId != null) 'produto_id': produtoId,
+      if (quantidade != null) 'quantidade': quantidade,
+      if (precoUnitario != null) 'preco_unitario': precoUnitario,
+      if (precoTotal != null) 'preco_total': precoTotal,
+      if (observacoes != null) 'observacoes': observacoes,
+      if (criadoEm != null) 'criado_em': criadoEm,
+    });
+  }
+
+  ItemCompraTableCompanion copyWith(
+      {Value<int>? id,
+      Value<int>? pedidoCompraId,
+      Value<int>? produtoId,
+      Value<int>? quantidade,
+      Value<double>? precoUnitario,
+      Value<double>? precoTotal,
+      Value<String?>? observacoes,
+      Value<DateTime>? criadoEm}) {
+    return ItemCompraTableCompanion(
+      id: id ?? this.id,
+      pedidoCompraId: pedidoCompraId ?? this.pedidoCompraId,
+      produtoId: produtoId ?? this.produtoId,
+      quantidade: quantidade ?? this.quantidade,
+      precoUnitario: precoUnitario ?? this.precoUnitario,
+      precoTotal: precoTotal ?? this.precoTotal,
+      observacoes: observacoes ?? this.observacoes,
+      criadoEm: criadoEm ?? this.criadoEm,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (pedidoCompraId.present) {
+      map['pedido_compra_id'] = Variable<int>(pedidoCompraId.value);
+    }
+    if (produtoId.present) {
+      map['produto_id'] = Variable<int>(produtoId.value);
+    }
+    if (quantidade.present) {
+      map['quantidade'] = Variable<int>(quantidade.value);
+    }
+    if (precoUnitario.present) {
+      map['preco_unitario'] = Variable<double>(precoUnitario.value);
+    }
+    if (precoTotal.present) {
+      map['preco_total'] = Variable<double>(precoTotal.value);
+    }
+    if (observacoes.present) {
+      map['observacoes'] = Variable<String>(observacoes.value);
+    }
+    if (criadoEm.present) {
+      map['criado_em'] = Variable<DateTime>(criadoEm.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ItemCompraTableCompanion(')
+          ..write('id: $id, ')
+          ..write('pedidoCompraId: $pedidoCompraId, ')
+          ..write('produtoId: $produtoId, ')
+          ..write('quantidade: $quantidade, ')
+          ..write('precoUnitario: $precoUnitario, ')
+          ..write('precoTotal: $precoTotal, ')
+          ..write('observacoes: $observacoes, ')
+          ..write('criadoEm: $criadoEm')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $VendaTableTable extends VendaTable
     with TableInfo<$VendaTableTable, Venda> {
   @override
@@ -9939,12 +10956,1383 @@ class AssinaturaTableCompanion extends UpdateCompanion<Assinatura> {
   }
 }
 
+class $WhatsAppMessagesTableTable extends WhatsAppMessagesTable
+    with TableInfo<$WhatsAppMessagesTableTable, WhatsAppMessagesTableData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $WhatsAppMessagesTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
+  @override
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
+      'cliente_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _telefoneMeta =
+      const VerificationMeta('telefone');
+  @override
+  late final GeneratedColumn<String> telefone = GeneratedColumn<String>(
+      'telefone', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _mensagemMeta =
+      const VerificationMeta('mensagem');
+  @override
+  late final GeneratedColumn<String> mensagem = GeneratedColumn<String>(
+      'mensagem', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _tipoMeta = const VerificationMeta('tipo');
+  @override
+  late final GeneratedColumn<String> tipo = GeneratedColumn<String>(
+      'tipo', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+      'status', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('pendente'));
+  static const VerificationMeta _dataEnvioMeta =
+      const VerificationMeta('dataEnvio');
+  @override
+  late final GeneratedColumn<DateTime> dataEnvio = GeneratedColumn<DateTime>(
+      'data_envio', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _dataEntregaMeta =
+      const VerificationMeta('dataEntrega');
+  @override
+  late final GeneratedColumn<DateTime> dataEntrega = GeneratedColumn<DateTime>(
+      'data_entrega', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _dataLeituraMeta =
+      const VerificationMeta('dataLeitura');
+  @override
+  late final GeneratedColumn<DateTime> dataLeitura = GeneratedColumn<DateTime>(
+      'data_leitura', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _erroMeta = const VerificationMeta('erro');
+  @override
+  late final GeneratedColumn<String> erro = GeneratedColumn<String>(
+      'erro', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _metadataMeta =
+      const VerificationMeta('metadata');
+  @override
+  late final GeneratedColumn<String> metadata = GeneratedColumn<String>(
+      'metadata', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _createdAtMeta =
+      const VerificationMeta('createdAt');
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+      'created_at', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  static const VerificationMeta _updatedAtMeta =
+      const VerificationMeta('updatedAt');
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+      'updated_at', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        clienteId,
+        telefone,
+        mensagem,
+        tipo,
+        status,
+        dataEnvio,
+        dataEntrega,
+        dataLeitura,
+        erro,
+        metadata,
+        createdAt,
+        updatedAt
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'whatsapp_messages';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<WhatsAppMessagesTableData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('cliente_id')) {
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['cliente_id']!, _clienteIdMeta));
+    } else if (isInserting) {
+      context.missing(_clienteIdMeta);
+    }
+    if (data.containsKey('telefone')) {
+      context.handle(_telefoneMeta,
+          telefone.isAcceptableOrUnknown(data['telefone']!, _telefoneMeta));
+    } else if (isInserting) {
+      context.missing(_telefoneMeta);
+    }
+    if (data.containsKey('mensagem')) {
+      context.handle(_mensagemMeta,
+          mensagem.isAcceptableOrUnknown(data['mensagem']!, _mensagemMeta));
+    } else if (isInserting) {
+      context.missing(_mensagemMeta);
+    }
+    if (data.containsKey('tipo')) {
+      context.handle(
+          _tipoMeta, tipo.isAcceptableOrUnknown(data['tipo']!, _tipoMeta));
+    } else if (isInserting) {
+      context.missing(_tipoMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(_statusMeta,
+          status.isAcceptableOrUnknown(data['status']!, _statusMeta));
+    }
+    if (data.containsKey('data_envio')) {
+      context.handle(_dataEnvioMeta,
+          dataEnvio.isAcceptableOrUnknown(data['data_envio']!, _dataEnvioMeta));
+    }
+    if (data.containsKey('data_entrega')) {
+      context.handle(
+          _dataEntregaMeta,
+          dataEntrega.isAcceptableOrUnknown(
+              data['data_entrega']!, _dataEntregaMeta));
+    }
+    if (data.containsKey('data_leitura')) {
+      context.handle(
+          _dataLeituraMeta,
+          dataLeitura.isAcceptableOrUnknown(
+              data['data_leitura']!, _dataLeituraMeta));
+    }
+    if (data.containsKey('erro')) {
+      context.handle(
+          _erroMeta, erro.isAcceptableOrUnknown(data['erro']!, _erroMeta));
+    }
+    if (data.containsKey('metadata')) {
+      context.handle(_metadataMeta,
+          metadata.isAcceptableOrUnknown(data['metadata']!, _metadataMeta));
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(_createdAtMeta,
+          createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta));
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(_updatedAtMeta,
+          updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  WhatsAppMessagesTableData map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return WhatsAppMessagesTableData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      clienteId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}cliente_id'])!,
+      telefone: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}telefone'])!,
+      mensagem: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}mensagem'])!,
+      tipo: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}tipo'])!,
+      status: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}status'])!,
+      dataEnvio: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}data_envio']),
+      dataEntrega: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}data_entrega']),
+      dataLeitura: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}data_leitura']),
+      erro: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}erro']),
+      metadata: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}metadata']),
+      createdAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at'])!,
+      updatedAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}updated_at'])!,
+    );
+  }
+
+  @override
+  $WhatsAppMessagesTableTable createAlias(String alias) {
+    return $WhatsAppMessagesTableTable(attachedDatabase, alias);
+  }
+}
+
+class WhatsAppMessagesTableData extends DataClass
+    implements Insertable<WhatsAppMessagesTableData> {
+  final int id;
+  final String clienteId;
+  final String telefone;
+  final String mensagem;
+  final String tipo;
+  final String status;
+  final DateTime? dataEnvio;
+  final DateTime? dataEntrega;
+  final DateTime? dataLeitura;
+  final String? erro;
+  final String? metadata;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  const WhatsAppMessagesTableData(
+      {required this.id,
+      required this.clienteId,
+      required this.telefone,
+      required this.mensagem,
+      required this.tipo,
+      required this.status,
+      this.dataEnvio,
+      this.dataEntrega,
+      this.dataLeitura,
+      this.erro,
+      this.metadata,
+      required this.createdAt,
+      required this.updatedAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['cliente_id'] = Variable<String>(clienteId);
+    map['telefone'] = Variable<String>(telefone);
+    map['mensagem'] = Variable<String>(mensagem);
+    map['tipo'] = Variable<String>(tipo);
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || dataEnvio != null) {
+      map['data_envio'] = Variable<DateTime>(dataEnvio);
+    }
+    if (!nullToAbsent || dataEntrega != null) {
+      map['data_entrega'] = Variable<DateTime>(dataEntrega);
+    }
+    if (!nullToAbsent || dataLeitura != null) {
+      map['data_leitura'] = Variable<DateTime>(dataLeitura);
+    }
+    if (!nullToAbsent || erro != null) {
+      map['erro'] = Variable<String>(erro);
+    }
+    if (!nullToAbsent || metadata != null) {
+      map['metadata'] = Variable<String>(metadata);
+    }
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  WhatsAppMessagesTableCompanion toCompanion(bool nullToAbsent) {
+    return WhatsAppMessagesTableCompanion(
+      id: Value(id),
+      clienteId: Value(clienteId),
+      telefone: Value(telefone),
+      mensagem: Value(mensagem),
+      tipo: Value(tipo),
+      status: Value(status),
+      dataEnvio: dataEnvio == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dataEnvio),
+      dataEntrega: dataEntrega == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dataEntrega),
+      dataLeitura: dataLeitura == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dataLeitura),
+      erro: erro == null && nullToAbsent ? const Value.absent() : Value(erro),
+      metadata: metadata == null && nullToAbsent
+          ? const Value.absent()
+          : Value(metadata),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory WhatsAppMessagesTableData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return WhatsAppMessagesTableData(
+      id: serializer.fromJson<int>(json['id']),
+      clienteId: serializer.fromJson<String>(json['clienteId']),
+      telefone: serializer.fromJson<String>(json['telefone']),
+      mensagem: serializer.fromJson<String>(json['mensagem']),
+      tipo: serializer.fromJson<String>(json['tipo']),
+      status: serializer.fromJson<String>(json['status']),
+      dataEnvio: serializer.fromJson<DateTime?>(json['dataEnvio']),
+      dataEntrega: serializer.fromJson<DateTime?>(json['dataEntrega']),
+      dataLeitura: serializer.fromJson<DateTime?>(json['dataLeitura']),
+      erro: serializer.fromJson<String?>(json['erro']),
+      metadata: serializer.fromJson<String?>(json['metadata']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'clienteId': serializer.toJson<String>(clienteId),
+      'telefone': serializer.toJson<String>(telefone),
+      'mensagem': serializer.toJson<String>(mensagem),
+      'tipo': serializer.toJson<String>(tipo),
+      'status': serializer.toJson<String>(status),
+      'dataEnvio': serializer.toJson<DateTime?>(dataEnvio),
+      'dataEntrega': serializer.toJson<DateTime?>(dataEntrega),
+      'dataLeitura': serializer.toJson<DateTime?>(dataLeitura),
+      'erro': serializer.toJson<String?>(erro),
+      'metadata': serializer.toJson<String?>(metadata),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  WhatsAppMessagesTableData copyWith(
+          {int? id,
+          String? clienteId,
+          String? telefone,
+          String? mensagem,
+          String? tipo,
+          String? status,
+          Value<DateTime?> dataEnvio = const Value.absent(),
+          Value<DateTime?> dataEntrega = const Value.absent(),
+          Value<DateTime?> dataLeitura = const Value.absent(),
+          Value<String?> erro = const Value.absent(),
+          Value<String?> metadata = const Value.absent(),
+          DateTime? createdAt,
+          DateTime? updatedAt}) =>
+      WhatsAppMessagesTableData(
+        id: id ?? this.id,
+        clienteId: clienteId ?? this.clienteId,
+        telefone: telefone ?? this.telefone,
+        mensagem: mensagem ?? this.mensagem,
+        tipo: tipo ?? this.tipo,
+        status: status ?? this.status,
+        dataEnvio: dataEnvio.present ? dataEnvio.value : this.dataEnvio,
+        dataEntrega: dataEntrega.present ? dataEntrega.value : this.dataEntrega,
+        dataLeitura: dataLeitura.present ? dataLeitura.value : this.dataLeitura,
+        erro: erro.present ? erro.value : this.erro,
+        metadata: metadata.present ? metadata.value : this.metadata,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+      );
+  WhatsAppMessagesTableData copyWithCompanion(
+      WhatsAppMessagesTableCompanion data) {
+    return WhatsAppMessagesTableData(
+      id: data.id.present ? data.id.value : this.id,
+      clienteId: data.clienteId.present ? data.clienteId.value : this.clienteId,
+      telefone: data.telefone.present ? data.telefone.value : this.telefone,
+      mensagem: data.mensagem.present ? data.mensagem.value : this.mensagem,
+      tipo: data.tipo.present ? data.tipo.value : this.tipo,
+      status: data.status.present ? data.status.value : this.status,
+      dataEnvio: data.dataEnvio.present ? data.dataEnvio.value : this.dataEnvio,
+      dataEntrega:
+          data.dataEntrega.present ? data.dataEntrega.value : this.dataEntrega,
+      dataLeitura:
+          data.dataLeitura.present ? data.dataLeitura.value : this.dataLeitura,
+      erro: data.erro.present ? data.erro.value : this.erro,
+      metadata: data.metadata.present ? data.metadata.value : this.metadata,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('WhatsAppMessagesTableData(')
+          ..write('id: $id, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('telefone: $telefone, ')
+          ..write('mensagem: $mensagem, ')
+          ..write('tipo: $tipo, ')
+          ..write('status: $status, ')
+          ..write('dataEnvio: $dataEnvio, ')
+          ..write('dataEntrega: $dataEntrega, ')
+          ..write('dataLeitura: $dataLeitura, ')
+          ..write('erro: $erro, ')
+          ..write('metadata: $metadata, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      clienteId,
+      telefone,
+      mensagem,
+      tipo,
+      status,
+      dataEnvio,
+      dataEntrega,
+      dataLeitura,
+      erro,
+      metadata,
+      createdAt,
+      updatedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is WhatsAppMessagesTableData &&
+          other.id == this.id &&
+          other.clienteId == this.clienteId &&
+          other.telefone == this.telefone &&
+          other.mensagem == this.mensagem &&
+          other.tipo == this.tipo &&
+          other.status == this.status &&
+          other.dataEnvio == this.dataEnvio &&
+          other.dataEntrega == this.dataEntrega &&
+          other.dataLeitura == this.dataLeitura &&
+          other.erro == this.erro &&
+          other.metadata == this.metadata &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class WhatsAppMessagesTableCompanion
+    extends UpdateCompanion<WhatsAppMessagesTableData> {
+  final Value<int> id;
+  final Value<String> clienteId;
+  final Value<String> telefone;
+  final Value<String> mensagem;
+  final Value<String> tipo;
+  final Value<String> status;
+  final Value<DateTime?> dataEnvio;
+  final Value<DateTime?> dataEntrega;
+  final Value<DateTime?> dataLeitura;
+  final Value<String?> erro;
+  final Value<String?> metadata;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  const WhatsAppMessagesTableCompanion({
+    this.id = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.telefone = const Value.absent(),
+    this.mensagem = const Value.absent(),
+    this.tipo = const Value.absent(),
+    this.status = const Value.absent(),
+    this.dataEnvio = const Value.absent(),
+    this.dataEntrega = const Value.absent(),
+    this.dataLeitura = const Value.absent(),
+    this.erro = const Value.absent(),
+    this.metadata = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+  });
+  WhatsAppMessagesTableCompanion.insert({
+    this.id = const Value.absent(),
+    required String clienteId,
+    required String telefone,
+    required String mensagem,
+    required String tipo,
+    this.status = const Value.absent(),
+    this.dataEnvio = const Value.absent(),
+    this.dataEntrega = const Value.absent(),
+    this.dataLeitura = const Value.absent(),
+    this.erro = const Value.absent(),
+    this.metadata = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+  })  : clienteId = Value(clienteId),
+        telefone = Value(telefone),
+        mensagem = Value(mensagem),
+        tipo = Value(tipo);
+  static Insertable<WhatsAppMessagesTableData> custom({
+    Expression<int>? id,
+    Expression<String>? clienteId,
+    Expression<String>? telefone,
+    Expression<String>? mensagem,
+    Expression<String>? tipo,
+    Expression<String>? status,
+    Expression<DateTime>? dataEnvio,
+    Expression<DateTime>? dataEntrega,
+    Expression<DateTime>? dataLeitura,
+    Expression<String>? erro,
+    Expression<String>? metadata,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (clienteId != null) 'cliente_id': clienteId,
+      if (telefone != null) 'telefone': telefone,
+      if (mensagem != null) 'mensagem': mensagem,
+      if (tipo != null) 'tipo': tipo,
+      if (status != null) 'status': status,
+      if (dataEnvio != null) 'data_envio': dataEnvio,
+      if (dataEntrega != null) 'data_entrega': dataEntrega,
+      if (dataLeitura != null) 'data_leitura': dataLeitura,
+      if (erro != null) 'erro': erro,
+      if (metadata != null) 'metadata': metadata,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+    });
+  }
+
+  WhatsAppMessagesTableCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? clienteId,
+      Value<String>? telefone,
+      Value<String>? mensagem,
+      Value<String>? tipo,
+      Value<String>? status,
+      Value<DateTime?>? dataEnvio,
+      Value<DateTime?>? dataEntrega,
+      Value<DateTime?>? dataLeitura,
+      Value<String?>? erro,
+      Value<String?>? metadata,
+      Value<DateTime>? createdAt,
+      Value<DateTime>? updatedAt}) {
+    return WhatsAppMessagesTableCompanion(
+      id: id ?? this.id,
+      clienteId: clienteId ?? this.clienteId,
+      telefone: telefone ?? this.telefone,
+      mensagem: mensagem ?? this.mensagem,
+      tipo: tipo ?? this.tipo,
+      status: status ?? this.status,
+      dataEnvio: dataEnvio ?? this.dataEnvio,
+      dataEntrega: dataEntrega ?? this.dataEntrega,
+      dataLeitura: dataLeitura ?? this.dataLeitura,
+      erro: erro ?? this.erro,
+      metadata: metadata ?? this.metadata,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (clienteId.present) {
+      map['cliente_id'] = Variable<String>(clienteId.value);
+    }
+    if (telefone.present) {
+      map['telefone'] = Variable<String>(telefone.value);
+    }
+    if (mensagem.present) {
+      map['mensagem'] = Variable<String>(mensagem.value);
+    }
+    if (tipo.present) {
+      map['tipo'] = Variable<String>(tipo.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (dataEnvio.present) {
+      map['data_envio'] = Variable<DateTime>(dataEnvio.value);
+    }
+    if (dataEntrega.present) {
+      map['data_entrega'] = Variable<DateTime>(dataEntrega.value);
+    }
+    if (dataLeitura.present) {
+      map['data_leitura'] = Variable<DateTime>(dataLeitura.value);
+    }
+    if (erro.present) {
+      map['erro'] = Variable<String>(erro.value);
+    }
+    if (metadata.present) {
+      map['metadata'] = Variable<String>(metadata.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('WhatsAppMessagesTableCompanion(')
+          ..write('id: $id, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('telefone: $telefone, ')
+          ..write('mensagem: $mensagem, ')
+          ..write('tipo: $tipo, ')
+          ..write('status: $status, ')
+          ..write('dataEnvio: $dataEnvio, ')
+          ..write('dataEntrega: $dataEntrega, ')
+          ..write('dataLeitura: $dataLeitura, ')
+          ..write('erro: $erro, ')
+          ..write('metadata: $metadata, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $WhatsAppConfigTableTable extends WhatsAppConfigTable
+    with TableInfo<$WhatsAppConfigTableTable, WhatsAppConfigTableData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $WhatsAppConfigTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _apiUrlMeta = const VerificationMeta('apiUrl');
+  @override
+  late final GeneratedColumn<String> apiUrl = GeneratedColumn<String>(
+      'api_url', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _apiTokenMeta =
+      const VerificationMeta('apiToken');
+  @override
+  late final GeneratedColumn<String> apiToken = GeneratedColumn<String>(
+      'api_token', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _instanceIdMeta =
+      const VerificationMeta('instanceId');
+  @override
+  late final GeneratedColumn<String> instanceId = GeneratedColumn<String>(
+      'instance_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _ativoMeta = const VerificationMeta('ativo');
+  @override
+  late final GeneratedColumn<bool> ativo = GeneratedColumn<bool>(
+      'ativo', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("ativo" IN (0, 1))'),
+      defaultValue: const Constant(true));
+  static const VerificationMeta _enviarAgendamentoMeta =
+      const VerificationMeta('enviarAgendamento');
+  @override
+  late final GeneratedColumn<bool> enviarAgendamento = GeneratedColumn<bool>(
+      'enviar_agendamento', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("enviar_agendamento" IN (0, 1))'),
+      defaultValue: const Constant(true));
+  static const VerificationMeta _enviarLembretesMeta =
+      const VerificationMeta('enviarLembretes');
+  @override
+  late final GeneratedColumn<bool> enviarLembretes = GeneratedColumn<bool>(
+      'enviar_lembretes', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("enviar_lembretes" IN (0, 1))'),
+      defaultValue: const Constant(true));
+  static const VerificationMeta _enviarConfirmacoesMeta =
+      const VerificationMeta('enviarConfirmacoes');
+  @override
+  late final GeneratedColumn<bool> enviarConfirmacoes = GeneratedColumn<bool>(
+      'enviar_confirmacoes', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("enviar_confirmacoes" IN (0, 1))'),
+      defaultValue: const Constant(true));
+  static const VerificationMeta _enviarPromocoesMeta =
+      const VerificationMeta('enviarPromocoes');
+  @override
+  late final GeneratedColumn<bool> enviarPromocoes = GeneratedColumn<bool>(
+      'enviar_promocoes', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("enviar_promocoes" IN (0, 1))'),
+      defaultValue: const Constant(false));
+  static const VerificationMeta _horasAntesLembreteMeta =
+      const VerificationMeta('horasAntesLembrete');
+  @override
+  late final GeneratedColumn<int> horasAntesLembrete = GeneratedColumn<int>(
+      'horas_antes_lembrete', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(24));
+  static const VerificationMeta _horarioInicioEnvioMeta =
+      const VerificationMeta('horarioInicioEnvio');
+  @override
+  late final GeneratedColumn<String> horarioInicioEnvio =
+      GeneratedColumn<String>('horario_inicio_envio', aliasedName, false,
+          type: DriftSqlType.string,
+          requiredDuringInsert: false,
+          defaultValue: const Constant('08:00'));
+  static const VerificationMeta _horarioFimEnvioMeta =
+      const VerificationMeta('horarioFimEnvio');
+  @override
+  late final GeneratedColumn<String> horarioFimEnvio = GeneratedColumn<String>(
+      'horario_fim_envio', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('18:00'));
+  static const VerificationMeta _diasSemanaEnvioMeta =
+      const VerificationMeta('diasSemanaEnvio');
+  @override
+  late final GeneratedColumn<String> diasSemanaEnvio = GeneratedColumn<String>(
+      'dias_semana_envio', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('[1,2,3,4,5,6]'));
+  static const VerificationMeta _createdAtMeta =
+      const VerificationMeta('createdAt');
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+      'created_at', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  static const VerificationMeta _updatedAtMeta =
+      const VerificationMeta('updatedAt');
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+      'updated_at', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        apiUrl,
+        apiToken,
+        instanceId,
+        ativo,
+        enviarAgendamento,
+        enviarLembretes,
+        enviarConfirmacoes,
+        enviarPromocoes,
+        horasAntesLembrete,
+        horarioInicioEnvio,
+        horarioFimEnvio,
+        diasSemanaEnvio,
+        createdAt,
+        updatedAt
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'whatsapp_config';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<WhatsAppConfigTableData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('api_url')) {
+      context.handle(_apiUrlMeta,
+          apiUrl.isAcceptableOrUnknown(data['api_url']!, _apiUrlMeta));
+    } else if (isInserting) {
+      context.missing(_apiUrlMeta);
+    }
+    if (data.containsKey('api_token')) {
+      context.handle(_apiTokenMeta,
+          apiToken.isAcceptableOrUnknown(data['api_token']!, _apiTokenMeta));
+    } else if (isInserting) {
+      context.missing(_apiTokenMeta);
+    }
+    if (data.containsKey('instance_id')) {
+      context.handle(
+          _instanceIdMeta,
+          instanceId.isAcceptableOrUnknown(
+              data['instance_id']!, _instanceIdMeta));
+    } else if (isInserting) {
+      context.missing(_instanceIdMeta);
+    }
+    if (data.containsKey('ativo')) {
+      context.handle(
+          _ativoMeta, ativo.isAcceptableOrUnknown(data['ativo']!, _ativoMeta));
+    }
+    if (data.containsKey('enviar_agendamento')) {
+      context.handle(
+          _enviarAgendamentoMeta,
+          enviarAgendamento.isAcceptableOrUnknown(
+              data['enviar_agendamento']!, _enviarAgendamentoMeta));
+    }
+    if (data.containsKey('enviar_lembretes')) {
+      context.handle(
+          _enviarLembretesMeta,
+          enviarLembretes.isAcceptableOrUnknown(
+              data['enviar_lembretes']!, _enviarLembretesMeta));
+    }
+    if (data.containsKey('enviar_confirmacoes')) {
+      context.handle(
+          _enviarConfirmacoesMeta,
+          enviarConfirmacoes.isAcceptableOrUnknown(
+              data['enviar_confirmacoes']!, _enviarConfirmacoesMeta));
+    }
+    if (data.containsKey('enviar_promocoes')) {
+      context.handle(
+          _enviarPromocoesMeta,
+          enviarPromocoes.isAcceptableOrUnknown(
+              data['enviar_promocoes']!, _enviarPromocoesMeta));
+    }
+    if (data.containsKey('horas_antes_lembrete')) {
+      context.handle(
+          _horasAntesLembreteMeta,
+          horasAntesLembrete.isAcceptableOrUnknown(
+              data['horas_antes_lembrete']!, _horasAntesLembreteMeta));
+    }
+    if (data.containsKey('horario_inicio_envio')) {
+      context.handle(
+          _horarioInicioEnvioMeta,
+          horarioInicioEnvio.isAcceptableOrUnknown(
+              data['horario_inicio_envio']!, _horarioInicioEnvioMeta));
+    }
+    if (data.containsKey('horario_fim_envio')) {
+      context.handle(
+          _horarioFimEnvioMeta,
+          horarioFimEnvio.isAcceptableOrUnknown(
+              data['horario_fim_envio']!, _horarioFimEnvioMeta));
+    }
+    if (data.containsKey('dias_semana_envio')) {
+      context.handle(
+          _diasSemanaEnvioMeta,
+          diasSemanaEnvio.isAcceptableOrUnknown(
+              data['dias_semana_envio']!, _diasSemanaEnvioMeta));
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(_createdAtMeta,
+          createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta));
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(_updatedAtMeta,
+          updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  WhatsAppConfigTableData map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return WhatsAppConfigTableData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      apiUrl: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}api_url'])!,
+      apiToken: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}api_token'])!,
+      instanceId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}instance_id'])!,
+      ativo: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}ativo'])!,
+      enviarAgendamento: attachedDatabase.typeMapping.read(
+          DriftSqlType.bool, data['${effectivePrefix}enviar_agendamento'])!,
+      enviarLembretes: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}enviar_lembretes'])!,
+      enviarConfirmacoes: attachedDatabase.typeMapping.read(
+          DriftSqlType.bool, data['${effectivePrefix}enviar_confirmacoes'])!,
+      enviarPromocoes: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}enviar_promocoes'])!,
+      horasAntesLembrete: attachedDatabase.typeMapping.read(
+          DriftSqlType.int, data['${effectivePrefix}horas_antes_lembrete'])!,
+      horarioInicioEnvio: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}horario_inicio_envio'])!,
+      horarioFimEnvio: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}horario_fim_envio'])!,
+      diasSemanaEnvio: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}dias_semana_envio'])!,
+      createdAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at'])!,
+      updatedAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}updated_at'])!,
+    );
+  }
+
+  @override
+  $WhatsAppConfigTableTable createAlias(String alias) {
+    return $WhatsAppConfigTableTable(attachedDatabase, alias);
+  }
+}
+
+class WhatsAppConfigTableData extends DataClass
+    implements Insertable<WhatsAppConfigTableData> {
+  final int id;
+  final String apiUrl;
+  final String apiToken;
+  final String instanceId;
+  final bool ativo;
+  final bool enviarAgendamento;
+  final bool enviarLembretes;
+  final bool enviarConfirmacoes;
+  final bool enviarPromocoes;
+  final int horasAntesLembrete;
+  final String horarioInicioEnvio;
+  final String horarioFimEnvio;
+  final String diasSemanaEnvio;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  const WhatsAppConfigTableData(
+      {required this.id,
+      required this.apiUrl,
+      required this.apiToken,
+      required this.instanceId,
+      required this.ativo,
+      required this.enviarAgendamento,
+      required this.enviarLembretes,
+      required this.enviarConfirmacoes,
+      required this.enviarPromocoes,
+      required this.horasAntesLembrete,
+      required this.horarioInicioEnvio,
+      required this.horarioFimEnvio,
+      required this.diasSemanaEnvio,
+      required this.createdAt,
+      required this.updatedAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['api_url'] = Variable<String>(apiUrl);
+    map['api_token'] = Variable<String>(apiToken);
+    map['instance_id'] = Variable<String>(instanceId);
+    map['ativo'] = Variable<bool>(ativo);
+    map['enviar_agendamento'] = Variable<bool>(enviarAgendamento);
+    map['enviar_lembretes'] = Variable<bool>(enviarLembretes);
+    map['enviar_confirmacoes'] = Variable<bool>(enviarConfirmacoes);
+    map['enviar_promocoes'] = Variable<bool>(enviarPromocoes);
+    map['horas_antes_lembrete'] = Variable<int>(horasAntesLembrete);
+    map['horario_inicio_envio'] = Variable<String>(horarioInicioEnvio);
+    map['horario_fim_envio'] = Variable<String>(horarioFimEnvio);
+    map['dias_semana_envio'] = Variable<String>(diasSemanaEnvio);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  WhatsAppConfigTableCompanion toCompanion(bool nullToAbsent) {
+    return WhatsAppConfigTableCompanion(
+      id: Value(id),
+      apiUrl: Value(apiUrl),
+      apiToken: Value(apiToken),
+      instanceId: Value(instanceId),
+      ativo: Value(ativo),
+      enviarAgendamento: Value(enviarAgendamento),
+      enviarLembretes: Value(enviarLembretes),
+      enviarConfirmacoes: Value(enviarConfirmacoes),
+      enviarPromocoes: Value(enviarPromocoes),
+      horasAntesLembrete: Value(horasAntesLembrete),
+      horarioInicioEnvio: Value(horarioInicioEnvio),
+      horarioFimEnvio: Value(horarioFimEnvio),
+      diasSemanaEnvio: Value(diasSemanaEnvio),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory WhatsAppConfigTableData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return WhatsAppConfigTableData(
+      id: serializer.fromJson<int>(json['id']),
+      apiUrl: serializer.fromJson<String>(json['apiUrl']),
+      apiToken: serializer.fromJson<String>(json['apiToken']),
+      instanceId: serializer.fromJson<String>(json['instanceId']),
+      ativo: serializer.fromJson<bool>(json['ativo']),
+      enviarAgendamento: serializer.fromJson<bool>(json['enviarAgendamento']),
+      enviarLembretes: serializer.fromJson<bool>(json['enviarLembretes']),
+      enviarConfirmacoes: serializer.fromJson<bool>(json['enviarConfirmacoes']),
+      enviarPromocoes: serializer.fromJson<bool>(json['enviarPromocoes']),
+      horasAntesLembrete: serializer.fromJson<int>(json['horasAntesLembrete']),
+      horarioInicioEnvio:
+          serializer.fromJson<String>(json['horarioInicioEnvio']),
+      horarioFimEnvio: serializer.fromJson<String>(json['horarioFimEnvio']),
+      diasSemanaEnvio: serializer.fromJson<String>(json['diasSemanaEnvio']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'apiUrl': serializer.toJson<String>(apiUrl),
+      'apiToken': serializer.toJson<String>(apiToken),
+      'instanceId': serializer.toJson<String>(instanceId),
+      'ativo': serializer.toJson<bool>(ativo),
+      'enviarAgendamento': serializer.toJson<bool>(enviarAgendamento),
+      'enviarLembretes': serializer.toJson<bool>(enviarLembretes),
+      'enviarConfirmacoes': serializer.toJson<bool>(enviarConfirmacoes),
+      'enviarPromocoes': serializer.toJson<bool>(enviarPromocoes),
+      'horasAntesLembrete': serializer.toJson<int>(horasAntesLembrete),
+      'horarioInicioEnvio': serializer.toJson<String>(horarioInicioEnvio),
+      'horarioFimEnvio': serializer.toJson<String>(horarioFimEnvio),
+      'diasSemanaEnvio': serializer.toJson<String>(diasSemanaEnvio),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  WhatsAppConfigTableData copyWith(
+          {int? id,
+          String? apiUrl,
+          String? apiToken,
+          String? instanceId,
+          bool? ativo,
+          bool? enviarAgendamento,
+          bool? enviarLembretes,
+          bool? enviarConfirmacoes,
+          bool? enviarPromocoes,
+          int? horasAntesLembrete,
+          String? horarioInicioEnvio,
+          String? horarioFimEnvio,
+          String? diasSemanaEnvio,
+          DateTime? createdAt,
+          DateTime? updatedAt}) =>
+      WhatsAppConfigTableData(
+        id: id ?? this.id,
+        apiUrl: apiUrl ?? this.apiUrl,
+        apiToken: apiToken ?? this.apiToken,
+        instanceId: instanceId ?? this.instanceId,
+        ativo: ativo ?? this.ativo,
+        enviarAgendamento: enviarAgendamento ?? this.enviarAgendamento,
+        enviarLembretes: enviarLembretes ?? this.enviarLembretes,
+        enviarConfirmacoes: enviarConfirmacoes ?? this.enviarConfirmacoes,
+        enviarPromocoes: enviarPromocoes ?? this.enviarPromocoes,
+        horasAntesLembrete: horasAntesLembrete ?? this.horasAntesLembrete,
+        horarioInicioEnvio: horarioInicioEnvio ?? this.horarioInicioEnvio,
+        horarioFimEnvio: horarioFimEnvio ?? this.horarioFimEnvio,
+        diasSemanaEnvio: diasSemanaEnvio ?? this.diasSemanaEnvio,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+      );
+  WhatsAppConfigTableData copyWithCompanion(WhatsAppConfigTableCompanion data) {
+    return WhatsAppConfigTableData(
+      id: data.id.present ? data.id.value : this.id,
+      apiUrl: data.apiUrl.present ? data.apiUrl.value : this.apiUrl,
+      apiToken: data.apiToken.present ? data.apiToken.value : this.apiToken,
+      instanceId:
+          data.instanceId.present ? data.instanceId.value : this.instanceId,
+      ativo: data.ativo.present ? data.ativo.value : this.ativo,
+      enviarAgendamento: data.enviarAgendamento.present
+          ? data.enviarAgendamento.value
+          : this.enviarAgendamento,
+      enviarLembretes: data.enviarLembretes.present
+          ? data.enviarLembretes.value
+          : this.enviarLembretes,
+      enviarConfirmacoes: data.enviarConfirmacoes.present
+          ? data.enviarConfirmacoes.value
+          : this.enviarConfirmacoes,
+      enviarPromocoes: data.enviarPromocoes.present
+          ? data.enviarPromocoes.value
+          : this.enviarPromocoes,
+      horasAntesLembrete: data.horasAntesLembrete.present
+          ? data.horasAntesLembrete.value
+          : this.horasAntesLembrete,
+      horarioInicioEnvio: data.horarioInicioEnvio.present
+          ? data.horarioInicioEnvio.value
+          : this.horarioInicioEnvio,
+      horarioFimEnvio: data.horarioFimEnvio.present
+          ? data.horarioFimEnvio.value
+          : this.horarioFimEnvio,
+      diasSemanaEnvio: data.diasSemanaEnvio.present
+          ? data.diasSemanaEnvio.value
+          : this.diasSemanaEnvio,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('WhatsAppConfigTableData(')
+          ..write('id: $id, ')
+          ..write('apiUrl: $apiUrl, ')
+          ..write('apiToken: $apiToken, ')
+          ..write('instanceId: $instanceId, ')
+          ..write('ativo: $ativo, ')
+          ..write('enviarAgendamento: $enviarAgendamento, ')
+          ..write('enviarLembretes: $enviarLembretes, ')
+          ..write('enviarConfirmacoes: $enviarConfirmacoes, ')
+          ..write('enviarPromocoes: $enviarPromocoes, ')
+          ..write('horasAntesLembrete: $horasAntesLembrete, ')
+          ..write('horarioInicioEnvio: $horarioInicioEnvio, ')
+          ..write('horarioFimEnvio: $horarioFimEnvio, ')
+          ..write('diasSemanaEnvio: $diasSemanaEnvio, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      apiUrl,
+      apiToken,
+      instanceId,
+      ativo,
+      enviarAgendamento,
+      enviarLembretes,
+      enviarConfirmacoes,
+      enviarPromocoes,
+      horasAntesLembrete,
+      horarioInicioEnvio,
+      horarioFimEnvio,
+      diasSemanaEnvio,
+      createdAt,
+      updatedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is WhatsAppConfigTableData &&
+          other.id == this.id &&
+          other.apiUrl == this.apiUrl &&
+          other.apiToken == this.apiToken &&
+          other.instanceId == this.instanceId &&
+          other.ativo == this.ativo &&
+          other.enviarAgendamento == this.enviarAgendamento &&
+          other.enviarLembretes == this.enviarLembretes &&
+          other.enviarConfirmacoes == this.enviarConfirmacoes &&
+          other.enviarPromocoes == this.enviarPromocoes &&
+          other.horasAntesLembrete == this.horasAntesLembrete &&
+          other.horarioInicioEnvio == this.horarioInicioEnvio &&
+          other.horarioFimEnvio == this.horarioFimEnvio &&
+          other.diasSemanaEnvio == this.diasSemanaEnvio &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class WhatsAppConfigTableCompanion
+    extends UpdateCompanion<WhatsAppConfigTableData> {
+  final Value<int> id;
+  final Value<String> apiUrl;
+  final Value<String> apiToken;
+  final Value<String> instanceId;
+  final Value<bool> ativo;
+  final Value<bool> enviarAgendamento;
+  final Value<bool> enviarLembretes;
+  final Value<bool> enviarConfirmacoes;
+  final Value<bool> enviarPromocoes;
+  final Value<int> horasAntesLembrete;
+  final Value<String> horarioInicioEnvio;
+  final Value<String> horarioFimEnvio;
+  final Value<String> diasSemanaEnvio;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  const WhatsAppConfigTableCompanion({
+    this.id = const Value.absent(),
+    this.apiUrl = const Value.absent(),
+    this.apiToken = const Value.absent(),
+    this.instanceId = const Value.absent(),
+    this.ativo = const Value.absent(),
+    this.enviarAgendamento = const Value.absent(),
+    this.enviarLembretes = const Value.absent(),
+    this.enviarConfirmacoes = const Value.absent(),
+    this.enviarPromocoes = const Value.absent(),
+    this.horasAntesLembrete = const Value.absent(),
+    this.horarioInicioEnvio = const Value.absent(),
+    this.horarioFimEnvio = const Value.absent(),
+    this.diasSemanaEnvio = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+  });
+  WhatsAppConfigTableCompanion.insert({
+    this.id = const Value.absent(),
+    required String apiUrl,
+    required String apiToken,
+    required String instanceId,
+    this.ativo = const Value.absent(),
+    this.enviarAgendamento = const Value.absent(),
+    this.enviarLembretes = const Value.absent(),
+    this.enviarConfirmacoes = const Value.absent(),
+    this.enviarPromocoes = const Value.absent(),
+    this.horasAntesLembrete = const Value.absent(),
+    this.horarioInicioEnvio = const Value.absent(),
+    this.horarioFimEnvio = const Value.absent(),
+    this.diasSemanaEnvio = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+  })  : apiUrl = Value(apiUrl),
+        apiToken = Value(apiToken),
+        instanceId = Value(instanceId);
+  static Insertable<WhatsAppConfigTableData> custom({
+    Expression<int>? id,
+    Expression<String>? apiUrl,
+    Expression<String>? apiToken,
+    Expression<String>? instanceId,
+    Expression<bool>? ativo,
+    Expression<bool>? enviarAgendamento,
+    Expression<bool>? enviarLembretes,
+    Expression<bool>? enviarConfirmacoes,
+    Expression<bool>? enviarPromocoes,
+    Expression<int>? horasAntesLembrete,
+    Expression<String>? horarioInicioEnvio,
+    Expression<String>? horarioFimEnvio,
+    Expression<String>? diasSemanaEnvio,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (apiUrl != null) 'api_url': apiUrl,
+      if (apiToken != null) 'api_token': apiToken,
+      if (instanceId != null) 'instance_id': instanceId,
+      if (ativo != null) 'ativo': ativo,
+      if (enviarAgendamento != null) 'enviar_agendamento': enviarAgendamento,
+      if (enviarLembretes != null) 'enviar_lembretes': enviarLembretes,
+      if (enviarConfirmacoes != null) 'enviar_confirmacoes': enviarConfirmacoes,
+      if (enviarPromocoes != null) 'enviar_promocoes': enviarPromocoes,
+      if (horasAntesLembrete != null)
+        'horas_antes_lembrete': horasAntesLembrete,
+      if (horarioInicioEnvio != null)
+        'horario_inicio_envio': horarioInicioEnvio,
+      if (horarioFimEnvio != null) 'horario_fim_envio': horarioFimEnvio,
+      if (diasSemanaEnvio != null) 'dias_semana_envio': diasSemanaEnvio,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+    });
+  }
+
+  WhatsAppConfigTableCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? apiUrl,
+      Value<String>? apiToken,
+      Value<String>? instanceId,
+      Value<bool>? ativo,
+      Value<bool>? enviarAgendamento,
+      Value<bool>? enviarLembretes,
+      Value<bool>? enviarConfirmacoes,
+      Value<bool>? enviarPromocoes,
+      Value<int>? horasAntesLembrete,
+      Value<String>? horarioInicioEnvio,
+      Value<String>? horarioFimEnvio,
+      Value<String>? diasSemanaEnvio,
+      Value<DateTime>? createdAt,
+      Value<DateTime>? updatedAt}) {
+    return WhatsAppConfigTableCompanion(
+      id: id ?? this.id,
+      apiUrl: apiUrl ?? this.apiUrl,
+      apiToken: apiToken ?? this.apiToken,
+      instanceId: instanceId ?? this.instanceId,
+      ativo: ativo ?? this.ativo,
+      enviarAgendamento: enviarAgendamento ?? this.enviarAgendamento,
+      enviarLembretes: enviarLembretes ?? this.enviarLembretes,
+      enviarConfirmacoes: enviarConfirmacoes ?? this.enviarConfirmacoes,
+      enviarPromocoes: enviarPromocoes ?? this.enviarPromocoes,
+      horasAntesLembrete: horasAntesLembrete ?? this.horasAntesLembrete,
+      horarioInicioEnvio: horarioInicioEnvio ?? this.horarioInicioEnvio,
+      horarioFimEnvio: horarioFimEnvio ?? this.horarioFimEnvio,
+      diasSemanaEnvio: diasSemanaEnvio ?? this.diasSemanaEnvio,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (apiUrl.present) {
+      map['api_url'] = Variable<String>(apiUrl.value);
+    }
+    if (apiToken.present) {
+      map['api_token'] = Variable<String>(apiToken.value);
+    }
+    if (instanceId.present) {
+      map['instance_id'] = Variable<String>(instanceId.value);
+    }
+    if (ativo.present) {
+      map['ativo'] = Variable<bool>(ativo.value);
+    }
+    if (enviarAgendamento.present) {
+      map['enviar_agendamento'] = Variable<bool>(enviarAgendamento.value);
+    }
+    if (enviarLembretes.present) {
+      map['enviar_lembretes'] = Variable<bool>(enviarLembretes.value);
+    }
+    if (enviarConfirmacoes.present) {
+      map['enviar_confirmacoes'] = Variable<bool>(enviarConfirmacoes.value);
+    }
+    if (enviarPromocoes.present) {
+      map['enviar_promocoes'] = Variable<bool>(enviarPromocoes.value);
+    }
+    if (horasAntesLembrete.present) {
+      map['horas_antes_lembrete'] = Variable<int>(horasAntesLembrete.value);
+    }
+    if (horarioInicioEnvio.present) {
+      map['horario_inicio_envio'] = Variable<String>(horarioInicioEnvio.value);
+    }
+    if (horarioFimEnvio.present) {
+      map['horario_fim_envio'] = Variable<String>(horarioFimEnvio.value);
+    }
+    if (diasSemanaEnvio.present) {
+      map['dias_semana_envio'] = Variable<String>(diasSemanaEnvio.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('WhatsAppConfigTableCompanion(')
+          ..write('id: $id, ')
+          ..write('apiUrl: $apiUrl, ')
+          ..write('apiToken: $apiToken, ')
+          ..write('instanceId: $instanceId, ')
+          ..write('ativo: $ativo, ')
+          ..write('enviarAgendamento: $enviarAgendamento, ')
+          ..write('enviarLembretes: $enviarLembretes, ')
+          ..write('enviarConfirmacoes: $enviarConfirmacoes, ')
+          ..write('enviarPromocoes: $enviarPromocoes, ')
+          ..write('horasAntesLembrete: $horasAntesLembrete, ')
+          ..write('horarioInicioEnvio: $horarioInicioEnvio, ')
+          ..write('horarioFimEnvio: $horarioFimEnvio, ')
+          ..write('diasSemanaEnvio: $diasSemanaEnvio, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
   late final $ProdutoTableTable produtoTable = $ProdutoTableTable(this);
   late final $FornecedorTableTable fornecedorTable =
       $FornecedorTableTable(this);
+  late final $PedidoCompraTableTable pedidoCompraTable =
+      $PedidoCompraTableTable(this);
+  late final $ItemCompraTableTable itemCompraTable =
+      $ItemCompraTableTable(this);
   late final $VendaTableTable vendaTable = $VendaTableTable(this);
   late final $ItemVendaTableTable itemVendaTable = $ItemVendaTableTable(this);
   late final $ClienteTableTable clienteTable = $ClienteTableTable(this);
@@ -9961,6 +12349,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $UsuarioTableTable usuarioTable = $UsuarioTableTable(this);
   late final $AssinaturaTableTable assinaturaTable =
       $AssinaturaTableTable(this);
+  late final $WhatsAppMessagesTableTable whatsAppMessagesTable =
+      $WhatsAppMessagesTableTable(this);
+  late final $WhatsAppConfigTableTable whatsAppConfigTable =
+      $WhatsAppConfigTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -9968,6 +12360,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   List<DatabaseSchemaEntity> get allSchemaEntities => [
         produtoTable,
         fornecedorTable,
+        pedidoCompraTable,
+        itemCompraTable,
         vendaTable,
         itemVendaTable,
         clienteTable,
@@ -9979,7 +12373,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         auditoriaTable,
         empresaConfigs,
         usuarioTable,
-        assinaturaTable
+        assinaturaTable,
+        whatsAppMessagesTable,
+        whatsAppConfigTable
       ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules(
@@ -10037,6 +12433,23 @@ typedef $$ProdutoTableTableUpdateCompanionBuilder = ProdutoTableCompanion
 final class $$ProdutoTableTableReferences extends BaseReferences<_$AppDatabase,
     $ProdutoTableTable, ProdutoTableData> {
   $$ProdutoTableTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$ItemCompraTableTable, List<ItemCompraData>>
+      _itemCompraTableRefsTable(_$AppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.itemCompraTable,
+              aliasName: $_aliasNameGenerator(
+                  db.produtoTable.id, db.itemCompraTable.produtoId));
+
+  $$ItemCompraTableTableProcessedTableManager get itemCompraTableRefs {
+    final manager =
+        $$ItemCompraTableTableTableManager($_db, $_db.itemCompraTable)
+            .filter((f) => f.produtoId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache =
+        $_typedResult.readTableOrNull(_itemCompraTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
 
   static MultiTypedResultKey<$ItemVendaTableTable, List<ItemVenda>>
       _itemVendaTableRefsTable(_$AppDatabase db) =>
@@ -10110,6 +12523,27 @@ class $$ProdutoTableTableFilterComposer
 
   ColumnFilters<DateTime> get updatedAt => $composableBuilder(
       column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+
+  Expression<bool> itemCompraTableRefs(
+      Expression<bool> Function($$ItemCompraTableTableFilterComposer f) f) {
+    final $$ItemCompraTableTableFilterComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $db.itemCompraTable,
+        getReferencedColumn: (t) => t.produtoId,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$ItemCompraTableTableFilterComposer(
+              $db: $db,
+              $table: $db.itemCompraTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return f(composer);
+  }
 
   Expression<bool> itemVendaTableRefs(
       Expression<bool> Function($$ItemVendaTableTableFilterComposer f) f) {
@@ -10250,6 +12684,27 @@ class $$ProdutoTableTableAnnotationComposer
   GeneratedColumn<DateTime> get updatedAt =>
       $composableBuilder(column: $table.updatedAt, builder: (column) => column);
 
+  Expression<T> itemCompraTableRefs<T extends Object>(
+      Expression<T> Function($$ItemCompraTableTableAnnotationComposer a) f) {
+    final $$ItemCompraTableTableAnnotationComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $db.itemCompraTable,
+        getReferencedColumn: (t) => t.produtoId,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$ItemCompraTableTableAnnotationComposer(
+              $db: $db,
+              $table: $db.itemCompraTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return f(composer);
+  }
+
   Expression<T> itemVendaTableRefs<T extends Object>(
       Expression<T> Function($$ItemVendaTableTableAnnotationComposer a) f) {
     final $$ItemVendaTableTableAnnotationComposer composer = $composerBuilder(
@@ -10283,7 +12738,8 @@ class $$ProdutoTableTableTableManager extends RootTableManager<
     $$ProdutoTableTableUpdateCompanionBuilder,
     (ProdutoTableData, $$ProdutoTableTableReferences),
     ProdutoTableData,
-    PrefetchHooks Function({bool itemVendaTableRefs})> {
+    PrefetchHooks Function(
+        {bool itemCompraTableRefs, bool itemVendaTableRefs})> {
   $$ProdutoTableTableTableManager(_$AppDatabase db, $ProdutoTableTable table)
       : super(TableManagerState(
           db: db,
@@ -10372,15 +12828,30 @@ class $$ProdutoTableTableTableManager extends RootTableManager<
                     $$ProdutoTableTableReferences(db, table, e)
                   ))
               .toList(),
-          prefetchHooksCallback: ({itemVendaTableRefs = false}) {
+          prefetchHooksCallback: (
+              {itemCompraTableRefs = false, itemVendaTableRefs = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [
+                if (itemCompraTableRefs) db.itemCompraTable,
                 if (itemVendaTableRefs) db.itemVendaTable
               ],
               addJoins: null,
               getPrefetchedDataCallback: (items) async {
                 return [
+                  if (itemCompraTableRefs)
+                    await $_getPrefetchedData<ProdutoTableData,
+                            $ProdutoTableTable, ItemCompraData>(
+                        currentTable: table,
+                        referencedTable: $$ProdutoTableTableReferences
+                            ._itemCompraTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$ProdutoTableTableReferences(db, table, p0)
+                                .itemCompraTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.produtoId == item.id),
+                        typedResults: items),
                   if (itemVendaTableRefs)
                     await $_getPrefetchedData<ProdutoTableData,
                             $ProdutoTableTable, ItemVenda>(
@@ -10412,7 +12883,8 @@ typedef $$ProdutoTableTableProcessedTableManager = ProcessedTableManager<
     $$ProdutoTableTableUpdateCompanionBuilder,
     (ProdutoTableData, $$ProdutoTableTableReferences),
     ProdutoTableData,
-    PrefetchHooks Function({bool itemVendaTableRefs})>;
+    PrefetchHooks Function(
+        {bool itemCompraTableRefs, bool itemVendaTableRefs})>;
 typedef $$FornecedorTableTableCreateCompanionBuilder = FornecedorTableCompanion
     Function({
   Value<int> id,
@@ -10447,6 +12919,29 @@ typedef $$FornecedorTableTableUpdateCompanionBuilder = FornecedorTableCompanion
   Value<DateTime> criadoEm,
   Value<DateTime> atualizadoEm,
 });
+
+final class $$FornecedorTableTableReferences extends BaseReferences<
+    _$AppDatabase, $FornecedorTableTable, FornecedorData> {
+  $$FornecedorTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$PedidoCompraTableTable, List<PedidoCompraData>>
+      _pedidoCompraTableRefsTable(_$AppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.pedidoCompraTable,
+              aliasName: $_aliasNameGenerator(
+                  db.fornecedorTable.id, db.pedidoCompraTable.fornecedorId));
+
+  $$PedidoCompraTableTableProcessedTableManager get pedidoCompraTableRefs {
+    final manager = $$PedidoCompraTableTableTableManager(
+            $_db, $_db.pedidoCompraTable)
+        .filter((f) => f.fornecedorId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache =
+        $_typedResult.readTableOrNull(_pedidoCompraTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
+}
 
 class $$FornecedorTableTableFilterComposer
     extends Composer<_$AppDatabase, $FornecedorTableTable> {
@@ -10498,6 +12993,27 @@ class $$FornecedorTableTableFilterComposer
 
   ColumnFilters<DateTime> get atualizadoEm => $composableBuilder(
       column: $table.atualizadoEm, builder: (column) => ColumnFilters(column));
+
+  Expression<bool> pedidoCompraTableRefs(
+      Expression<bool> Function($$PedidoCompraTableTableFilterComposer f) f) {
+    final $$PedidoCompraTableTableFilterComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $db.pedidoCompraTable,
+        getReferencedColumn: (t) => t.fornecedorId,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$PedidoCompraTableTableFilterComposer(
+              $db: $db,
+              $table: $db.pedidoCompraTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return f(composer);
+  }
 }
 
 class $$FornecedorTableTableOrderingComposer
@@ -10603,6 +13119,28 @@ class $$FornecedorTableTableAnnotationComposer
 
   GeneratedColumn<DateTime> get atualizadoEm => $composableBuilder(
       column: $table.atualizadoEm, builder: (column) => column);
+
+  Expression<T> pedidoCompraTableRefs<T extends Object>(
+      Expression<T> Function($$PedidoCompraTableTableAnnotationComposer a) f) {
+    final $$PedidoCompraTableTableAnnotationComposer composer =
+        $composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.id,
+            referencedTable: $db.pedidoCompraTable,
+            getReferencedColumn: (t) => t.fornecedorId,
+            builder: (joinBuilder,
+                    {$addJoinBuilderToRootComposer,
+                    $removeJoinBuilderFromRootComposer}) =>
+                $$PedidoCompraTableTableAnnotationComposer(
+                  $db: $db,
+                  $table: $db.pedidoCompraTable,
+                  $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                  joinBuilder: joinBuilder,
+                  $removeJoinBuilderFromRootComposer:
+                      $removeJoinBuilderFromRootComposer,
+                ));
+    return f(composer);
+  }
 }
 
 class $$FornecedorTableTableTableManager extends RootTableManager<
@@ -10614,12 +13152,9 @@ class $$FornecedorTableTableTableManager extends RootTableManager<
     $$FornecedorTableTableAnnotationComposer,
     $$FornecedorTableTableCreateCompanionBuilder,
     $$FornecedorTableTableUpdateCompanionBuilder,
-    (
-      FornecedorData,
-      BaseReferences<_$AppDatabase, $FornecedorTableTable, FornecedorData>
-    ),
+    (FornecedorData, $$FornecedorTableTableReferences),
     FornecedorData,
-    PrefetchHooks Function()> {
+    PrefetchHooks Function({bool pedidoCompraTableRefs})> {
   $$FornecedorTableTableTableManager(
       _$AppDatabase db, $FornecedorTableTable table)
       : super(TableManagerState(
@@ -10696,9 +13231,37 @@ class $$FornecedorTableTableTableManager extends RootTableManager<
             atualizadoEm: atualizadoEm,
           ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map((e) => (
+                    e.readTable(table),
+                    $$FornecedorTableTableReferences(db, table, e)
+                  ))
               .toList(),
-          prefetchHooksCallback: null,
+          prefetchHooksCallback: ({pedidoCompraTableRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (pedidoCompraTableRefs) db.pedidoCompraTable
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (pedidoCompraTableRefs)
+                    await $_getPrefetchedData<FornecedorData,
+                            $FornecedorTableTable, PedidoCompraData>(
+                        currentTable: table,
+                        referencedTable: $$FornecedorTableTableReferences
+                            ._pedidoCompraTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$FornecedorTableTableReferences(db, table, p0)
+                                .pedidoCompraTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.fornecedorId == item.id),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
         ));
 }
 
@@ -10711,12 +13274,849 @@ typedef $$FornecedorTableTableProcessedTableManager = ProcessedTableManager<
     $$FornecedorTableTableAnnotationComposer,
     $$FornecedorTableTableCreateCompanionBuilder,
     $$FornecedorTableTableUpdateCompanionBuilder,
-    (
-      FornecedorData,
-      BaseReferences<_$AppDatabase, $FornecedorTableTable, FornecedorData>
-    ),
+    (FornecedorData, $$FornecedorTableTableReferences),
     FornecedorData,
-    PrefetchHooks Function()>;
+    PrefetchHooks Function({bool pedidoCompraTableRefs})>;
+typedef $$PedidoCompraTableTableCreateCompanionBuilder
+    = PedidoCompraTableCompanion Function({
+  Value<int> id,
+  required int fornecedorId,
+  required String numero,
+  Value<String> status,
+  Value<double> valorTotal,
+  Value<String?> observacoes,
+  Value<DateTime> dataEmissao,
+  Value<DateTime?> dataAprovacao,
+  Value<DateTime?> dataRecebimento,
+  Value<DateTime> criadoEm,
+  Value<DateTime> atualizadoEm,
+});
+typedef $$PedidoCompraTableTableUpdateCompanionBuilder
+    = PedidoCompraTableCompanion Function({
+  Value<int> id,
+  Value<int> fornecedorId,
+  Value<String> numero,
+  Value<String> status,
+  Value<double> valorTotal,
+  Value<String?> observacoes,
+  Value<DateTime> dataEmissao,
+  Value<DateTime?> dataAprovacao,
+  Value<DateTime?> dataRecebimento,
+  Value<DateTime> criadoEm,
+  Value<DateTime> atualizadoEm,
+});
+
+final class $$PedidoCompraTableTableReferences extends BaseReferences<
+    _$AppDatabase, $PedidoCompraTableTable, PedidoCompraData> {
+  $$PedidoCompraTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static $FornecedorTableTable _fornecedorIdTable(_$AppDatabase db) =>
+      db.fornecedorTable.createAlias($_aliasNameGenerator(
+          db.pedidoCompraTable.fornecedorId, db.fornecedorTable.id));
+
+  $$FornecedorTableTableProcessedTableManager get fornecedorId {
+    final $_column = $_itemColumn<int>('fornecedor_id')!;
+
+    final manager =
+        $$FornecedorTableTableTableManager($_db, $_db.fornecedorTable)
+            .filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_fornecedorIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+
+  static MultiTypedResultKey<$ItemCompraTableTable, List<ItemCompraData>>
+      _itemCompraTableRefsTable(_$AppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.itemCompraTable,
+              aliasName: $_aliasNameGenerator(
+                  db.pedidoCompraTable.id, db.itemCompraTable.pedidoCompraId));
+
+  $$ItemCompraTableTableProcessedTableManager get itemCompraTableRefs {
+    final manager = $$ItemCompraTableTableTableManager(
+            $_db, $_db.itemCompraTable)
+        .filter((f) => f.pedidoCompraId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache =
+        $_typedResult.readTableOrNull(_itemCompraTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
+}
+
+class $$PedidoCompraTableTableFilterComposer
+    extends Composer<_$AppDatabase, $PedidoCompraTableTable> {
+  $$PedidoCompraTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get numero => $composableBuilder(
+      column: $table.numero, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get valorTotal => $composableBuilder(
+      column: $table.valorTotal, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get observacoes => $composableBuilder(
+      column: $table.observacoes, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get dataEmissao => $composableBuilder(
+      column: $table.dataEmissao, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get dataAprovacao => $composableBuilder(
+      column: $table.dataAprovacao, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get dataRecebimento => $composableBuilder(
+      column: $table.dataRecebimento,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get criadoEm => $composableBuilder(
+      column: $table.criadoEm, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get atualizadoEm => $composableBuilder(
+      column: $table.atualizadoEm, builder: (column) => ColumnFilters(column));
+
+  $$FornecedorTableTableFilterComposer get fornecedorId {
+    final $$FornecedorTableTableFilterComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.fornecedorId,
+        referencedTable: $db.fornecedorTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$FornecedorTableTableFilterComposer(
+              $db: $db,
+              $table: $db.fornecedorTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+
+  Expression<bool> itemCompraTableRefs(
+      Expression<bool> Function($$ItemCompraTableTableFilterComposer f) f) {
+    final $$ItemCompraTableTableFilterComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $db.itemCompraTable,
+        getReferencedColumn: (t) => t.pedidoCompraId,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$ItemCompraTableTableFilterComposer(
+              $db: $db,
+              $table: $db.itemCompraTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return f(composer);
+  }
+}
+
+class $$PedidoCompraTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $PedidoCompraTableTable> {
+  $$PedidoCompraTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get numero => $composableBuilder(
+      column: $table.numero, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get valorTotal => $composableBuilder(
+      column: $table.valorTotal, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get observacoes => $composableBuilder(
+      column: $table.observacoes, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get dataEmissao => $composableBuilder(
+      column: $table.dataEmissao, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get dataAprovacao => $composableBuilder(
+      column: $table.dataAprovacao,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get dataRecebimento => $composableBuilder(
+      column: $table.dataRecebimento,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get criadoEm => $composableBuilder(
+      column: $table.criadoEm, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get atualizadoEm => $composableBuilder(
+      column: $table.atualizadoEm,
+      builder: (column) => ColumnOrderings(column));
+
+  $$FornecedorTableTableOrderingComposer get fornecedorId {
+    final $$FornecedorTableTableOrderingComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.fornecedorId,
+        referencedTable: $db.fornecedorTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$FornecedorTableTableOrderingComposer(
+              $db: $db,
+              $table: $db.fornecedorTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+}
+
+class $$PedidoCompraTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PedidoCompraTableTable> {
+  $$PedidoCompraTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get numero =>
+      $composableBuilder(column: $table.numero, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<double> get valorTotal => $composableBuilder(
+      column: $table.valorTotal, builder: (column) => column);
+
+  GeneratedColumn<String> get observacoes => $composableBuilder(
+      column: $table.observacoes, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get dataEmissao => $composableBuilder(
+      column: $table.dataEmissao, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get dataAprovacao => $composableBuilder(
+      column: $table.dataAprovacao, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get dataRecebimento => $composableBuilder(
+      column: $table.dataRecebimento, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get criadoEm =>
+      $composableBuilder(column: $table.criadoEm, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get atualizadoEm => $composableBuilder(
+      column: $table.atualizadoEm, builder: (column) => column);
+
+  $$FornecedorTableTableAnnotationComposer get fornecedorId {
+    final $$FornecedorTableTableAnnotationComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.fornecedorId,
+        referencedTable: $db.fornecedorTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$FornecedorTableTableAnnotationComposer(
+              $db: $db,
+              $table: $db.fornecedorTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+
+  Expression<T> itemCompraTableRefs<T extends Object>(
+      Expression<T> Function($$ItemCompraTableTableAnnotationComposer a) f) {
+    final $$ItemCompraTableTableAnnotationComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $db.itemCompraTable,
+        getReferencedColumn: (t) => t.pedidoCompraId,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$ItemCompraTableTableAnnotationComposer(
+              $db: $db,
+              $table: $db.itemCompraTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return f(composer);
+  }
+}
+
+class $$PedidoCompraTableTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $PedidoCompraTableTable,
+    PedidoCompraData,
+    $$PedidoCompraTableTableFilterComposer,
+    $$PedidoCompraTableTableOrderingComposer,
+    $$PedidoCompraTableTableAnnotationComposer,
+    $$PedidoCompraTableTableCreateCompanionBuilder,
+    $$PedidoCompraTableTableUpdateCompanionBuilder,
+    (PedidoCompraData, $$PedidoCompraTableTableReferences),
+    PedidoCompraData,
+    PrefetchHooks Function({bool fornecedorId, bool itemCompraTableRefs})> {
+  $$PedidoCompraTableTableTableManager(
+      _$AppDatabase db, $PedidoCompraTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PedidoCompraTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PedidoCompraTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PedidoCompraTableTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int> fornecedorId = const Value.absent(),
+            Value<String> numero = const Value.absent(),
+            Value<String> status = const Value.absent(),
+            Value<double> valorTotal = const Value.absent(),
+            Value<String?> observacoes = const Value.absent(),
+            Value<DateTime> dataEmissao = const Value.absent(),
+            Value<DateTime?> dataAprovacao = const Value.absent(),
+            Value<DateTime?> dataRecebimento = const Value.absent(),
+            Value<DateTime> criadoEm = const Value.absent(),
+            Value<DateTime> atualizadoEm = const Value.absent(),
+          }) =>
+              PedidoCompraTableCompanion(
+            id: id,
+            fornecedorId: fornecedorId,
+            numero: numero,
+            status: status,
+            valorTotal: valorTotal,
+            observacoes: observacoes,
+            dataEmissao: dataEmissao,
+            dataAprovacao: dataAprovacao,
+            dataRecebimento: dataRecebimento,
+            criadoEm: criadoEm,
+            atualizadoEm: atualizadoEm,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required int fornecedorId,
+            required String numero,
+            Value<String> status = const Value.absent(),
+            Value<double> valorTotal = const Value.absent(),
+            Value<String?> observacoes = const Value.absent(),
+            Value<DateTime> dataEmissao = const Value.absent(),
+            Value<DateTime?> dataAprovacao = const Value.absent(),
+            Value<DateTime?> dataRecebimento = const Value.absent(),
+            Value<DateTime> criadoEm = const Value.absent(),
+            Value<DateTime> atualizadoEm = const Value.absent(),
+          }) =>
+              PedidoCompraTableCompanion.insert(
+            id: id,
+            fornecedorId: fornecedorId,
+            numero: numero,
+            status: status,
+            valorTotal: valorTotal,
+            observacoes: observacoes,
+            dataEmissao: dataEmissao,
+            dataAprovacao: dataAprovacao,
+            dataRecebimento: dataRecebimento,
+            criadoEm: criadoEm,
+            atualizadoEm: atualizadoEm,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$PedidoCompraTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: (
+              {fornecedorId = false, itemCompraTableRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (itemCompraTableRefs) db.itemCompraTable
+              ],
+              addJoins: <
+                  T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic>>(state) {
+                if (fornecedorId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.fornecedorId,
+                    referencedTable: $$PedidoCompraTableTableReferences
+                        ._fornecedorIdTable(db),
+                    referencedColumn: $$PedidoCompraTableTableReferences
+                        ._fornecedorIdTable(db)
+                        .id,
+                  ) as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (itemCompraTableRefs)
+                    await $_getPrefetchedData<PedidoCompraData,
+                            $PedidoCompraTableTable, ItemCompraData>(
+                        currentTable: table,
+                        referencedTable: $$PedidoCompraTableTableReferences
+                            ._itemCompraTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$PedidoCompraTableTableReferences(db, table, p0)
+                                .itemCompraTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.pedidoCompraId == item.id),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$PedidoCompraTableTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $PedidoCompraTableTable,
+    PedidoCompraData,
+    $$PedidoCompraTableTableFilterComposer,
+    $$PedidoCompraTableTableOrderingComposer,
+    $$PedidoCompraTableTableAnnotationComposer,
+    $$PedidoCompraTableTableCreateCompanionBuilder,
+    $$PedidoCompraTableTableUpdateCompanionBuilder,
+    (PedidoCompraData, $$PedidoCompraTableTableReferences),
+    PedidoCompraData,
+    PrefetchHooks Function({bool fornecedorId, bool itemCompraTableRefs})>;
+typedef $$ItemCompraTableTableCreateCompanionBuilder = ItemCompraTableCompanion
+    Function({
+  Value<int> id,
+  required int pedidoCompraId,
+  required int produtoId,
+  required int quantidade,
+  required double precoUnitario,
+  required double precoTotal,
+  Value<String?> observacoes,
+  Value<DateTime> criadoEm,
+});
+typedef $$ItemCompraTableTableUpdateCompanionBuilder = ItemCompraTableCompanion
+    Function({
+  Value<int> id,
+  Value<int> pedidoCompraId,
+  Value<int> produtoId,
+  Value<int> quantidade,
+  Value<double> precoUnitario,
+  Value<double> precoTotal,
+  Value<String?> observacoes,
+  Value<DateTime> criadoEm,
+});
+
+final class $$ItemCompraTableTableReferences extends BaseReferences<
+    _$AppDatabase, $ItemCompraTableTable, ItemCompraData> {
+  $$ItemCompraTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static $PedidoCompraTableTable _pedidoCompraIdTable(_$AppDatabase db) =>
+      db.pedidoCompraTable.createAlias($_aliasNameGenerator(
+          db.itemCompraTable.pedidoCompraId, db.pedidoCompraTable.id));
+
+  $$PedidoCompraTableTableProcessedTableManager get pedidoCompraId {
+    final $_column = $_itemColumn<int>('pedido_compra_id')!;
+
+    final manager =
+        $$PedidoCompraTableTableTableManager($_db, $_db.pedidoCompraTable)
+            .filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_pedidoCompraIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+
+  static $ProdutoTableTable _produtoIdTable(_$AppDatabase db) =>
+      db.produtoTable.createAlias($_aliasNameGenerator(
+          db.itemCompraTable.produtoId, db.produtoTable.id));
+
+  $$ProdutoTableTableProcessedTableManager get produtoId {
+    final $_column = $_itemColumn<int>('produto_id')!;
+
+    final manager = $$ProdutoTableTableTableManager($_db, $_db.produtoTable)
+        .filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_produtoIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+}
+
+class $$ItemCompraTableTableFilterComposer
+    extends Composer<_$AppDatabase, $ItemCompraTableTable> {
+  $$ItemCompraTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get quantidade => $composableBuilder(
+      column: $table.quantidade, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get precoUnitario => $composableBuilder(
+      column: $table.precoUnitario, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get precoTotal => $composableBuilder(
+      column: $table.precoTotal, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get observacoes => $composableBuilder(
+      column: $table.observacoes, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get criadoEm => $composableBuilder(
+      column: $table.criadoEm, builder: (column) => ColumnFilters(column));
+
+  $$PedidoCompraTableTableFilterComposer get pedidoCompraId {
+    final $$PedidoCompraTableTableFilterComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.pedidoCompraId,
+        referencedTable: $db.pedidoCompraTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$PedidoCompraTableTableFilterComposer(
+              $db: $db,
+              $table: $db.pedidoCompraTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+
+  $$ProdutoTableTableFilterComposer get produtoId {
+    final $$ProdutoTableTableFilterComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.produtoId,
+        referencedTable: $db.produtoTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$ProdutoTableTableFilterComposer(
+              $db: $db,
+              $table: $db.produtoTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+}
+
+class $$ItemCompraTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $ItemCompraTableTable> {
+  $$ItemCompraTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get quantidade => $composableBuilder(
+      column: $table.quantidade, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get precoUnitario => $composableBuilder(
+      column: $table.precoUnitario,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get precoTotal => $composableBuilder(
+      column: $table.precoTotal, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get observacoes => $composableBuilder(
+      column: $table.observacoes, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get criadoEm => $composableBuilder(
+      column: $table.criadoEm, builder: (column) => ColumnOrderings(column));
+
+  $$PedidoCompraTableTableOrderingComposer get pedidoCompraId {
+    final $$PedidoCompraTableTableOrderingComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.pedidoCompraId,
+        referencedTable: $db.pedidoCompraTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$PedidoCompraTableTableOrderingComposer(
+              $db: $db,
+              $table: $db.pedidoCompraTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+
+  $$ProdutoTableTableOrderingComposer get produtoId {
+    final $$ProdutoTableTableOrderingComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.produtoId,
+        referencedTable: $db.produtoTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$ProdutoTableTableOrderingComposer(
+              $db: $db,
+              $table: $db.produtoTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+}
+
+class $$ItemCompraTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ItemCompraTableTable> {
+  $$ItemCompraTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get quantidade => $composableBuilder(
+      column: $table.quantidade, builder: (column) => column);
+
+  GeneratedColumn<double> get precoUnitario => $composableBuilder(
+      column: $table.precoUnitario, builder: (column) => column);
+
+  GeneratedColumn<double> get precoTotal => $composableBuilder(
+      column: $table.precoTotal, builder: (column) => column);
+
+  GeneratedColumn<String> get observacoes => $composableBuilder(
+      column: $table.observacoes, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get criadoEm =>
+      $composableBuilder(column: $table.criadoEm, builder: (column) => column);
+
+  $$PedidoCompraTableTableAnnotationComposer get pedidoCompraId {
+    final $$PedidoCompraTableTableAnnotationComposer composer =
+        $composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.pedidoCompraId,
+            referencedTable: $db.pedidoCompraTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder,
+                    {$addJoinBuilderToRootComposer,
+                    $removeJoinBuilderFromRootComposer}) =>
+                $$PedidoCompraTableTableAnnotationComposer(
+                  $db: $db,
+                  $table: $db.pedidoCompraTable,
+                  $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                  joinBuilder: joinBuilder,
+                  $removeJoinBuilderFromRootComposer:
+                      $removeJoinBuilderFromRootComposer,
+                ));
+    return composer;
+  }
+
+  $$ProdutoTableTableAnnotationComposer get produtoId {
+    final $$ProdutoTableTableAnnotationComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.produtoId,
+        referencedTable: $db.produtoTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$ProdutoTableTableAnnotationComposer(
+              $db: $db,
+              $table: $db.produtoTable,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+}
+
+class $$ItemCompraTableTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $ItemCompraTableTable,
+    ItemCompraData,
+    $$ItemCompraTableTableFilterComposer,
+    $$ItemCompraTableTableOrderingComposer,
+    $$ItemCompraTableTableAnnotationComposer,
+    $$ItemCompraTableTableCreateCompanionBuilder,
+    $$ItemCompraTableTableUpdateCompanionBuilder,
+    (ItemCompraData, $$ItemCompraTableTableReferences),
+    ItemCompraData,
+    PrefetchHooks Function({bool pedidoCompraId, bool produtoId})> {
+  $$ItemCompraTableTableTableManager(
+      _$AppDatabase db, $ItemCompraTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ItemCompraTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ItemCompraTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ItemCompraTableTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int> pedidoCompraId = const Value.absent(),
+            Value<int> produtoId = const Value.absent(),
+            Value<int> quantidade = const Value.absent(),
+            Value<double> precoUnitario = const Value.absent(),
+            Value<double> precoTotal = const Value.absent(),
+            Value<String?> observacoes = const Value.absent(),
+            Value<DateTime> criadoEm = const Value.absent(),
+          }) =>
+              ItemCompraTableCompanion(
+            id: id,
+            pedidoCompraId: pedidoCompraId,
+            produtoId: produtoId,
+            quantidade: quantidade,
+            precoUnitario: precoUnitario,
+            precoTotal: precoTotal,
+            observacoes: observacoes,
+            criadoEm: criadoEm,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required int pedidoCompraId,
+            required int produtoId,
+            required int quantidade,
+            required double precoUnitario,
+            required double precoTotal,
+            Value<String?> observacoes = const Value.absent(),
+            Value<DateTime> criadoEm = const Value.absent(),
+          }) =>
+              ItemCompraTableCompanion.insert(
+            id: id,
+            pedidoCompraId: pedidoCompraId,
+            produtoId: produtoId,
+            quantidade: quantidade,
+            precoUnitario: precoUnitario,
+            precoTotal: precoTotal,
+            observacoes: observacoes,
+            criadoEm: criadoEm,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$ItemCompraTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: ({pedidoCompraId = false, produtoId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                  T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic>>(state) {
+                if (pedidoCompraId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.pedidoCompraId,
+                    referencedTable: $$ItemCompraTableTableReferences
+                        ._pedidoCompraIdTable(db),
+                    referencedColumn: $$ItemCompraTableTableReferences
+                        ._pedidoCompraIdTable(db)
+                        .id,
+                  ) as T;
+                }
+                if (produtoId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.produtoId,
+                    referencedTable:
+                        $$ItemCompraTableTableReferences._produtoIdTable(db),
+                    referencedColumn:
+                        $$ItemCompraTableTableReferences._produtoIdTable(db).id,
+                  ) as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$ItemCompraTableTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $ItemCompraTableTable,
+    ItemCompraData,
+    $$ItemCompraTableTableFilterComposer,
+    $$ItemCompraTableTableOrderingComposer,
+    $$ItemCompraTableTableAnnotationComposer,
+    $$ItemCompraTableTableCreateCompanionBuilder,
+    $$ItemCompraTableTableUpdateCompanionBuilder,
+    (ItemCompraData, $$ItemCompraTableTableReferences),
+    ItemCompraData,
+    PrefetchHooks Function({bool pedidoCompraId, bool produtoId})>;
 typedef $$VendaTableTableCreateCompanionBuilder = VendaTableCompanion Function({
   Value<int> id,
   Value<DateTime> dataVenda,
@@ -15140,6 +18540,638 @@ typedef $$AssinaturaTableTableProcessedTableManager = ProcessedTableManager<
     (Assinatura, $$AssinaturaTableTableReferences),
     Assinatura,
     PrefetchHooks Function({bool usuarioId})>;
+typedef $$WhatsAppMessagesTableTableCreateCompanionBuilder
+    = WhatsAppMessagesTableCompanion Function({
+  Value<int> id,
+  required String clienteId,
+  required String telefone,
+  required String mensagem,
+  required String tipo,
+  Value<String> status,
+  Value<DateTime?> dataEnvio,
+  Value<DateTime?> dataEntrega,
+  Value<DateTime?> dataLeitura,
+  Value<String?> erro,
+  Value<String?> metadata,
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+});
+typedef $$WhatsAppMessagesTableTableUpdateCompanionBuilder
+    = WhatsAppMessagesTableCompanion Function({
+  Value<int> id,
+  Value<String> clienteId,
+  Value<String> telefone,
+  Value<String> mensagem,
+  Value<String> tipo,
+  Value<String> status,
+  Value<DateTime?> dataEnvio,
+  Value<DateTime?> dataEntrega,
+  Value<DateTime?> dataLeitura,
+  Value<String?> erro,
+  Value<String?> metadata,
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+});
+
+class $$WhatsAppMessagesTableTableFilterComposer
+    extends Composer<_$AppDatabase, $WhatsAppMessagesTableTable> {
+  $$WhatsAppMessagesTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get clienteId => $composableBuilder(
+      column: $table.clienteId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get telefone => $composableBuilder(
+      column: $table.telefone, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get mensagem => $composableBuilder(
+      column: $table.mensagem, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get tipo => $composableBuilder(
+      column: $table.tipo, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get dataEnvio => $composableBuilder(
+      column: $table.dataEnvio, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get dataEntrega => $composableBuilder(
+      column: $table.dataEntrega, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get dataLeitura => $composableBuilder(
+      column: $table.dataLeitura, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get erro => $composableBuilder(
+      column: $table.erro, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get metadata => $composableBuilder(
+      column: $table.metadata, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$WhatsAppMessagesTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $WhatsAppMessagesTableTable> {
+  $$WhatsAppMessagesTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get clienteId => $composableBuilder(
+      column: $table.clienteId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get telefone => $composableBuilder(
+      column: $table.telefone, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get mensagem => $composableBuilder(
+      column: $table.mensagem, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get tipo => $composableBuilder(
+      column: $table.tipo, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get dataEnvio => $composableBuilder(
+      column: $table.dataEnvio, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get dataEntrega => $composableBuilder(
+      column: $table.dataEntrega, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get dataLeitura => $composableBuilder(
+      column: $table.dataLeitura, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get erro => $composableBuilder(
+      column: $table.erro, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get metadata => $composableBuilder(
+      column: $table.metadata, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$WhatsAppMessagesTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $WhatsAppMessagesTableTable> {
+  $$WhatsAppMessagesTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get clienteId =>
+      $composableBuilder(column: $table.clienteId, builder: (column) => column);
+
+  GeneratedColumn<String> get telefone =>
+      $composableBuilder(column: $table.telefone, builder: (column) => column);
+
+  GeneratedColumn<String> get mensagem =>
+      $composableBuilder(column: $table.mensagem, builder: (column) => column);
+
+  GeneratedColumn<String> get tipo =>
+      $composableBuilder(column: $table.tipo, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get dataEnvio =>
+      $composableBuilder(column: $table.dataEnvio, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get dataEntrega => $composableBuilder(
+      column: $table.dataEntrega, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get dataLeitura => $composableBuilder(
+      column: $table.dataLeitura, builder: (column) => column);
+
+  GeneratedColumn<String> get erro =>
+      $composableBuilder(column: $table.erro, builder: (column) => column);
+
+  GeneratedColumn<String> get metadata =>
+      $composableBuilder(column: $table.metadata, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$WhatsAppMessagesTableTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $WhatsAppMessagesTableTable,
+    WhatsAppMessagesTableData,
+    $$WhatsAppMessagesTableTableFilterComposer,
+    $$WhatsAppMessagesTableTableOrderingComposer,
+    $$WhatsAppMessagesTableTableAnnotationComposer,
+    $$WhatsAppMessagesTableTableCreateCompanionBuilder,
+    $$WhatsAppMessagesTableTableUpdateCompanionBuilder,
+    (
+      WhatsAppMessagesTableData,
+      BaseReferences<_$AppDatabase, $WhatsAppMessagesTableTable,
+          WhatsAppMessagesTableData>
+    ),
+    WhatsAppMessagesTableData,
+    PrefetchHooks Function()> {
+  $$WhatsAppMessagesTableTableTableManager(
+      _$AppDatabase db, $WhatsAppMessagesTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$WhatsAppMessagesTableTableFilterComposer(
+                  $db: db, $table: table),
+          createOrderingComposer: () =>
+              $$WhatsAppMessagesTableTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$WhatsAppMessagesTableTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> clienteId = const Value.absent(),
+            Value<String> telefone = const Value.absent(),
+            Value<String> mensagem = const Value.absent(),
+            Value<String> tipo = const Value.absent(),
+            Value<String> status = const Value.absent(),
+            Value<DateTime?> dataEnvio = const Value.absent(),
+            Value<DateTime?> dataEntrega = const Value.absent(),
+            Value<DateTime?> dataLeitura = const Value.absent(),
+            Value<String?> erro = const Value.absent(),
+            Value<String?> metadata = const Value.absent(),
+            Value<DateTime> createdAt = const Value.absent(),
+            Value<DateTime> updatedAt = const Value.absent(),
+          }) =>
+              WhatsAppMessagesTableCompanion(
+            id: id,
+            clienteId: clienteId,
+            telefone: telefone,
+            mensagem: mensagem,
+            tipo: tipo,
+            status: status,
+            dataEnvio: dataEnvio,
+            dataEntrega: dataEntrega,
+            dataLeitura: dataLeitura,
+            erro: erro,
+            metadata: metadata,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String clienteId,
+            required String telefone,
+            required String mensagem,
+            required String tipo,
+            Value<String> status = const Value.absent(),
+            Value<DateTime?> dataEnvio = const Value.absent(),
+            Value<DateTime?> dataEntrega = const Value.absent(),
+            Value<DateTime?> dataLeitura = const Value.absent(),
+            Value<String?> erro = const Value.absent(),
+            Value<String?> metadata = const Value.absent(),
+            Value<DateTime> createdAt = const Value.absent(),
+            Value<DateTime> updatedAt = const Value.absent(),
+          }) =>
+              WhatsAppMessagesTableCompanion.insert(
+            id: id,
+            clienteId: clienteId,
+            telefone: telefone,
+            mensagem: mensagem,
+            tipo: tipo,
+            status: status,
+            dataEnvio: dataEnvio,
+            dataEntrega: dataEntrega,
+            dataLeitura: dataLeitura,
+            erro: erro,
+            metadata: metadata,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$WhatsAppMessagesTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$AppDatabase,
+        $WhatsAppMessagesTableTable,
+        WhatsAppMessagesTableData,
+        $$WhatsAppMessagesTableTableFilterComposer,
+        $$WhatsAppMessagesTableTableOrderingComposer,
+        $$WhatsAppMessagesTableTableAnnotationComposer,
+        $$WhatsAppMessagesTableTableCreateCompanionBuilder,
+        $$WhatsAppMessagesTableTableUpdateCompanionBuilder,
+        (
+          WhatsAppMessagesTableData,
+          BaseReferences<_$AppDatabase, $WhatsAppMessagesTableTable,
+              WhatsAppMessagesTableData>
+        ),
+        WhatsAppMessagesTableData,
+        PrefetchHooks Function()>;
+typedef $$WhatsAppConfigTableTableCreateCompanionBuilder
+    = WhatsAppConfigTableCompanion Function({
+  Value<int> id,
+  required String apiUrl,
+  required String apiToken,
+  required String instanceId,
+  Value<bool> ativo,
+  Value<bool> enviarAgendamento,
+  Value<bool> enviarLembretes,
+  Value<bool> enviarConfirmacoes,
+  Value<bool> enviarPromocoes,
+  Value<int> horasAntesLembrete,
+  Value<String> horarioInicioEnvio,
+  Value<String> horarioFimEnvio,
+  Value<String> diasSemanaEnvio,
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+});
+typedef $$WhatsAppConfigTableTableUpdateCompanionBuilder
+    = WhatsAppConfigTableCompanion Function({
+  Value<int> id,
+  Value<String> apiUrl,
+  Value<String> apiToken,
+  Value<String> instanceId,
+  Value<bool> ativo,
+  Value<bool> enviarAgendamento,
+  Value<bool> enviarLembretes,
+  Value<bool> enviarConfirmacoes,
+  Value<bool> enviarPromocoes,
+  Value<int> horasAntesLembrete,
+  Value<String> horarioInicioEnvio,
+  Value<String> horarioFimEnvio,
+  Value<String> diasSemanaEnvio,
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+});
+
+class $$WhatsAppConfigTableTableFilterComposer
+    extends Composer<_$AppDatabase, $WhatsAppConfigTableTable> {
+  $$WhatsAppConfigTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get apiUrl => $composableBuilder(
+      column: $table.apiUrl, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get apiToken => $composableBuilder(
+      column: $table.apiToken, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get instanceId => $composableBuilder(
+      column: $table.instanceId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get ativo => $composableBuilder(
+      column: $table.ativo, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get enviarAgendamento => $composableBuilder(
+      column: $table.enviarAgendamento,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get enviarLembretes => $composableBuilder(
+      column: $table.enviarLembretes,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get enviarConfirmacoes => $composableBuilder(
+      column: $table.enviarConfirmacoes,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get enviarPromocoes => $composableBuilder(
+      column: $table.enviarPromocoes,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get horasAntesLembrete => $composableBuilder(
+      column: $table.horasAntesLembrete,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get horarioInicioEnvio => $composableBuilder(
+      column: $table.horarioInicioEnvio,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get horarioFimEnvio => $composableBuilder(
+      column: $table.horarioFimEnvio,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get diasSemanaEnvio => $composableBuilder(
+      column: $table.diasSemanaEnvio,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$WhatsAppConfigTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $WhatsAppConfigTableTable> {
+  $$WhatsAppConfigTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get apiUrl => $composableBuilder(
+      column: $table.apiUrl, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get apiToken => $composableBuilder(
+      column: $table.apiToken, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get instanceId => $composableBuilder(
+      column: $table.instanceId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get ativo => $composableBuilder(
+      column: $table.ativo, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get enviarAgendamento => $composableBuilder(
+      column: $table.enviarAgendamento,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get enviarLembretes => $composableBuilder(
+      column: $table.enviarLembretes,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get enviarConfirmacoes => $composableBuilder(
+      column: $table.enviarConfirmacoes,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get enviarPromocoes => $composableBuilder(
+      column: $table.enviarPromocoes,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get horasAntesLembrete => $composableBuilder(
+      column: $table.horasAntesLembrete,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get horarioInicioEnvio => $composableBuilder(
+      column: $table.horarioInicioEnvio,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get horarioFimEnvio => $composableBuilder(
+      column: $table.horarioFimEnvio,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get diasSemanaEnvio => $composableBuilder(
+      column: $table.diasSemanaEnvio,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$WhatsAppConfigTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $WhatsAppConfigTableTable> {
+  $$WhatsAppConfigTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get apiUrl =>
+      $composableBuilder(column: $table.apiUrl, builder: (column) => column);
+
+  GeneratedColumn<String> get apiToken =>
+      $composableBuilder(column: $table.apiToken, builder: (column) => column);
+
+  GeneratedColumn<String> get instanceId => $composableBuilder(
+      column: $table.instanceId, builder: (column) => column);
+
+  GeneratedColumn<bool> get ativo =>
+      $composableBuilder(column: $table.ativo, builder: (column) => column);
+
+  GeneratedColumn<bool> get enviarAgendamento => $composableBuilder(
+      column: $table.enviarAgendamento, builder: (column) => column);
+
+  GeneratedColumn<bool> get enviarLembretes => $composableBuilder(
+      column: $table.enviarLembretes, builder: (column) => column);
+
+  GeneratedColumn<bool> get enviarConfirmacoes => $composableBuilder(
+      column: $table.enviarConfirmacoes, builder: (column) => column);
+
+  GeneratedColumn<bool> get enviarPromocoes => $composableBuilder(
+      column: $table.enviarPromocoes, builder: (column) => column);
+
+  GeneratedColumn<int> get horasAntesLembrete => $composableBuilder(
+      column: $table.horasAntesLembrete, builder: (column) => column);
+
+  GeneratedColumn<String> get horarioInicioEnvio => $composableBuilder(
+      column: $table.horarioInicioEnvio, builder: (column) => column);
+
+  GeneratedColumn<String> get horarioFimEnvio => $composableBuilder(
+      column: $table.horarioFimEnvio, builder: (column) => column);
+
+  GeneratedColumn<String> get diasSemanaEnvio => $composableBuilder(
+      column: $table.diasSemanaEnvio, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$WhatsAppConfigTableTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $WhatsAppConfigTableTable,
+    WhatsAppConfigTableData,
+    $$WhatsAppConfigTableTableFilterComposer,
+    $$WhatsAppConfigTableTableOrderingComposer,
+    $$WhatsAppConfigTableTableAnnotationComposer,
+    $$WhatsAppConfigTableTableCreateCompanionBuilder,
+    $$WhatsAppConfigTableTableUpdateCompanionBuilder,
+    (
+      WhatsAppConfigTableData,
+      BaseReferences<_$AppDatabase, $WhatsAppConfigTableTable,
+          WhatsAppConfigTableData>
+    ),
+    WhatsAppConfigTableData,
+    PrefetchHooks Function()> {
+  $$WhatsAppConfigTableTableTableManager(
+      _$AppDatabase db, $WhatsAppConfigTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$WhatsAppConfigTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$WhatsAppConfigTableTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$WhatsAppConfigTableTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> apiUrl = const Value.absent(),
+            Value<String> apiToken = const Value.absent(),
+            Value<String> instanceId = const Value.absent(),
+            Value<bool> ativo = const Value.absent(),
+            Value<bool> enviarAgendamento = const Value.absent(),
+            Value<bool> enviarLembretes = const Value.absent(),
+            Value<bool> enviarConfirmacoes = const Value.absent(),
+            Value<bool> enviarPromocoes = const Value.absent(),
+            Value<int> horasAntesLembrete = const Value.absent(),
+            Value<String> horarioInicioEnvio = const Value.absent(),
+            Value<String> horarioFimEnvio = const Value.absent(),
+            Value<String> diasSemanaEnvio = const Value.absent(),
+            Value<DateTime> createdAt = const Value.absent(),
+            Value<DateTime> updatedAt = const Value.absent(),
+          }) =>
+              WhatsAppConfigTableCompanion(
+            id: id,
+            apiUrl: apiUrl,
+            apiToken: apiToken,
+            instanceId: instanceId,
+            ativo: ativo,
+            enviarAgendamento: enviarAgendamento,
+            enviarLembretes: enviarLembretes,
+            enviarConfirmacoes: enviarConfirmacoes,
+            enviarPromocoes: enviarPromocoes,
+            horasAntesLembrete: horasAntesLembrete,
+            horarioInicioEnvio: horarioInicioEnvio,
+            horarioFimEnvio: horarioFimEnvio,
+            diasSemanaEnvio: diasSemanaEnvio,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String apiUrl,
+            required String apiToken,
+            required String instanceId,
+            Value<bool> ativo = const Value.absent(),
+            Value<bool> enviarAgendamento = const Value.absent(),
+            Value<bool> enviarLembretes = const Value.absent(),
+            Value<bool> enviarConfirmacoes = const Value.absent(),
+            Value<bool> enviarPromocoes = const Value.absent(),
+            Value<int> horasAntesLembrete = const Value.absent(),
+            Value<String> horarioInicioEnvio = const Value.absent(),
+            Value<String> horarioFimEnvio = const Value.absent(),
+            Value<String> diasSemanaEnvio = const Value.absent(),
+            Value<DateTime> createdAt = const Value.absent(),
+            Value<DateTime> updatedAt = const Value.absent(),
+          }) =>
+              WhatsAppConfigTableCompanion.insert(
+            id: id,
+            apiUrl: apiUrl,
+            apiToken: apiToken,
+            instanceId: instanceId,
+            ativo: ativo,
+            enviarAgendamento: enviarAgendamento,
+            enviarLembretes: enviarLembretes,
+            enviarConfirmacoes: enviarConfirmacoes,
+            enviarPromocoes: enviarPromocoes,
+            horasAntesLembrete: horasAntesLembrete,
+            horarioInicioEnvio: horarioInicioEnvio,
+            horarioFimEnvio: horarioFimEnvio,
+            diasSemanaEnvio: diasSemanaEnvio,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$WhatsAppConfigTableTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $WhatsAppConfigTableTable,
+    WhatsAppConfigTableData,
+    $$WhatsAppConfigTableTableFilterComposer,
+    $$WhatsAppConfigTableTableOrderingComposer,
+    $$WhatsAppConfigTableTableAnnotationComposer,
+    $$WhatsAppConfigTableTableCreateCompanionBuilder,
+    $$WhatsAppConfigTableTableUpdateCompanionBuilder,
+    (
+      WhatsAppConfigTableData,
+      BaseReferences<_$AppDatabase, $WhatsAppConfigTableTable,
+          WhatsAppConfigTableData>
+    ),
+    WhatsAppConfigTableData,
+    PrefetchHooks Function()>;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -15148,6 +19180,10 @@ class $AppDatabaseManager {
       $$ProdutoTableTableTableManager(_db, _db.produtoTable);
   $$FornecedorTableTableTableManager get fornecedorTable =>
       $$FornecedorTableTableTableManager(_db, _db.fornecedorTable);
+  $$PedidoCompraTableTableTableManager get pedidoCompraTable =>
+      $$PedidoCompraTableTableTableManager(_db, _db.pedidoCompraTable);
+  $$ItemCompraTableTableTableManager get itemCompraTable =>
+      $$ItemCompraTableTableTableManager(_db, _db.itemCompraTable);
   $$VendaTableTableTableManager get vendaTable =>
       $$VendaTableTableTableManager(_db, _db.vendaTable);
   $$ItemVendaTableTableTableManager get itemVendaTable =>
@@ -15173,4 +19209,8 @@ class $AppDatabaseManager {
       $$UsuarioTableTableTableManager(_db, _db.usuarioTable);
   $$AssinaturaTableTableTableManager get assinaturaTable =>
       $$AssinaturaTableTableTableManager(_db, _db.assinaturaTable);
+  $$WhatsAppMessagesTableTableTableManager get whatsAppMessagesTable =>
+      $$WhatsAppMessagesTableTableTableManager(_db, _db.whatsAppMessagesTable);
+  $$WhatsAppConfigTableTableTableManager get whatsAppConfigTable =>
+      $$WhatsAppConfigTableTableTableManager(_db, _db.whatsAppConfigTable);
 }

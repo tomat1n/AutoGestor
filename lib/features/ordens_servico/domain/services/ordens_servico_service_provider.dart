@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/database/database.dart';
-import '../../../core/providers/database_provider.dart';
+import '../../../../core/database/database.dart';
+import '../../../../core/providers/database_provider.dart';
 import '../repositories/ordens_servico_repository.dart';
 import 'ordens_servico_service.dart';
 

@@ -5,6 +5,8 @@ import 'package:drift/drift.dart';
 
 import '../../features/estoque/data/models/produto_table.dart';
 import '../../features/estoque/data/models/fornecedor_table.dart';
+import '../../features/estoque/data/models/pedido_compra_table.dart';
+import '../../features/estoque/data/models/item_compra_table.dart';
 
 import '../../features/pdv/data/models/venda_table.dart';
 import '../../features/pdv/data/models/item_venda_table.dart';
@@ -16,14 +18,16 @@ import 'models/auditoria_table.dart';
 import 'models/empresa_config_table.dart';
 import 'models/usuario_table.dart';
 import 'models/assinatura_table.dart';
-// import 'tables/whatsapp_messages_table.dart';
-// import 'tables/whatsapp_config_table.dart';
+import 'tables/whatsapp_messages_table.dart';
+import 'tables/whatsapp_config_table.dart';
 
 part 'database.g.dart';
 
 @DriftDatabase(tables: [
   ProdutoTable,
   FornecedorTable,
+  PedidoCompraTable,
+  ItemCompraTable,
   VendaTable,
   ItemVendaTable,
   ClienteTable,
@@ -36,8 +40,8 @@ part 'database.g.dart';
   EmpresaConfigs,
   UsuarioTable,
   AssinaturaTable,
-  // WhatsAppMessagesTable,
-  // WhatsAppConfigTable,
+  WhatsAppMessagesTable,
+  WhatsAppConfigTable,
 ])
 class AppDatabase extends _$AppDatabase {
   AppDatabase(DatabaseConnection super.connection);
@@ -112,9 +116,9 @@ class AppDatabase extends _$AppDatabase {
         }
         if (from < 12) {
           // Migração da versão 11 para 12
-          // Adicionar tabelas do WhatsApp - Temporariamente comentado
-          // await m.createTable(whatsAppMessagesTable);
-          // await m.createTable(whatsAppConfigTable);
+          // Adicionar tabelas do WhatsApp
+          await m.createTable(whatsAppMessagesTable);
+          await m.createTable(whatsAppConfigTable);
         }
         if (from < 13) {
           // Migração da versão 12 para 13

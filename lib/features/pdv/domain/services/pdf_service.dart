@@ -2,10 +2,7 @@ import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:printing/printing.dart';
 import 'package:intl/intl.dart';
-import '../../../estoque/domain/entities/produto.dart';
-import '../../../clientes/domain/entities/cliente.dart';
 import '../../domain/entities/venda.dart';
 import '../../domain/entities/item_venda.dart';
 import '../../../configuracoes/domain/entities/empresa_config.dart';
@@ -279,7 +276,7 @@ class PdfService {
             '${empresaConfig?.telefone?.isNotEmpty == true ? "Telefone: ${empresaConfig!.telefone}" : ""}',
             style: const pw.TextStyle(fontSize: 12),
           ),
-        if (empresaConfig?.endereco.isNotEmpty == true) ...[
+        if (empresaConfig?.endereco?.isNotEmpty == true) ...[
           pw.SizedBox(height: 4),
           pw.Text(
             'Endereço: ${empresaConfig!.endereco}',

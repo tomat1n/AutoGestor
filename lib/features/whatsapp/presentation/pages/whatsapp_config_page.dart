@@ -9,10 +9,10 @@ class WhatsAppConfigPage extends StatefulWidget {
   final WhatsAppService service;
 
   const WhatsAppConfigPage({
-    Key? key,
+    super.key,
     required this.repository,
     required this.service,
-  }) : super(key: key);
+  });
 
   @override
   State<WhatsAppConfigPage> createState() => _WhatsAppConfigPageState();
@@ -208,11 +208,11 @@ class _WhatsAppConfigPageState extends State<WhatsAppConfigPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               children: [
-                const Icon(Icons.api, color: Colors.green),
-                const SizedBox(width: 8),
-                const Text(
+                Icon(Icons.api, color: Colors.green),
+                SizedBox(width: 8),
+                Text(
                   'Configurações da API',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
@@ -292,7 +292,7 @@ class _WhatsAppConfigPageState extends State<WhatsAppConfigPage> {
                 ),
               ],
             ),
-            if (_connectionStatus != null) ..[
+            if (_connectionStatus != null) ...[
               const SizedBox(height: 8),
               Container(
                 padding: const EdgeInsets.all(8),
@@ -347,11 +347,11 @@ class _WhatsAppConfigPageState extends State<WhatsAppConfigPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               children: [
-                const Icon(Icons.settings, color: Colors.blue),
-                const SizedBox(width: 8),
-                const Text(
+                Icon(Icons.settings, color: Colors.blue),
+                SizedBox(width: 8),
+                Text(
                   'Configurações Gerais',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
@@ -363,7 +363,7 @@ class _WhatsAppConfigPageState extends State<WhatsAppConfigPage> {
               subtitle: const Text('Habilita o envio de mensagens via WhatsApp'),
               value: _ativo,
               onChanged: (value) => setState(() => _ativo = value),
-              activeColor: Colors.green,
+              activeThumbColor: Colors.green,
             ),
             const SizedBox(height: 8),
             TextFormField(
@@ -400,11 +400,11 @@ class _WhatsAppConfigPageState extends State<WhatsAppConfigPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               children: [
-                const Icon(Icons.notifications, color: Colors.orange),
-                const SizedBox(width: 8),
-                const Text(
+                Icon(Icons.notifications, color: Colors.orange),
+                SizedBox(width: 8),
+                Text(
                   'Tipos de Notificação',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
@@ -416,28 +416,28 @@ class _WhatsAppConfigPageState extends State<WhatsAppConfigPage> {
               subtitle: const Text('Confirmações e atualizações de agendamentos'),
               value: _enviarAgendamentos,
               onChanged: _ativo ? (value) => setState(() => _enviarAgendamentos = value) : null,
-              activeColor: Colors.green,
+              activeThumbColor: Colors.green,
             ),
             SwitchListTile(
               title: const Text('Lembretes'),
               subtitle: const Text('Lembretes de agendamentos e manutenções'),
               value: _enviarLembretes,
               onChanged: _ativo ? (value) => setState(() => _enviarLembretes = value) : null,
-              activeColor: Colors.green,
+              activeThumbColor: Colors.green,
             ),
             SwitchListTile(
               title: const Text('Confirmações'),
               subtitle: const Text('Solicitações de confirmação de chegada'),
               value: _enviarConfirmacoes,
               onChanged: _ativo ? (value) => setState(() => _enviarConfirmacoes = value) : null,
-              activeColor: Colors.green,
+              activeThumbColor: Colors.green,
             ),
             SwitchListTile(
               title: const Text('Promoções'),
               subtitle: const Text('Ofertas e promoções especiais'),
               value: _enviarPromocoes,
               onChanged: _ativo ? (value) => setState(() => _enviarPromocoes = value) : null,
-              activeColor: Colors.green,
+              activeThumbColor: Colors.green,
             ),
           ],
         ),
@@ -452,11 +452,11 @@ class _WhatsAppConfigPageState extends State<WhatsAppConfigPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               children: [
-                const Icon(Icons.schedule, color: Colors.purple),
-                const SizedBox(width: 8),
-                const Text(
+                Icon(Icons.schedule, color: Colors.purple),
+                SizedBox(width: 8),
+                Text(
                   'Horário Comercial',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
@@ -468,9 +468,9 @@ class _WhatsAppConfigPageState extends State<WhatsAppConfigPage> {
               subtitle: const Text('Enviar mensagens apenas no horário comercial'),
               value: _respeitarHorarioComercial,
               onChanged: _ativo ? (value) => setState(() => _respeitarHorarioComercial = value) : null,
-              activeColor: Colors.green,
+              activeThumbColor: Colors.green,
             ),
-            if (_respeitarHorarioComercial) ..[
+            if (_respeitarHorarioComercial) ...[
               const SizedBox(height: 16),
               Row(
                 children: [

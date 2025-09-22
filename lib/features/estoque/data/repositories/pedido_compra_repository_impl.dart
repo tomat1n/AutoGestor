@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import '../../core/database/database.dart';
+import '../../../../core/database/database.dart';
 import '../../domain/entities/pedido_compra.dart';
 import '../../domain/entities/item_compra.dart';
 import '../../domain/entities/fornecedor.dart';
@@ -303,21 +303,23 @@ class PedidoCompraRepositoryImpl implements PedidoCompraRepository {
     );
   }
 
-  Produto _mapProdutoToEntity(ProdutoData data) {
+  Produto _mapProdutoToEntity(ProdutoTableData data) {
     return Produto(
       id: data.id,
+      codigo: data.codigo,
       nome: data.nome,
       descricao: data.descricao,
-      codigoBarras: data.codigoBarras,
       precoCompra: data.precoCompra,
       precoVenda: data.precoVenda,
       categoria: data.categoria,
       unidade: data.unidade,
       estoqueMinimo: data.estoqueMinimo,
+      quantidade: data.quantidade,
       ativo: data.ativo,
       imagemPath: data.imagemPath,
-      criadoEm: data.criadoEm,
-      atualizadoEm: data.atualizadoEm,
+      codigoBarras: data.codigoBarras,
+      createdAt: data.createdAt,
+      updatedAt: data.updatedAt,
     );
   }
 }

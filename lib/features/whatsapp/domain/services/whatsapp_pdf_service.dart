@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '../../../../core/utils/platform_utils.dart';
 import '../entities/whatsapp_config.dart';
 import '../repositories/whatsapp_repository.dart';
@@ -9,7 +11,7 @@ import '../../../pdv/domain/entities/item_venda.dart';
 import '../../../clientes/domain/entities/cliente.dart';
 import '../../../clientes/domain/repositories/cliente_repository.dart';
 import '../../../configuracoes/domain/entities/empresa_config.dart';
-import '../../../configuracoes/domain/repositories/empresa_config_repository.dart';
+import '../../../configuracoes/data/repositories/empresa_config_repository.dart';
 
 /// Serviço responsável por integrar o envio de PDFs via WhatsApp
 class WhatsAppPdfService {
@@ -249,14 +251,14 @@ class WhatsAppPdfService {
               color: PdfColors.blue800,
             ),
           ),
-          if (empresaConfig?.endereco.isNotEmpty == true) ..[
+          if (empresaConfig?.endereco?.isNotEmpty == true) ...[
             pw.SizedBox(height: 8),
             pw.Text(
               empresaConfig!.endereco!,
               style: const pw.TextStyle(fontSize: 12),
             ),
           ],
-          if (empresaConfig?.telefone?.isNotEmpty == true) ..[
+          if (empresaConfig?.telefone?.isNotEmpty == true) ...[
             pw.SizedBox(height: 4),
             pw.Text(
               'Tel: ${empresaConfig!.telefone}',
@@ -445,7 +447,3 @@ class OrcamentoItem {
     );
   }
 }
-
-// Imports necessários para PDF
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;

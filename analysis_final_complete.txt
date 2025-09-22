@@ -1,0 +1,468 @@
+﻿Analyzing lib...                                                
+
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:12:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:17:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:19:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:27:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:32:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:34:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:42:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:47:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:49:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:61:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:72:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:75:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seed_runner.dart:78:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:20:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:24:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:188:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:189:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:190:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:191:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:280:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:288:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:296:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:300:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\database\seeds.dart:397:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\core\di\service_locator.dart:157:3 - avoid_print
+   info - Parameter 'key' could be a super parameter - lib\core\pages\splash_page.dart:7:9 - use_super_parameters
+   info - Don't use 'BuildContext's across async gaps - lib\core\pages\splash_page.dart:70:13 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\core\pages\splash_page.dart:72:13 - use_build_context_synchronously
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\core\pages\splash_page.dart:120:51 - deprecated_member_use
+warning - The value of the local variable 'id' isn't used - lib\core\router\app_router.dart:244:25 - unused_local_variable
+warning - The value of the local variable 'colorScheme' isn't used - lib\core\widgets\custom_text_field.dart:85:11 - unused_local_variable
+   info - Parameter 'key' could be a super parameter - lib\core\widgets\error_widget.dart:8:9 - use_super_parameters
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\core\widgets\loading_overlay.dart:26:52 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\core\widgets\loading_overlay.dart:35:43 - deprecated_member_use
+   info - Parameter 'key' could be a super parameter - lib\core\widgets\loading_widget.dart:7:9 - use_super_parameters
+   info - Parameter 'key' could be a super parameter - lib\features\admin\presentation\middleware\admin_middleware.dart:9:9 - use_super_parameters
+   info - Parameter 'key' could be a super parameter - lib\features\admin\presentation\middleware\admin_middleware.dart:125:9 - use_super_parameters
+   info - Parameter 'key' could be a super parameter - lib\features\admin\presentation\pages\admin_panel_page.dart:11:9 - use_super_parameters
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\features\admin\presentation\pages\admin_panel_page.dart:347:17 - deprecated_member_use
+   info - Parameter 'key' could be a super parameter - lib\features\admin\presentation\widgets\admin_dashboard_card.dart:9:9 - use_super_parameters
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\presentation\widgets\admin_dashboard_card.dart:30:23 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\presentation\widgets\admin_dashboard_card.dart:31:23 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\presentation\widgets\admin_dashboard_card.dart:52:32 - deprecated_member_use
+   info - Parameter 'key' could be a super parameter - lib\features\admin\presentation\widgets\system_stats_section.dart:4:9 - use_super_parameters
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\presentation\widgets\system_stats_section.dart:63:21 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\presentation\widgets\system_stats_section.dart:64:21 - deprecated_member_use
+   info - Parameter 'key' could be a super parameter - lib\features\admin\presentation\widgets\user_management_section.dart:8:9 - use_super_parameters
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\features\admin\presentation\widgets\user_management_section.dart:280:36 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\features\admin\presentation\widgets\user_management_section.dart:299:36 - use_build_context_synchronously
+warning - Unused import: '../../../../core/database/models/usuario_table.dart' - lib\features\auth\data\models\usuario_mapper.dart:3:8 - unused_import
+   info - The imported package 'crypto' isn't a dependency of the importing package - lib\features\auth\data\repositories\auth_repository_impl.dart:2:8 - depend_on_referenced_packages
+warning - The receiver can't be null, so the null-aware operator '?.' is unnecessary - lib\features\auth\data\repositories\auth_repository_impl.dart:59:47 - invalid_null_aware_operator
+warning - The receiver can't be null, so the null-aware operator '?.' is unnecessary - lib\features\auth\data\repositories\auth_repository_impl.dart:60:55 - invalid_null_aware_operator
+warning - The '!' will have no effect because the receiver can't be null - lib\features\auth\data\repositories\auth_repository_impl.dart:381:53 - unnecessary_non_null_assertion
+   info - Parameter 'key' could be a super parameter - lib\features\auth\presentation\middleware\auth_middleware.dart:12:9 - use_super_parameters
+   info - Parameter 'key' could be a super parameter - lib\features\auth\presentation\middleware\auth_middleware.dart:60:9 - use_super_parameters
+   info - Parameter 'key' could be a super parameter - lib\features\auth\presentation\middleware\auth_middleware.dart:188:9 - use_super_parameters
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\presentation\middleware\auth_middleware.dart:234:24 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\presentation\middleware\auth_middleware.dart:236:43 - deprecated_member_use
+   info - Parameter 'key' could be a super parameter - lib\features\auth\presentation\middleware\expired_subscription_page.dart:8:9 - use_super_parameters
+warning - The left operand can't be null, so the right operand is never executed - lib\features\auth\presentation\middleware\expired_subscription_page.dart:74:76 - dead_null_aware_expression
+   info - Parameter 'key' could be a super parameter - lib\features\auth\presentation\pages\cadastro_page.dart:8:9 - use_super_parameters
+warning - Unused import: '../../../../core/utils/platform_utils.dart' - lib\features\auth\presentation\pages\configuracoes_page.dart:1:8 - unused_import
+warning - The left operand can't be null, so the right operand is never executed - lib\features\auth\presentation\pages\configuracoes_page.dart:64:46 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\auth\presentation\pages\configuracoes_page.dart:65:48 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\auth\presentation\pages\configuracoes_page.dart:66:52 - dead_null_aware_expression
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\features\auth\presentation\pages\configuracoes_page.dart:99:22 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\presentation\pages\configuracoes_page.dart:404:45 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\presentation\pages\configuracoes_page.dart:478:47 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\features\auth\presentation\pages\configuracoes_page.dart:846:42 - use_build_context_synchronously
+   info - Parameter 'key' could be a super parameter - lib\features\auth\presentation\pages\login_page.dart:8:9 - use_super_parameters
+warning - Unused import: '../../../../core/utils/platform_utils.dart' - lib\features\auth\presentation\widgets\company_branding_widget.dart:1:8 - unused_import
+warning - The left operand can't be null, so the right operand is never executed - lib\features\auth\presentation\widgets\company_branding_widget.dart:49:62 - dead_null_aware_expression
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\presentation\widgets\company_branding_widget.dart:89:37 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\presentation\widgets\company_branding_widget.dart:119:47 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\presentation\widgets\company_branding_widget.dart:122:49 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\presentation\widgets\company_branding_widget.dart:232:56 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\presentation\widgets\company_branding_widget.dart:243:35 - deprecated_member_use
+warning - Unused import: '../../../../core/widgets/loading_overlay.dart' - lib\features\configuracoes\presentation\pages\empresa_config_page.dart:6:8 - unused_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\configuracoes\presentation\pages\empresa_config_page.dart:123:69 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\configuracoes\presentation\pages\empresa_config_page.dart:336:93 - deprecated_member_use
+warning - The value of the local variable 'success' isn't used - lib\features\configuracoes\presentation\pages\empresa_config_page.dart:504:13 - unused_local_variable
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\configuracoes\presentation\pages\empresa_config_page.dart:515:42 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\configuracoes\presentation\pages\empresa_config_page.dart:541:48 - deprecated_member_use
+warning - The value of the local variable 'controller' isn't used - lib\features\configuracoes\presentation\widgets\empresa_config_form.dart:42:11 - unused_local_variable
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\configuracoes\presentation\widgets\tabs\contatos_tab.dart:218:33 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\configuracoes\presentation\widgets\tabs\contatos_tab.dart:232:57 - deprecated_member_use
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\dados_basicos_tab.dart:39:54 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\dados_basicos_tab.dart:40:57 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\dados_basicos_tab.dart:44:48 - dead_null_aware_expression
+warning - The value of the local variable 'controller' isn't used - lib\features\configuracoes\presentation\widgets\tabs\dados_basicos_tab.dart:61:11 - unused_local_variable
+   info - 'groupValue' is deprecated and shouldn't be used. Use a RadioGroup ancestor to manage group value instead. This feature was deprecated after v3.32.0-0.0.pre - lib\features\configuracoes\presentation\widgets\tabs\dados_basicos_tab.dart:80:23 - deprecated_member_use
+   info - 'onChanged' is deprecated and shouldn't be used. Use RadioGroup to handle value change instead. This feature was deprecated after v3.32.0-0.0.pre - lib\features\configuracoes\presentation\widgets\tabs\dados_basicos_tab.dart:81:23 - deprecated_member_use
+   info - 'groupValue' is deprecated and shouldn't be used. Use a RadioGroup ancestor to manage group value instead. This feature was deprecated after v3.32.0-0.0.pre - lib\features\configuracoes\presentation\widgets\tabs\dados_basicos_tab.dart:95:23 - deprecated_member_use
+   info - 'onChanged' is deprecated and shouldn't be used. Use RadioGroup to handle value change instead. This feature was deprecated after v3.32.0-0.0.pre - lib\features\configuracoes\presentation\widgets\tabs\dados_basicos_tab.dart:96:23 - deprecated_member_use
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\endereco_tab.dart:41:43 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\endereco_tab.dart:43:49 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\endereco_tab.dart:45:49 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\endereco_tab.dart:46:49 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\endereco_tab.dart:47:49 - dead_null_aware_expression
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\configuracoes\presentation\widgets\tabs\endereco_tab.dart:351:33 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\configuracoes\presentation\widgets\tabs\endereco_tab.dart:365:57 - deprecated_member_use
+   info - The import of 'package:flutter/services.dart' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart' - lib\features\configuracoes\presentation\widgets\tabs\financeiro_tab.dart:2:8 - unnecessary_import
+warning - Unused import: '../../../domain/entities/empresa_config.dart' - lib\features\configuracoes\presentation\widgets\tabs\financeiro_tab.dart:5:8 - unused_import
+warning - Unused import: '../../../../../core/widgets/custom_text_field.dart' - lib\features\configuracoes\presentation\widgets\tabs\financeiro_tab.dart:6:8 - unused_import
+warning - Unused import: '../../../../../core/database/database.dart' - lib\features\configuracoes\presentation\widgets\tabs\financeiro_tab.dart:7:8 - unused_import
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\financeiro_tab.dart:44:121 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\financeiro_tab.dart:61:123 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\financeiro_tab.dart:85:121 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\configuracoes\presentation\widgets\tabs\financeiro_tab.dart:130:113 - dead_null_aware_expression
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\configuracoes\presentation\widgets\tabs\financeiro_tab.dart:333:33 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\configuracoes\presentation\widgets\tabs\financeiro_tab.dart:347:57 - deprecated_member_use
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:50:30 - dead_code
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:126:39 - dead_code
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:126:76 - dead_code
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:152:39 - dead_code
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:152:76 - dead_code
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:189:39 - dead_code
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:189:76 - dead_code
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:214:39 - dead_code
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:214:76 - dead_code
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:236:33 - dead_code
+warning - Dead code - lib\features\configuracoes\presentation\widgets\tabs\fiscal_tab.dart:236:70 - dead_code
+  error - Undefined class 'ProdutoData' - lib\features\estoque\data\repositories\pedido_compra_repository_impl.dart:306:31 - undefined_class
+  error - The named parameter 'codigo' is required, but there's no corresponding argument - lib\features\estoque\data\repositories\pedido_compra_repository_impl.dart:307:12 - missing_required_argument
+  error - The named parameter 'createdAt' is required, but there's no corresponding argument - lib\features\estoque\data\repositories\pedido_compra_repository_impl.dart:307:12 - missing_required_argument
+  error - The named parameter 'updatedAt' is required, but there's no corresponding argument - lib\features\estoque\data\repositories\pedido_compra_repository_impl.dart:307:12 - missing_required_argument
+  error - The named parameter 'criadoEm' isn't defined - lib\features\estoque\data\repositories\pedido_compra_repository_impl.dart:319:7 - undefined_named_parameter
+  error - The named parameter 'atualizadoEm' isn't defined - lib\features\estoque\data\repositories\pedido_compra_repository_impl.dart:320:7 - undefined_named_parameter
+   info - Don't invoke 'print' in production code - lib\features\estoque\data\repositories\produto_repository.dart:72:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\estoque\data\repositories\produto_repository.dart:75:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\estoque\data\repositories\produto_repository.dart:78:7 - avoid_print
+warning - The left operand can't be null, so the right operand is never executed - lib\features\estoque\data\repositories\produto_repository.dart:218:30 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\estoque\data\repositories\produto_repository.dart:222:40 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\estoque\data\repositories\produto_repository.dart:223:38 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\estoque\data\repositories\produto_repository.dart:225:32 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\estoque\data\repositories\produto_repository.dart:226:44 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\estoque\data\repositories\produto_repository.dart:227:38 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\estoque\data\repositories\produto_repository.dart:228:28 - dead_null_aware_expression
+warning - Unused import: '../../../../core/utils/platform_utils.dart' - lib\features\estoque\presentation\pages\estoque_page.dart:1:8 - unused_import
+warning - The left operand can't be null, so the right operand is never executed - lib\features\estoque\presentation\pages\estoque_page.dart:465:36 - dead_null_aware_expression
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:616:33 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:618:40 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:625:40 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:699:33 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:700:40 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:707:40 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:1033:23 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:1036:23 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:1037:30 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:1084:33 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:1086:40 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\estoque\presentation\pages\estoque_page.dart:1094:40 - use_build_context_synchronously
+   info - The import of 'dart:typed_data' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/foundation.dart' - lib\features\estoque\presentation\pages\produto_form_page.dart:1:8 - unnecessary_import
+warning - Unused import: '../../../../core/utils/platform_utils.dart' - lib\features\estoque\presentation\pages\produto_form_page.dart:2:8 - unused_import
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\features\estoque\presentation\pages\produto_form_page.dart:137:44 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\features\estoque\presentation\pages\produto_form_page.dart:164:44 - use_build_context_synchronously
+   info - Don't invoke 'print' in production code - lib\features\estoque\presentation\pages\produto_form_page.dart:233:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\estoque\presentation\pages\produto_form_page.dart:256:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\estoque\presentation\pages\produto_form_page.dart:259:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\estoque\presentation\pages\produto_form_page.dart:262:9 - avoid_print
+warning - The value of the local variable 'produtoId' isn't used - lib\features\estoque\presentation\pages\produto_form_page.dart:263:15 - unused_local_variable
+   info - Don't invoke 'print' in production code - lib\features\estoque\presentation\pages\produto_form_page.dart:278:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\estoque\presentation\pages\produto_form_page.dart:289:7 - avoid_print
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\estoque\presentation\pages\scanner_estoque_page.dart:146:37 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\estoque\presentation\pages\scanner_estoque_page.dart:173:35 - deprecated_member_use
+warning - The value of the field '_ref' isn't used - lib\features\estoque\presentation\providers\estoque_provider.dart:73:13 - unused_field
+   info - Don't invoke 'print' in production code - lib\features\estoque\presentation\providers\estoque_provider.dart:99:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\estoque\presentation\providers\estoque_provider.dart:100:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\estoque\presentation\providers\estoque_provider.dart:114:7 - avoid_print
+warning - Unused import: '../../../../core/utils/platform_utils.dart' - lib\features\estoque\presentation\widgets\produto_card.dart:1:8 - unused_import
+   info - Use 'const' with the constructor to improve performance - lib\features\orcamentos\data\repositories\orcamentos_repository_impl.dart:107:24 - prefer_const_constructors
+warning - Unused import: '../repositories/orcamentos_repository.dart' - lib\features\orcamentos\domain\services\orcamentos_service_provider.dart:3:8 - unused_import
+warning - Unused import: '../../../../core/utils/platform_utils.dart' - lib\features\orcamentos\domain\services\orcamentos_whatsapp_service.dart:1:8 - unused_import
+warning - Unused import: '../../../whatsapp/domain/services/whatsapp_templates.dart' - lib\features\orcamentos\domain\services\orcamentos_whatsapp_service.dart:6:8 - unused_import
+warning - Unused import: 'package:cross_file/cross_file.dart' - lib\features\orcamentos\presentation\pages\orcamento_detalhes_page.dart:9:8 - unused_import
+warning - Unused import: '../../../../core/utils/platform_utils.dart' - lib\features\orcamentos\presentation\pages\orcamento_detalhes_page.dart:12:8 - unused_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\orcamentos\presentation\pages\orcamento_detalhes_page.dart:317:45 - deprecated_member_use
+warning - Unused import: 'package:provider/provider.dart' - lib\features\orcamentos\presentation\pages\orcamento_form_page.dart:3:8 - unused_import
+warning - Unused import: '../../../../core/utils/platform_utils.dart' - lib\features\orcamentos\presentation\pages\orcamento_form_page.dart:4:8 - unused_import
+   info - The import of 'dart:typed_data' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/foundation.dart' - lib\features\orcamentos\presentation\pages\orcamento_form_page.dart:7:8 - unnecessary_import
+warning - The declaration '_adicionarItem' isn't referenced - lib\features\orcamentos\presentation\pages\orcamento_form_page.dart:673:8 - unused_element
+warning - The declaration '_alterarValor' isn't referenced - lib\features\orcamentos\presentation\pages\selecionar_produtos_page.dart:117:8 - unused_element
+warning - Unused import: '../models/ordens_servico_table.dart' - lib\features\ordens_servico\data\repositories\ordens_servico_repository_impl.dart:5:8 - unused_import
+   info - Don't invoke 'print' in production code - lib\features\ordens_servico\domain\services\ordens_servico_service.dart:191:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\ordens_servico\domain\services\ordens_servico_service.dart:247:9 - avoid_print
+warning - The '!' will have no effect because the receiver can't be null - lib\features\ordens_servico\domain\services\ordens_servico_service.dart:438:53 - unnecessary_non_null_assertion
+   info - Don't invoke 'print' in production code - lib\features\ordens_servico\domain\services\ordens_servico_service.dart:446:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\ordens_servico\domain\services\ordens_servico_service.dart:468:9 - avoid_print
+  error - The function 'OrdensServicoRepositoryImpl' isn't defined - lib\features\ordens_servico\domain\services\ordens_servico_service_provider.dart:9:22 - undefined_function
+warning - Unused import: 'package:flutter_riverpod/flutter_riverpod.dart' - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:1:8 - unused_import
+warning - Unused import: '../../../whatsapp/domain/entities/whatsapp_message.dart' - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:4:8 - unused_import
+warning - Unused import: '../../../clientes/domain/entities/cliente.dart' - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:5:8 - unused_import
+warning - Unused import: '../../../clientes/data/repositories/cliente_repository_impl.dart' - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:7:8 - unused_import
+warning - Unused import: '../../../../core/providers/database_provider.dart' - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:8:8 - unused_import
+warning - The value of the field '_whatsappService' isn't used - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:11:36 - unused_field
+warning - The value of the local variable 'mensagem' isn't used - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:34:13 - unused_local_variable
+   info - Use 'const' for final variables initialized to a constant value - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:47:7 - prefer_const_declarations
+warning - The value of the local variable 'mensagem' isn't used - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:73:13 - unused_local_variable
+   info - Use 'const' for final variables initialized to a constant value - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:86:7 - prefer_const_declarations
+warning - The value of the local variable 'mensagem' isn't used - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:112:13 - unused_local_variable
+   info - Use 'const' for final variables initialized to a constant value - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:126:7 - prefer_const_declarations
+warning - The value of the local variable 'mensagem' isn't used - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:149:13 - unused_local_variable
+   info - Use 'const' for final variables initialized to a constant value - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:162:7 - prefer_const_declarations
+warning - The value of the local variable 'mensagem' isn't used - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:185:13 - unused_local_variable
+   info - Use 'const' for final variables initialized to a constant value - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:198:7 - prefer_const_declarations
+warning - The '!' will have no effect because the receiver can't be null - lib\features\ordens_servico\domain\services\ordens_servico_whatsapp_service.dart:229:89 - unnecessary_non_null_assertion
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\ordens_servico\presentation\pages\ordens_servico_page.dart:217:22 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\ordens_servico\presentation\pages\ordens_servico_page.dart:219:41 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\ordens_servico\presentation\pages\ordens_servico_page.dart:258:22 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\ordens_servico\presentation\pages\ordens_servico_page.dart:260:41 - deprecated_member_use
+warning - The left operand can't be null, so the right operand is never executed - lib\features\ordens_servico\presentation\providers\ordens_servico_provider.dart:50:74 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\ordens_servico\presentation\providers\ordens_servico_provider.dart:52:51 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\pdv\data\repositories\venda_repository.dart:140:37 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\pdv\data\repositories\venda_repository.dart:143:39 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\pdv\data\repositories\venda_repository.dart:148:47 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\pdv\data\repositories\venda_repository.dart:149:51 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\pdv\data\repositories\venda_repository.dart:150:35 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\pdv\domain\services\cart_service.dart:52:46 - dead_null_aware_expression
+warning - Unused import: '../../../../core/utils/platform_utils.dart' - lib\features\pdv\domain\services\csv_service.dart:1:8 - unused_import
+warning - Unused import: 'dart:convert' - lib\features\pdv\domain\services\csv_service.dart:2:8 - unused_import
+warning - The value of the field '_fileNameFormat' isn't used - lib\features\pdv\domain\services\csv_service.dart:12:27 - unused_field
+warning - The declaration '_gerarCsvVendas' isn't referenced - lib\features\pdv\domain\services\csv_service.dart:41:10 - unused_element
+warning - The declaration '_gerarCsvVendasDetalhadas' isn't referenced - lib\features\pdv\domain\services\csv_service.dart:77:10 - unused_element
+warning - The declaration '_gerarCsvRelatorioVendas' isn't referenced - lib\features\pdv\domain\services\csv_service.dart:175:10 - unused_element
+warning - The receiver can't be 'null' because of short-circuiting, so the null-aware operator '?.' can't be used - lib\features\pdv\domain\services\pdf_service.dart:279:36 - invalid_null_aware_operator
+warning - The declaration '_salvarPdf' isn't referenced - lib\features\pdv\domain\services\pdf_service.dart:704:21 - unused_element
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\carrinho_page.dart:65:28 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\carrinho_page.dart:77:7 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\carrinho_page.dart:106:30 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\carrinho_page.dart:116:9 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\carrinho_page.dart:118:30 - use_build_context_synchronously
+warning - The value of the local variable 'itensCarrinho' isn't used - lib\features\pdv\presentation\pages\carrinho_page.dart:183:13 - unused_local_variable
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\carrinho_page.dart:207:28 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\carrinho_page.dart:214:28 - use_build_context_synchronously
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\pdv\presentation\pages\carrinho_page.dart:306:45 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\historico_page.dart:128:20 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\historico_page.dart:131:28 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\historico_page.dart:156:24 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\historico_page.dart:157:22 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\historico_page.dart:160:28 - use_build_context_synchronously
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\pdv\presentation\pages\historico_page.dart:335:39 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\historico_page.dart:409:9 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\pdv\presentation\pages\historico_page.dart:458:28 - use_build_context_synchronously
+warning - The declaration '_processarCodigoEscaneado' isn't referenced - lib\features\pdv\presentation\pages\pdv_page.dart:86:16 - unused_element
+warning - The left operand can't be null, so the right operand is never executed - lib\features\pdv\presentation\pages\pdv_page.dart:369:96 - dead_null_aware_expression
+warning - The value of the local variable 'inicioDia' isn't used - lib\features\pdv\presentation\providers\venda_provider.dart:57:9 - unused_local_variable
+warning - The left operand can't be null, so the right operand is never executed - lib\features\pdv\presentation\widgets\produto_card.dart:96:81 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\pdv\presentation\widgets\produto_card.dart:110:96 - dead_null_aware_expression
+warning - The left operand can't be null, so the right operand is never executed - lib\features\pdv\presentation\widgets\produto_card.dart:118:98 - dead_null_aware_expression
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\pdv\presentation\widgets\resumo_carrinho.dart:23:70 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\pdv\presentation\widgets\resumo_carrinho.dart:26:56 - deprecated_member_use
+warning - The value of the local variable 'pdfService' isn't used - lib\features\pdv\presentation\widgets\venda_card.dart:21:11 - unused_local_variable
+warning - Unused import: '../models/servicos_table.dart' - lib\features\servicos\data\repositories\servicos_repository_impl.dart:5:8 - unused_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\servicos\presentation\pages\orcamento_servicos_page.dart:144:47 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\servicos\presentation\pages\orcamento_servicos_page.dart:215:53 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\servicos\presentation\pages\orcamento_servicos_page.dart:295:51 - deprecated_member_use
+warning - The value of the local variable 'orcamento' isn't used - lib\features\servicos\presentation\pages\orcamento_servicos_page.dart:408:13 - unused_local_variable
+   info - Don't use 'BuildContext's across async gaps - lib\features\servicos\presentation\pages\orcamento_servicos_page.dart:434:30 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\servicos\presentation\pages\orcamento_servicos_page.dart:451:30 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\servicos\presentation\pages\orcamento_servicos_page.dart:459:28 - use_build_context_synchronously
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\features\servicos\presentation\pages\servico_form_page.dart:157:7 - deprecated_member_use
+warning - Unused import: '../../domain/entities/venda.dart' - lib\features\vendas\presentation\pages\vendas_page.dart:6:8 - unused_import
+   info - Don't use 'BuildContext's across async gaps - lib\features\vendas\presentation\pages\vendas_page.dart:131:28 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\vendas\presentation\pages\vendas_page.dart:138:28 - use_build_context_synchronously
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\vendas\presentation\pages\vendas_page.dart:192:53 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps - lib\features\vendas\presentation\pages\vendas_page.dart:600:30 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\vendas\presentation\pages\vendas_page.dart:607:30 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\vendas\presentation\pages\vendas_page.dart:615:28 - use_build_context_synchronously
+warning - The value of the field '_database' isn't used - lib\features\whatsapp\data\repositories\whatsapp_repository.dart:8:21 - unused_field
+   info - The member 'salvarMensagem' overrides an inherited member but isn't annotated with '@override' - lib\features\whatsapp\data\repositories\whatsapp_repository.dart:11:27 - annotate_overrides
+warning - Unused import: '../entities/whatsapp_config.dart' - lib\features\whatsapp\domain\services\whatsapp_arrival_service.dart:1:8 - unused_import
+  error - The named parameter 'nomeEmpresa' is required, but there's no corresponding argument - lib\features\whatsapp\domain\services\whatsapp_arrival_service.dart:201:40 - missing_required_argument
+  error - The named parameter 'servico' isn't defined - lib\features\whatsapp\domain\services\whatsapp_arrival_service.dart:204:7 - undefined_named_parameter
+warning - Unused import: '../entities/whatsapp_config.dart' - lib\features\whatsapp\domain\services\whatsapp_maintenance_service.dart:1:8 - unused_import
+warning - The value of the field '_clienteRepository' isn't used - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:19:27 - unused_field
+  error - The method 'buscarConfiguracoes' isn't defined for the type 'WhatsAppRepository' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:40:48 - undefined_method
+  error - Undefined class 'File' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:46:13 - undefined_class
+  error - The method 'enviarArquivo' isn't defined for the type 'WhatsAppManagerService' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:67:46 - undefined_method
+   info - Don't invoke 'print' in production code - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:82:7 - avoid_print
+  error - The method 'buscarConfiguracoes' isn't defined for the type 'WhatsAppRepository' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:98:48 - undefined_method
+  error - The argument type 'EmpresaConfigData?' can't be assigned to the parameter type 'EmpresaConfig?'.  - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:114:24 - argument_type_not_assignable
+  error - The method 'enviarArquivo' isn't defined for the type 'WhatsAppManagerService' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:126:46 - undefined_method
+   info - Don't invoke 'print' in production code - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:141:7 - avoid_print
+  error - Undefined class 'File' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:149:14 - undefined_class
+  error - The method 'buscarConfiguracoes' isn't defined for the type 'WhatsAppRepository' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:154:48 - undefined_method
+  error - The method 'enviarArquivo' isn't defined for the type 'WhatsAppManagerService' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:160:37 - undefined_method
+   info - Don't invoke 'print' in production code - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:166:7 - avoid_print
+  error - The name 'File' isn't a type, so it can't be used as a type argument - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:172:10 - non_type_as_type_argument
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:184:17 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:187:7 - undefined_identifier
+  error - Undefined name 'PdfPageFormat' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:188:21 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:189:23 - creation_with_non_type
+  error - Undefined class 'Context' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:190:17 - undefined_class
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:191:18 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:192:33 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:196:15 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:200:15 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:204:15 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:208:15 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:214:15 - undefined_identifier
+  error - Undefined name 'Directory' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:225:23 - undefined_identifier
+  error - The method 'File' isn't defined for the type 'WhatsAppPdfService' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:226:18 - undefined_method
+  error - Undefined class 'Widget' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:232:3 - undefined_class
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:233:12 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:235:22 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:236:19 - undefined_identifier
+  error - Undefined name 'PdfColors' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:237:16 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:238:17 - undefined_identifier
+  error - Undefined name 'PdfColors' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:238:38 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:239:23 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:241:14 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:242:29 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:244:11 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:246:20 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:248:27 - undefined_identifier
+  error - Undefined name 'PdfColors' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:249:22 - undefined_identifier
+warning - The receiver can't be 'null' because of short-circuiting, so the null-aware operator '?.' can't be used - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:252:38 - invalid_null_aware_operator
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:253:13 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:254:13 - undefined_identifier
+warning - The '!' will have no effect because the receiver can't be null - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:255:38 - unnecessary_non_null_assertion
+  error - The name 'TextStyle' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:256:28 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:260:13 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:261:13 - undefined_identifier
+  error - The name 'TextStyle' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:263:28 - creation_with_non_type
+  error - Undefined class 'Widget' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:271:3 - undefined_class
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:272:12 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:273:22 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:274:19 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:275:17 - undefined_identifier
+  error - Undefined name 'PdfColors' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:275:38 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:276:23 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:278:14 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:279:29 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:281:11 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:283:20 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:285:27 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:288:11 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:290:13 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:291:11 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:293:13 - undefined_identifier
+  error - Undefined class 'Widget' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:299:3 - undefined_class
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:300:12 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:301:15 - undefined_identifier
+  error - Undefined name 'PdfColors' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:301:41 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:304:9 - undefined_identifier
+  error - The name 'BoxDecoration' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:305:29 - creation_with_non_type
+  error - Undefined name 'PdfColors' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:305:53 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:307:13 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:308:30 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:309:22 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:309:48 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:309:73 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:311:13 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:312:30 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:313:22 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:313:50 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:313:75 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:315:13 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:316:30 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:317:22 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:317:46 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:317:71 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:322:32 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:324:13 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:325:30 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:326:22 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:328:13 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:329:30 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:330:22 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:332:13 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:333:30 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:334:22 - undefined_identifier
+  error - Undefined class 'Widget' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:342:3 - undefined_class
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:343:12 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:344:22 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:345:19 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:346:17 - undefined_identifier
+  error - Undefined name 'PdfColors' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:346:38 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:347:23 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:349:14 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:350:28 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:352:11 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:354:20 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:356:27 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:359:11 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:361:20 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:363:27 - undefined_identifier
+  error - Undefined name 'PdfColors' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:364:22 - undefined_identifier
+  error - Undefined class 'Widget' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:372:3 - undefined_class
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:373:12 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:375:22 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:376:19 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:377:17 - undefined_identifier
+  error - Undefined name 'PdfColors' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:377:38 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:378:23 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:380:14 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:381:29 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:383:11 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:385:20 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:385:45 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:387:11 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:388:11 - undefined_identifier
+  error - Undefined class 'Widget' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:394:3 - undefined_class
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:395:12 - undefined_identifier
+  error - The name 'EdgeInsets' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:397:22 - creation_with_non_type
+  error - The name 'BoxDecoration' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:398:25 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:399:17 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:400:16 - undefined_identifier
+  error - Undefined name 'PdfColors' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:400:37 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:403:14 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:405:11 - undefined_identifier
+  error - The name 'TextStyle' isn't a class - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:407:26 - creation_with_non_type
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:408:24 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:410:11 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:411:11 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:413:20 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:415:27 - undefined_identifier
+  error - Undefined name 'pw' - lib\features\whatsapp\domain\services\whatsapp_pdf_service.dart:417:24 - undefined_identifier
+warning - Unused import: '../entities/whatsapp_message.dart' - lib\features\whatsapp\domain\services\whatsapp_service.dart:1:8 - unused_import
+warning - Unused import: '../entities/whatsapp_config.dart' - lib\features\whatsapp\domain\services\whatsapp_service.dart:2:8 - unused_import
+warning - Unused import: '../entities/whatsapp_message.dart' - lib\features\whatsapp\domain\services\whatsapp_service_impl.dart:1:8 - unused_import
+warning - Unused import: '../entities/whatsapp_config.dart' - lib\features\whatsapp\domain\services\whatsapp_service_impl.dart:2:8 - unused_import
+   info - Use 'const' with the constructor to improve performance - lib\features\whatsapp\domain\services\whatsapp_service_impl.dart:15:28 - prefer_const_constructors
+  error - The getter 'horaInicioComercial' isn't defined for the type 'WhatsAppConfig' - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:66:45 - undefined_getter
+  error - The getter 'horaFimComercial' isn't defined for the type 'WhatsAppConfig' - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:67:42 - undefined_getter
+  error - The getter 'intervaloPadraoMinutos' isn't defined for the type 'WhatsAppConfig' - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:68:40 - undefined_getter
+  error - The getter 'enviarAgendamentos' isn't defined for the type 'WhatsAppConfig' - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:72:40 - undefined_getter
+  error - The getter 'respeitarHorarioComercial' isn't defined for the type 'WhatsAppConfig' - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:76:47 - undefined_getter
+  error - The named parameter 'enviarAgendamentos' isn't defined - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:97:9 - undefined_named_parameter
+  error - The named parameter 'respeitarHorarioComercial' isn't defined - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:101:9 - undefined_named_parameter
+  error - The named parameter 'horaInicioComercial' isn't defined - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:102:9 - undefined_named_parameter
+  error - The named parameter 'horaFimComercial' isn't defined - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:103:9 - undefined_named_parameter
+  error - The named parameter 'intervaloPadraoMinutos' isn't defined - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:104:9 - undefined_named_parameter
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:301:38 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\whatsapp\presentation\pages\whatsapp_config_page.dart:302:36 - deprecated_member_use
+   info - Parameter 'key' could be a super parameter - lib\features\whatsapp\presentation\pages\whatsapp_dashboard_page.dart:11:9 - use_super_parameters
+  error - A value of type 'List<WhatsAppMessage>' can't be assigned to a variable of type 'List<Map<String, dynamic>>' - lib\features\whatsapp\presentation\pages\whatsapp_dashboard_page.dart:52:25 - invalid_assignment
+  error - The named parameter 'ordenacao' isn't defined - lib\features\whatsapp\presentation\pages\whatsapp_dashboard_page.dart:54:9 - undefined_named_parameter
+  error - The method 'listarMensagensPendentes' isn't defined for the type 'WhatsAppRepository' - lib\features\whatsapp\presentation\pages\whatsapp_dashboard_page.dart:61:49 - undefined_method
+   info - Use 'const' with the constructor to improve performance - lib\features\whatsapp\presentation\pages\whatsapp_dashboard_page.dart:446:25 - prefer_const_constructors
+  error - The method 'processarFilaMensagens' isn't defined for the type 'WhatsAppManagerService' - lib\features\whatsapp\presentation\pages\whatsapp_dashboard_page.dart:607:35 - undefined_method
+  error - The method 'removerMensagem' isn't defined for the type 'WhatsAppRepository' - lib\features\whatsapp\presentation\pages\whatsapp_dashboard_page.dart:639:31 - undefined_method
+   info - The prefix 'VendasVenda' isn't a lower_case_with_underscores identifier - lib\features\whatsapp\presentation\pages\whatsapp_demo_page.dart:5:56 - library_prefixes
+  error - Target of URI doesn't exist: '../../orcamentos/domain/services/orcamentos_service_provider.dart' - lib\features\whatsapp\presentation\pages\whatsapp_integration_demo.dart:3:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../ordens_servico/domain/services/ordens_servico_service_provider.dart' - lib\features\whatsapp\presentation\pages\whatsapp_integration_demo.dart:4:8 - uri_does_not_exist
+  error - Arguments of a constant creation must be constant expressions - lib\features\whatsapp\presentation\pages\whatsapp_integration_demo.dart:153:38 - const_with_non_constant_argument
+  error - The getter 'whatsapp' isn't defined for the type 'Icons' - lib\features\whatsapp\presentation\pages\whatsapp_integration_demo.dart:153:44 - undefined_getter
+  error - Undefined name 'orcamentosServiceProvider' - lib\features\whatsapp\presentation\pages\whatsapp_integration_demo.dart:289:42 - undefined_identifier
+  error - Undefined name 'ordensServicoServiceProvider' - lib\features\whatsapp\presentation\pages\whatsapp_integration_demo.dart:290:45 - undefined_identifier
+warning - The declaration '_setLoading' isn't referenced - lib\features\whatsapp\presentation\providers\whatsapp_sales_provider.dart:88:8 - unused_element
+warning - The declaration '_setError' isn't referenced - lib\features\whatsapp\presentation\providers\whatsapp_sales_provider.dart:93:8 - unused_element
+   info - Don't invoke 'print' in production code - lib\main.dart:25:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\main.dart:33:5 - avoid_print
+
+flutter : 454 issues found. (ran in 5.7s)
+No linha:1 caractere:1
++ flutter analyze lib --fatal-infos 2>&1 
+| Out-File -FilePath "analysis ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecifie 
+   d: (454 issues found. (ran in 5.7s):S  
+  tring) [], RemoteException
+    + FullyQualifiedErrorId : NativeComma 
+   ndError
+ 
