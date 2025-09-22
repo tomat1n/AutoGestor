@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/provider.dart';
+import 'package:get_it/get_it.dart';
 import '../providers/whatsapp_sales_provider.dart';
-import '../../orcamentos/domain/entities/orcamento.dart';
-import '../../ordens_servico/domain/entities/ordem_servico.dart';
+import '../../../pdv/domain/entities/venda.dart';
 
 /// Página de demonstração para testar as funcionalidades de WhatsApp Sales
 class WhatsAppSalesDemoPage extends StatefulWidget {
@@ -38,8 +38,8 @@ class _WhatsAppSalesDemoPageState extends State<WhatsAppSalesDemoPage> {
           backgroundColor: Colors.green[700],
           foregroundColor: Colors.white,
         ),
-        body: Consumer<WhatsAppSalesProvider>(
-          builder: (context, provider, child) {
+        body: Consumer(
+          builder: (context, WhatsAppSalesProvider provider, child) {
             return SingleChildScrollView(
               padding: const EdgeInsets.all(16.0),
               child: Form(
@@ -322,32 +322,15 @@ class _WhatsAppSalesDemoPageState extends State<WhatsAppSalesDemoPage> {
     // Criar venda de exemplo
     final venda = Venda(
       id: DateTime.now().millisecondsSinceEpoch,
-      nomeCliente: _nomeClienteController.text,
-      telefoneCliente: provider.formatarTelefone(_telefoneController.text),
-      valorTotal: 350.00,
+      dataVenda: DateTime.now(),
+      subtotal: 350.00,
+      desconto: 0.0,
+      total: 350.00,
       formaPagamento: 'Cartão de Crédito',
       observacoes: _observacoesController.text.isEmpty ? null : _observacoesController.text,
-      dataVenda: DateTime.now(),
-      itens: [
-        const ItemVenda(
-          id: 1,
-          descricao: 'Óleo Motor 5W30',
-          quantidade: 4,
-          valorUnitario: 25.00,
-        ),
-        const ItemVenda(
-          id: 2,
-          descricao: 'Filtro de Óleo',
-          quantidade: 1,
-          valorUnitario: 35.00,
-        ),
-        const ItemVenda(
-          id: 3,
-          descricao: 'Mão de obra - Troca de óleo',
-          quantidade: 1,
-          valorUnitario: 215.00,
-        ),
-      ],
+      nomeCliente: _nomeClienteController.text,
+      criadoEm: DateTime.now(),
+      atualizadoEm: DateTime.now(),
     );
 
     final sucesso = await provider.enviarReciboVenda(
@@ -370,17 +353,20 @@ class _WhatsAppSalesDemoPageState extends State<WhatsAppSalesDemoPage> {
   void _enviarOrcamentoDemo(WhatsAppSalesProvider provider) async {
     if (!_formKey.currentState!.validate()) return;
 
-    // Criar orçamento de exemplo
-    final orcamento = provider.criarOrcamentoExemplo(
-      nomeCliente: _nomeClienteController.text,
-      telefoneCliente: provider.formatarTelefone(_telefoneController.text),
-    );
-
     final sucesso = await provider.enviarOrcamentoServicos(
       telefone: provider.formatarTelefone(_telefoneController.text),
-      nomeCliente: 'Cliente Demo',
-      servicos: [],
-      valorTotal: 0.0,
+      nomeCliente: _nomeClienteController.text,
+      servicos: [
+        {
+          'nome': 'Troca de óleo',
+          'valor': 150.0,
+        },
+        {
+          'nome': 'Filtro de ar',
+          'valor': 80.0,
+        },
+      ],
+      valorTotal: 230.0,
       observacoes: _observacoesController.text.isEmpty ? null : _observacoesController.text,
     );
 
@@ -397,13 +383,10 @@ class _WhatsAppSalesDemoPageState extends State<WhatsAppSalesDemoPage> {
   void _enviarConfirmacaoDemo(WhatsAppSalesProvider provider) async {
     if (!_formKey.currentState!.validate()) return;
 
-    final dataAgendamento = DateTime.now().add(const Duration(days: 3));
-
     final sucesso = await provider.enviarConfirmacaoOrcamento(
+      telefone: provider.formatarTelefone(_telefoneController.text),
       nomeCliente: _nomeClienteController.text,
-      telefoneCliente: provider.formatarTelefone(_telefoneController.text),
-      dataAgendamento: dataAgendamento,
-      nomeEmpresa: _nomeEmpresaController.text,
+      numeroOrcamento: 'ORC-${DateTime.now().millisecondsSinceEpoch}',
       observacoes: _observacoesController.text.isEmpty ? null : _observacoesController.text,
     );
 

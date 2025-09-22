@@ -31,7 +31,6 @@ class Venda {
     double? total,
     String? formaPagamento,
     String? observacoes,
-    String? nomeCliente,
     DateTime? criadoEm,
     DateTime? atualizadoEm,
   }) {
@@ -43,7 +42,6 @@ class Venda {
       total: total ?? this.total,
       formaPagamento: formaPagamento ?? this.formaPagamento,
       observacoes: observacoes ?? this.observacoes,
-      nomeCliente: nomeCliente ?? this.nomeCliente,
       criadoEm: criadoEm ?? this.criadoEm,
       atualizadoEm: atualizadoEm ?? this.atualizadoEm,
     );
@@ -60,7 +58,6 @@ class Venda {
         other.total == total &&
         other.formaPagamento == formaPagamento &&
         other.observacoes == observacoes &&
-        other.nomeCliente == nomeCliente &&
         other.criadoEm == criadoEm &&
         other.atualizadoEm == atualizadoEm;
   }
@@ -75,7 +72,6 @@ class Venda {
       total,
       formaPagamento,
       observacoes,
-      nomeCliente,
       criadoEm,
       atualizadoEm,
     );
@@ -83,6 +79,6 @@ class Venda {
 
   @override
   String toString() {
-    return 'Venda(id: $id, dataVenda: $dataVenda, subtotal: $subtotal, desconto: $desconto, total: $total, formaPagamento: $formaPagamento, observacoes: $observacoes, nomeCliente: $nomeCliente, criadoEm: $criadoEm, atualizadoEm: $atualizadoEm)';
+    return 'Venda(id: $id, dataVenda: $dataVenda, subtotal: $subtotal, desconto: $desconto, total: $total, formaPagamento: $formaPagamento, observacoes: $observacoes, criadoEm: $criadoEm, atualizadoEm: $atualizadoEm)';
   }
 }
